@@ -43,21 +43,23 @@
   background-position: inherit;
   border-radius: inherit;
   transition: all 0.5s ease;
-  filter: contrast(2) saturate(2) blur(36px);
+  filter: contrast(1.2) saturate(1.2) blur(20px);
   transform: scale(0.8) translate3d(0, 0, 0.1px);
   background-size: 100% 100%;
   background-image: var(--behind-gradient);
+  opacity: 0.3;
 }
 
 .pc-card-wrapper:hover,
 .pc-card-wrapper.active {
-  --card-opacity: 1;
+  --card-opacity: 0.5;
 }
 
 .pc-card-wrapper:hover::before,
 .pc-card-wrapper.active::before {
-  filter: contrast(1) saturate(2) blur(40px) opacity(1);
-  transform: scale(0.9) translate3d(0, 0, 0.1px);
+  filter: contrast(1) saturate(1.2) blur(25px) opacity(0.5);
+  transform: scale(0.85) translate3d(0, 0, 0.1px);
+  opacity: 0.4;
 }
 
 .pc-card {
@@ -69,7 +71,7 @@
   position: relative;
   background-blend-mode: color-dodge, normal, normal, normal;
   animation: glow-bg 12s linear infinite;
-  box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
+  box-shadow: rgba(0, 0, 0, 0.4) calc((var(--pointer-from-left) * 5px) - 2px) calc((var(--pointer-from-top) * 10px) - 3px) 10px -3px;
   transition: transform 1s ease;
   transform: translate3d(0, 0, 0.1px) rotateX(0deg) rotateY(0deg);
   background-size: 100% 100%;
@@ -107,7 +109,7 @@
   mask-size: 150%;
   mask-position: top calc(200% - (var(--background-y) * 5)) left calc(100% - var(--background-x));
   transition: filter 0.6s ease;
-  filter: brightness(0.66) contrast(1.33) saturate(0.33) opacity(0.5);
+  filter: brightness(0.4) contrast(1.1) saturate(0.2) opacity(0.3);
   animation: holo-bg 18s linear infinite;
   mix-blend-mode: color-dodge;
 }
@@ -140,7 +142,7 @@
 
 .pc-card:hover .pc-shine,
 .pc-card.active .pc-shine {
-  filter: brightness(0.85) contrast(1.5) saturate(0.5);
+  filter: brightness(0.6) contrast(1.2) saturate(0.3);
   animation: none;
 }
 
@@ -148,7 +150,7 @@
 .pc-card.active .pc-shine::before,
 .pc-card:hover .pc-shine::after,
 .pc-card.active .pc-shine::after {
-  opacity: 1;
+  opacity: 0.5;
 }
 
 .pc-shine::before {
@@ -156,7 +158,7 @@
   background-size: 250% 250%, 100% 100%, 220px 220px;
   background-position: var(--pointer-x) var(--pointer-y), center, calc(var(--pointer-x) * 0.01) calc(var(--pointer-y) * 0.01);
   background-blend-mode: color-dodge;
-  filter: brightness(calc(2 - var(--pointer-from-center))) contrast(calc(var(--pointer-from-center) + 2)) saturate(calc(0.5 + var(--pointer-from-center)));
+  filter: brightness(calc(1.5 - var(--pointer-from-center))) contrast(calc(var(--pointer-from-center) + 1)) saturate(calc(0.3 + var(--pointer-from-center)));
   mix-blend-mode: luminosity;
 }
 
@@ -164,7 +166,7 @@
   background-position: 0 var(--background-y), calc(var(--background-x) * 0.4) calc(var(--background-y) * 0.5), center;
   background-size: 200% 300%, 700% 700%, 100% 100%;
   mix-blend-mode: difference;
-  filter: brightness(0.8) contrast(1.5);
+  filter: brightness(0.5) contrast(1.2);
 }
 
 .pc-glare {
@@ -172,8 +174,9 @@
   overflow: hidden;
   background-image: radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsl(248, 25%, 80%) 12%, hsla(207, 40%, 30%, 0.8) 90%);
   mix-blend-mode: overlay;
-  filter: brightness(0.8) contrast(1.2);
+  filter: brightness(0.5) contrast(1.1);
   z-index: 4;
+  opacity: 0.3;
 }
 
 .pc-avatar-content {
@@ -237,12 +240,16 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pc-mini-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   border-radius: 50%;
 }
 
@@ -378,6 +385,9 @@
   .pc-mini-avatar {
     width: 28px;
     height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .pc-user-details {
@@ -428,6 +438,9 @@
   .pc-mini-avatar {
     width: 24px;
     height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .pc-user-details {
@@ -471,6 +484,9 @@
   .pc-mini-avatar {
     width: 20px;
     height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .pc-user-details {

@@ -5,37 +5,43 @@ import './About.css';
 const About = () => {
   const experiences = [
     {
-      year: '2023 - Presente',
+      year: '2024 - Presente',
       title: 'Desenvolvedor Full Stack',
-      company: 'Empresa Atual',
-      description: 'Desenvolvimento de aplicações web modernas usando React, Node.js e tecnologias cloud.'
+      company: 'Freelancer',
+      description: 'Desenvolvimento de aplicações web completas usando React, Node.js, TypeScript e tecnologias modernas.'
     },
     {
-      year: '2021 - 2023',
+      year: '2023 - 2024',
       title: 'Desenvolvedor Frontend',
-      company: 'Empresa Anterior',
+      company: 'Projetos Pessoais',
       description: 'Criação de interfaces responsivas e otimização de performance de aplicações web.'
     },
     {
-      year: '2020 - 2021',
-      title: 'Estagiário de Desenvolvimento',
-      company: 'Primeira Empresa',
-      description: 'Aprendizado prático em desenvolvimento web e colaboração em projetos reais.'
+      year: '2022 - 2023',
+      title: 'Estudante de Desenvolvimento',
+      company: 'Cursos Online',
+      description: 'Aprendizado prático em desenvolvimento web através de cursos e projetos pessoais.'
     }
   ];
 
   const education = [
     {
-      year: '2018 - 2022',
-      degree: 'Bacharel em Ciência da Computação',
-      institution: 'Universidade Exemplo',
-      description: 'Foco em desenvolvimento de software e tecnologias web.'
+      year: '2024 - Presente',
+      degree: 'Bacharelado em Engenharia de Software',
+      institution: 'UniFatecie',
+      description: 'Curso em andamento com foco em desenvolvimento de software e tecnologias web.'
     },
     {
-      year: '2022',
-      degree: 'Certificação AWS',
-      institution: 'Amazon Web Services',
-      description: 'Especialização em serviços cloud e arquitetura de aplicações.'
+      year: '2024',
+      degree: 'Certificados DIO',
+      institution: 'Digital Innovation One',
+      description: 'Múltiplos certificados em desenvolvimento Full Stack, DevOps e tecnologias modernas.'
+    },
+    {
+      year: '2024',
+      degree: 'Ensino Médio',
+      institution: 'Colégio Menino Jesus de Praga',
+      description: 'Concluído com foco em preparação para o ensino superior.'
     }
   ];
 
@@ -46,44 +52,45 @@ const About = () => {
         
         <div className="about-content">
           <div className="about-text">
-            <div className="about-intro">
-              <h3>Quem sou eu?</h3>
-              <p>
-                Sou um desenvolvedor apaixonado por tecnologia e inovação, com experiência 
-                em desenvolvimento full stack e uma forte base em ciência da computação. 
-                Minha jornada na programação começou há alguns anos e desde então tenho 
-                trabalhado em diversos projetos desafiadores.
-              </p>
-              <p>
-                Acredito que a tecnologia tem o poder de transformar vidas e estou sempre 
-                em busca de aprender novas tecnologias e metodologias para criar soluções 
-                cada vez melhores.
-              </p>
-            </div>
+                         <div className="about-intro">
+               <h3>Quem sou eu?</h3>
+               <p>
+                 Sou um desenvolvedor apaixonado por tecnologia e inovação, com foco em 
+                 desenvolvimento full stack e uma forte base em engenharia de software. 
+                 Minha jornada na programação começou recentemente e desde então tenho 
+                 trabalhado em diversos projetos pessoais e freelancer.
+               </p>
+               <p>
+                 Acredito que a tecnologia tem o poder de transformar vidas e estou sempre 
+                 em busca de aprender novas tecnologias e metodologias para criar soluções 
+                 cada vez melhores. Atualmente estou cursando Engenharia de Software na 
+                 UniFatecie e desenvolvendo projetos pessoais para aprimorar minhas habilidades.
+               </p>
+             </div>
             
-            <div className="about-stats">
-              <div className="stat-item">
-                <FaUser className="stat-icon" />
-                <div className="stat-content">
-                  <h4>3+ Anos</h4>
-                  <p>de Experiência</p>
-                </div>
-              </div>
-              <div className="stat-item">
-                <FaBriefcase className="stat-icon" />
-                <div className="stat-content">
-                  <h4>20+ Projetos</h4>
-                  <p>Concluídos</p>
-                </div>
-              </div>
-              <div className="stat-item">
-                <FaHeart className="stat-icon" />
-                <div className="stat-content">
-                  <h4>100%</h4>
-                  <p>Dedicação</p>
-                </div>
-              </div>
-            </div>
+                         <div className="about-stats">
+               <div className="stat-item">
+                 <FaUser className="stat-icon" />
+                 <div className="stat-content">
+                   <h4>1+ Ano</h4>
+                   <p>de Experiência</p>
+                 </div>
+               </div>
+               <div className="stat-item">
+                 <FaBriefcase className="stat-icon" />
+                 <div className="stat-content">
+                   <h4>8+ Certificados</h4>
+                   <p>Concluídos</p>
+                 </div>
+               </div>
+               <div className="stat-item">
+                 <FaHeart className="stat-icon" />
+                 <div className="stat-content">
+                   <h4>100%</h4>
+                   <p>Dedicação</p>
+                 </div>
+               </div>
+             </div>
           </div>
           
           <div className="about-details">

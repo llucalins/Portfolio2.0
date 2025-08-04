@@ -1,127 +1,162 @@
-import React, { useState } from 'react';
-import { FaGithub, FaExternalLinkAlt, FaEye } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaDownload, FaFilePdf, FaEye } from 'react-icons/fa';
+import { autoDetectAllCertificates } from '../utils/autoDetector';
 import './Projects.css';
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [certificates, setCertificates] = useState([]);
 
-  const projects = [
-    {
-      id: 1,
-      title: 'E-commerce Platform',
-      description: 'Plataforma completa de e-commerce com carrinho de compras, pagamentos e painel administrativo.',
-      image: 'https://via.placeholder.com/400x250/667eea/ffffff?text=E-commerce',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      category: 'fullstack',
-      github: 'https://github.com/seu-usuario/ecommerce',
-      demo: 'https://ecommerce-demo.com',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'Task Management App',
-      description: 'Aplicação de gerenciamento de tarefas com drag-and-drop, notificações e colaboração em tempo real.',
-      image: 'https://via.placeholder.com/400x250/764ba2/ffffff?text=Task+App',
-      technologies: ['Vue.js', 'Firebase', 'Vuex', 'Vuetify'],
-      category: 'frontend',
-      github: 'https://github.com/seu-usuario/task-app',
-      demo: 'https://task-app-demo.com',
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'API REST com Node.js',
-      description: 'API RESTful completa com autenticação JWT, validação de dados e documentação Swagger.',
-      image: 'https://via.placeholder.com/400x250/45b7d1/ffffff?text=API+REST',
-      technologies: ['Node.js', 'Express', 'JWT', 'Swagger'],
-      category: 'backend',
-      github: 'https://github.com/seu-usuario/api-rest',
-      demo: 'https://api-demo.com',
-      featured: false
-    },
-    {
-      id: 4,
-      title: 'Portfolio Website',
-      description: 'Site portfólio responsivo com animações modernas e design minimalista.',
-      image: 'https://via.placeholder.com/400x250/96ceb4/ffffff?text=Portfolio',
-      technologies: ['React', 'CSS3', 'Framer Motion', 'Netlify'],
-      category: 'frontend',
-      github: 'https://github.com/seu-usuario/portfolio',
-      demo: 'https://portfolio-demo.com',
-      featured: false
-    },
-    {
-      id: 5,
-      title: 'Dashboard Analytics',
-      description: 'Dashboard de analytics com gráficos interativos, filtros avançados e exportação de dados.',
-      image: 'https://via.placeholder.com/400x250/ff6b6b/ffffff?text=Dashboard',
-      technologies: ['React', 'D3.js', 'Chart.js', 'Material-UI'],
-      category: 'frontend',
-      github: 'https://github.com/seu-usuario/dashboard',
-      demo: 'https://dashboard-demo.com',
-      featured: false
-    },
-    {
-      id: 6,
-      title: 'Microservices Architecture',
-      description: 'Sistema de microserviços com Docker, Kubernetes e comunicação via gRPC.',
-      image: 'https://via.placeholder.com/400x250/4ecdc4/ffffff?text=Microservices',
-      technologies: ['Docker', 'Kubernetes', 'gRPC', 'Redis'],
-      category: 'devops',
-      github: 'https://github.com/seu-usuario/microservices',
-      demo: 'https://microservices-demo.com',
-      featured: true
+  // Função para detectar automaticamente os certificados na pasta
+  useEffect(() => {
+    const loadCertificates = async () => {
+      try {
+        console.log('🔍 Iniciando detecção automática de certificados...');
+        const detectedCertificates = await autoDetectAllCertificates();
+        console.log('✅ Certificados detectados:', detectedCertificates);
+        
+                console.log('📋 Lista final com todos os certificados:', detectedCertificates.map(c => c.filename));
+        setCertificates(detectedCertificates);
+      } catch (error) {
+        console.error('❌ Erro ao carregar certificados:', error);
+        setCertificates([]);
+      }
+    };
+
+    loadCertificates();
+  }, []);
+
+
+
+  const downloadCertificate = (filename) => {
+    try {
+      const link = document.createElement('a');
+      link.href = `/certificates/${encodeURIComponent(filename)}`;
+      link.download = filename;
+      link.target = '_blank';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      console.log('Download iniciado:', filename);
+    } catch (error) {
+      console.error('Erro no download:', error);
+      // Fallback - abrir em nova aba
+      openPdfPreview(filename);
     }
-  ];
+  };
 
-  const filters = [
-    { id: 'all', label: 'Todos' },
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' },
-    { id: 'fullstack', label: 'Full Stack' },
-    { id: 'devops', label: 'DevOps' }
-  ];
+  const openPdfPreview = (filename) => {
+    try {
+      // Abrir PDF em nova aba com parâmetros para visualização
+      const pdfUrl = `/certificates/${encodeURIComponent(filename)}`;
+      console.log('Abrindo PDF:', pdfUrl);
+      
+      const newWindow = window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+      
+      if (!newWindow) {
+        // Fallback se popup for bloqueado
+        console.log('Popup bloqueado, abrindo na mesma aba');
+        window.location.href = pdfUrl;
+      }
+    } catch (error) {
+      console.error('Erro ao abrir PDF:', error);
+      // Fallback para download
+      downloadCertificate(filename);
+    }
+  };
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+
 
   return (
     <section id="projects" className="projects">
       <div className="container">
-        <h2 className="section-title">Meus Projetos</h2>
-        
-        <div className="projects-filters">
-          {filters.map(filter => (
-            <button
-              key={filter.id}
-              className={`filter-btn ${activeFilter === filter.id ? 'active' : ''}`}
-              onClick={() => setActiveFilter(filter.id)}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div>
+        <h2 className="section-title">Meus Certificados</h2>
         
         <div className="projects-grid">
-          {filteredProjects.map(project => (
-            <div key={project.id} className={`project-card ${project.featured ? 'featured' : ''}`}>
+          {certificates.map(certificate => (
+            <div key={certificate.id} className={`project-card ${certificate.featured ? 'featured' : ''}`}>
               <div className="project-image">
-                <img src={project.image} alt={project.title} />
-                <div className="project-overlay">
-                  <div className="project-links">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <FaGithub />
-                    </a>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
-                      <FaExternalLinkAlt />
-                    </a>
-                    <button className="project-link">
-                      <FaEye />
-                    </button>
-                  </div>
+                                 <div className="certificate-preview-container">
+                   <iframe
+                     src={`/certificates/${encodeURIComponent(certificate.filename)}#toolbar=0&navpanes=0&scrollbar=0`}
+                     className="certificate-iframe"
+                     title={certificate.title}
+                     onError={(e) => {
+                       console.log('❌ Erro no iframe:', certificate.filename, e);
+                       // Fallback visual se iframe falhar
+                       e.target.style.display = 'none';
+                       const fallback = document.createElement('div');
+                       fallback.className = 'certificate-fallback';
+                       fallback.innerHTML = `
+                         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 2rem;">
+                           <div style="margin-bottom: 1rem;">
+                             <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
+                               <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                             </svg>
+                           </div>
+                           <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; font-weight: 600;">${certificate.title}</h4>
+                           <p style="margin: 0 0 0.25rem 0; font-size: 0.9rem; opacity: 0.9;">${certificate.issuer}</p>
+                           <small style="font-size: 0.8rem; opacity: 0.7;">${certificate.date}</small>
+                         </div>
+                       `;
+                       e.target.parentNode.appendChild(fallback);
+                     }}
+                     onLoad={(e) => {
+                       console.log('✅ Iframe carregado com sucesso:', certificate.filename);
+                     }}
+                     ref={(iframe) => {
+                       // Timeout para forçar fallback se demorar muito
+                       if (iframe) {
+                         console.log('🔄 Configurando timeout para:', certificate.filename);
+                         setTimeout(() => {
+                           try {
+                             if (iframe.contentDocument && iframe.contentDocument.body.innerHTML === '') {
+                               console.log('⏰ Timeout - forçando fallback para:', certificate.filename);
+                               iframe.style.display = 'none';
+                               const fallback = document.createElement('div');
+                               fallback.className = 'certificate-fallback';
+                               fallback.innerHTML = `
+                                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 2rem;">
+                                   <div style="margin-bottom: 1rem;">
+                                     <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
+                                       <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                                     </svg>
+                                   </div>
+                                   <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; font-weight: 600;">${certificate.title}</h4>
+                                   <p style="margin: 0 0 0.25rem 0; font-size: 0.9rem; opacity: 0.9;">${certificate.issuer}</p>
+                                   <small style="font-size: 0.8rem; opacity: 0.7;">${certificate.date}</small>
+                                 </div>
+                               `;
+                               iframe.parentNode.appendChild(fallback);
+                             }
+                           } catch (error) {
+                             console.log('⚠️ Erro no timeout check:', error);
+                           }
+                         }, 3000); // 3 segundos de timeout para dar mais tempo
+                       }
+                     }}
+                   />
+                 </div>
+                <div className="certificate-overlay">
+                                     <div className="certificate-actions">
+                     <button 
+                       className="certificate-action-btn"
+                       onClick={() => openPdfPreview(certificate.filename)}
+                       title="Visualizar"
+                     >
+                       <FaEye />
+                       <span>Visualizar</span>
+                     </button>
+                     <button 
+                       className="certificate-action-btn"
+                       onClick={() => downloadCertificate(certificate.filename)}
+                       title="Download"
+                     >
+                       <FaDownload />
+                       <span>Download</span>
+                     </button>
+                   </div>
                 </div>
-                {project.featured && (
+                {certificate.featured && (
                   <div className="featured-badge">
                     Destaque
                   </div>
@@ -129,27 +164,19 @@ const Projects = () => {
               </div>
               
               <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
+                <h3 className="project-title">{certificate.title}</h3>
+                <p className="project-description">{certificate.description}</p>
                 
                 <div className="project-technologies">
-                  {project.technologies.map((tech, index) => (
-                    <span key={index} className="technology-tag">
-                      {tech}
-                    </span>
-                  ))}
+                  <span className="technology-tag">{certificate.issuer}</span>
+                  <span className="technology-tag">{certificate.date}</span>
                 </div>
               </div>
             </div>
           ))}
         </div>
         
-        <div className="projects-cta">
-          <p>Interessado em ver mais projetos?</p>
-          <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-            Ver no GitHub
-          </a>
-        </div>
+
       </div>
     </section>
   );

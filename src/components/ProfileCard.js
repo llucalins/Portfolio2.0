@@ -47,7 +47,7 @@ const ProfileCardComponent = ({
   miniAvatarUrl,
   name = "Lucas Virginio",
   title = "Full Stack Developer",
-  handle = "lucasvirginio",
+  handle = "lin.s30",
   status = "Online",
   contactText = "Contato",
   showUserInfo = true,

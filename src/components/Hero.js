@@ -13,7 +13,7 @@ const Hero = () => {
   const profileData = {
     name: "Lucas Virginio",
     title: "Full Stack Developer",
-    handle: "lucasvirginio",
+    handle: "lin.s30",
     status: "Online",
     avatarUrl: "/lucas-virginio-avatar.png",
     contactText: "Contato",

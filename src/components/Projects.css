@@ -58,7 +58,7 @@
 .project-image {
   position: relative;
   overflow: hidden;
-  height: 200px;
+  height: 300px;
 }
 
 .project-image img {
@@ -172,6 +172,107 @@
   margin-bottom: 1.5rem;
 }
 
+/* Certificate Preview Styles */
+.certificate-preview-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.certificate-pdf-viewer {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.certificate-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.certificate-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+}
+
+.certificate-preview-container:hover .certificate-overlay {
+  opacity: 1;
+}
+
+.certificate-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.certificate-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(102, 126, 234, 0.9);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.certificate-action-btn:hover {
+  background: #667eea;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Iframe do certificado */
+.certificate-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+/* Estilos para o botão de download */
+.download-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
 @media (max-width: 768px) {
   .projects-filters {
     gap: 0.5rem;
@@ -197,5 +298,19 @@
   
   .project-description {
     font-size: 0.9rem;
+  }
+  
+  .project-image {
+    height: 250px;
+  }
+  
+  .certificate-iframe {
+    height: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-preview iframe {
+    height: 250px;
   }
 } 
