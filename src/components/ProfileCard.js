@@ -47,7 +47,7 @@ const ProfileCardComponent = ({
   miniAvatarUrl,
   name = "Lucas Virginio",
   title = "Full Stack Developer",
-  handle = "@lin.s30",
+  handle = "lucasvirginio",
   status = "Online",
   contactText = "Contato",
   showUserInfo = true,
@@ -294,6 +294,12 @@ const ProfileCardComponent = ({
         <div className="pc-inside">
           <div className="pc-shine" />
           <div className="pc-glare" />
+          <div className="pc-content">
+            <div className="pc-details">
+              <h3>{name}</h3>
+              <p>{title}</p>
+            </div>
+          </div>
           <div className="pc-content pc-avatar-content">
             <img
               className="avatar"
@@ -336,12 +342,6 @@ const ProfileCardComponent = ({
                 </button>
               </div>
             )}
-          </div>
-          <div className="pc-content">
-            <div className="pc-details">
-              <h3>{name}</h3>
-              <p>{title}</p>
-            </div>
           </div>
         </div>
       </section>
