@@ -291,13 +291,93 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .gooey-nav-container {
+    padding: 1rem;
+  }
+  
   .gooey-nav-container nav ul {
-    gap: 1em;
+    gap: 1rem;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
   
   .gooey-nav-container nav ul li {
-    min-width: 280px;
+    min-width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  
+  .gooey-nav-container nav ul li a,
+  .gooey-nav-container nav ul li .info-only {
+    padding: 1.2rem 1.5rem;
+    gap: 0.8rem;
+    min-height: 60px; /* Better touch target */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .gooey-nav-container nav ul li a .icon,
+  .gooey-nav-container nav ul li .info-only .icon {
+    font-size: 1.3rem;
+    min-width: 24px;
+    min-height: 24px;
+  }
+  
+  .gooey-nav-container nav ul li a .label,
+  .gooey-nav-container nav ul li .info-only .label {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .gooey-nav-container nav ul li a .info,
+  .gooey-nav-container nav ul li .info-only .info {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+  
+  /* Simplified effects for mobile */
+  .gooey-nav-container .effect {
+    display: none; /* Disable complex effects on mobile */
+  }
+  
+  .gooey-nav-container nav ul li::before {
+    display: none; /* Disable shimmer effect on mobile */
+  }
+  
+  .gooey-nav-container nav ul li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .gooey-nav-container nav ul li:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* iOS Specific Optimizations */
+@media (max-width: 768px) {
+  .gooey-nav-container nav ul li {
+    /* Safe area for iOS */
+    margin: 0.5rem auto;
+  }
+  
+  .gooey-nav-container nav ul li a,
+  .gooey-nav-container nav ul li .info-only {
+    /* Better touch feedback */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Prevent text scaling */
+  .gooey-nav-container nav ul li a .label,
+  .gooey-nav-container nav ul li .info-only .label,
+  .gooey-nav-container nav ul li a .info,
+  .gooey-nav-container nav ul li .info-only .info {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 } 

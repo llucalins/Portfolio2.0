@@ -4,6 +4,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+  padding-top: 80px; /* Space for fixed header */
 }
 
 .hero::before {
@@ -79,6 +80,7 @@
   color: #667eea;
   font-size: 1.2rem;
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .social-link:hover {
@@ -101,6 +103,7 @@
   padding: 2rem;
   border: 1px solid rgba(102, 126, 234, 0.2);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .code-animation {
@@ -205,31 +208,112 @@
   }
 }
 
+/* Mobile Optimizations */
 @media (max-width: 768px) {
+  .hero {
+    min-height: 100vh;
+    padding-top: 70px;
+    padding-bottom: 2rem;
+  }
+  
   .hero-content {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+    padding: 0 1rem;
   }
   
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
   }
   
   .hero-buttons {
     flex-direction: column;
     align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-buttons button {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    min-height: 44px; /* iOS touch target */
   }
   
   .hero-links {
     justify-content: center;
+    gap: 0.8rem;
+  }
+  
+  .social-link {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+  
+  .hero-visual {
+    padding: 1rem;
+    order: -1; /* Move to top on mobile */
   }
   
   .hero-image {
-    padding: 1.5rem;
+    padding: 1.2rem;
+    border-radius: 8px;
   }
   
   .code-animation {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+  
+  .scroll-indicator {
+    bottom: 1rem;
+  }
+}
+
+/* iOS Specific */
+@media (max-width: 768px) {
+  .hero {
+    /* Safe area for iOS */
+    padding-top: max(70px, env(safe-area-inset-top) + 60px);
+    padding-bottom: max(2rem, env(safe-area-inset-bottom) + 1rem);
+  }
+  
+  .hero-content {
+    /* Better spacing for iOS */
+    gap: 1.5rem;
+  }
+  
+  .hero-title {
+    /* Prevent text scaling */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  .hero-buttons button {
+    /* Better touch feedback */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .social-link {
+    /* Better touch targets */
+    min-width: 44px;
+    min-height: 44px;
   }
 } 

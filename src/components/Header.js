@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
@@ -23,6 +22,16 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    // Prevent body scroll when menu is open
+    if (!isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  };
+
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container">
@@ -41,7 +50,11 @@ const Header = () => {
             </ul>
           </nav>
           
-          <div className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <div 
+            className={`mobile-menu-btn ${isMenuOpen ? 'nav-open' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Menu"
+          >
             <span></span>
             <span></span>
             <span></span>

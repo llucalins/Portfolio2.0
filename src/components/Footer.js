@@ -186,10 +186,16 @@ const Footer = () => {
         <div class="section">
           <h3>Educação</h3>
           <div class="timeline-item">
-            <div class="timeline-year">2024 - Presente</div>
+            <div class="timeline-year">2025 - Presente</div>
             <h4>Bacharelado em Engenharia de Software</h4>
             <h5>UniFatecie</h5>
             <p>Curso em andamento com foco em desenvolvimento de software e tecnologias web.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2018</div>
+            <h4>Formação Técnica PRONATEC</h4>
+            <h5>PRONATEC</h5>
+            <p>Formação técnica profissional através do Programa Nacional de Acesso ao Ensino Técnico e Emprego.</p>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2024</div>
@@ -291,7 +297,7 @@ const Footer = () => {
         <div class="section">
           <h3>Sobre Mim</h3>
           <div class="experience">
-            <p>Sou um desenvolvedor apaixonado por tecnologia e inovação, com foco em desenvolvimento full stack e uma forte base em engenharia de software. Minha jornada na programação começou recentemente e desde então tenho trabalhado em diversos projetos pessoais e freelancer.</p>
+            <p>Sou um desenvolvedor apaixonado por tecnologia e inovação, com foco em desenvolvimento full stack e uma forte base em engenharia de software. Minha jornada na programação começou com formação técnica através do PRONATEC e desde então tenho trabalhado em diversos projetos pessoais e freelancer.</p>
             <p>Acredito que a tecnologia tem o poder de transformar vidas e estou sempre em busca de aprender novas tecnologias e metodologias para criar soluções cada vez melhores. Atualmente estou cursando Engenharia de Software na UniFatecie e desenvolvendo projetos pessoais para aprimorar minhas habilidades.</p>
           </div>
         </div>

@@ -3,6 +3,14 @@
 
 // Lista de arquivos conhecidos com suas informações
 const KNOWN_CERTIFICATES = {
+  'PRONATEC.pdf': {
+    title: 'Formação Técnica PRONATEC',
+    description: 'Formação técnica profissional através do Programa Nacional de Acesso ao Ensino Técnico e Emprego.',
+    issuer: 'PRONATEC',
+    date: '2018',
+    category: 'education',
+    featured: true
+  },
   '1GFKQMF2.pdf': {
     title: 'Introdução ao Desenvolvimento Full Stack com a XP Inc',
     description: 'Curso de desenvolvimento Full Stack com carga horária de 1 hora.',
@@ -23,7 +31,7 @@ const KNOWN_CERTIFICATES = {
     title: 'Princípios de Desenvolvimento de Software',
     description: 'Módulo sobre princípios fundamentais com carga horária de 6 horas.',
     issuer: 'DIO',
-    date: '2024',
+    date: '2023',
     category: 'software',
     featured: false
   },
@@ -39,7 +47,7 @@ const KNOWN_CERTIFICATES = {
     title: 'Versionamento de Código com Git e GitHub',
     description: 'Curso sobre controle de versão com carga horária de 2 horas.',
     issuer: 'DIO',
-    date: '2024',
+    date: '2023',
     category: 'devops',
     featured: false
   },
@@ -52,10 +60,10 @@ const KNOWN_CERTIFICATES = {
     featured: true
   },
   'bacharelado.pdf': {
-    title: 'Bacharelado em Andamento',
+    title: 'Bacharelado em Engenharia de Software',
     description: 'Curso de bacharelado em andamento - Em progresso.',
-    issuer: 'Instituição de Ensino Superior',
-    date: '2024',
+    issuer: 'UniFatecie',
+    date: '2025 - Presente',
     category: 'education',
     featured: true
   },
@@ -69,8 +77,8 @@ const KNOWN_CERTIFICATES = {
   },
   // Novos certificados adicionados
   '678C7F83.pdf': {
-    title: 'Certificado DIO - Desenvolvimento Web',
-    description: 'Certificado de desenvolvimento web da plataforma DIO.',
+    title: 'Organizando seus Estudos com os Roadmaps DIO e o Notion',
+    description: 'Certificado de organização de estudos da plataforma DIO.',
     issuer: 'DIO',
     date: '2024',
     category: 'frontend',
@@ -80,7 +88,7 @@ const KNOWN_CERTIFICATES = {
     title: 'Introdução aos Conceitos Básicos em Lógica de Programação',
     description: 'Curso sobre conceitos básicos de lógica de programação com carga horária de 1 hora.',
     issuer: 'DIO',
-    date: '2024',
+    date: '2023',
     category: 'backend',
     featured: false
   },
@@ -88,7 +96,7 @@ const KNOWN_CERTIFICATES = {
     title: 'Entendendo Algoritmos e Fluxogramas',
     description: 'Curso sobre algoritmos e fluxogramas com carga horária de 1 hora.',
     issuer: 'DIO',
-    date: '2024',
+    date: '2023',
     category: 'fullstack',
     featured: false
   },
@@ -96,7 +104,7 @@ const KNOWN_CERTIFICATES = {
     title: 'Introdução ao .NET',
     description: 'Curso de introdução ao framework .NET com carga horária de 2 horas.',
     issuer: 'DIO',
-    date: '2024',
+    date: '2025',
     category: 'fullstack',
     featured: false
   },
@@ -104,7 +112,7 @@ const KNOWN_CERTIFICATES = {
     title: 'Introdução as IDEs e Configuração de Ambiente.NET',
     description: 'Curso sobre IDEs e configuração de ambiente .NET com carga horária de 2 horas.',
     issuer: 'DIO',
-    date: '2024',
+    date: '2025',
     category: 'software',
     featured: false
   },
@@ -128,7 +136,7 @@ const KNOWN_CERTIFICATES = {
     title: 'Introdução ao Flutter',
     description: 'Curso de introdução ao framework Flutter para desenvolvimento mobile.',
     issuer: 'DIO',
-    date: '2024',
+    date: '2025',
     category: 'software',
     featured: false
   }
@@ -158,13 +166,14 @@ const extractPdfInfo = async (filename) => {
     
     // Mapeamento direto dos títulos corretos baseado nos certificados visíveis
     const titleMapping = {
+      'PRONATEC.pdf': 'Formação Técnica PRONATEC',
       '1GFKQMF2.pdf': 'Introdução ao Desenvolvimento Full Stack com a XP Inc',
       '4DQBEV3R.pdf': 'Sintaxe e Tipos de Dados em C#',
       '7773CD70.pdf': 'Princípios de Desenvolvimento de Software',
       '8E04057A.pdf': 'Ambiente de Desenvolvimento Java',
       'EABD3805.pdf': 'Versionamento de Código com Git e GitHub',
       'OPCYCM0Y.pdf': 'Estrutura de um Software e Seu Ambiente de Desenvolvimento',
-      'bacharelado.pdf': 'Bacharelado em Andamento',
+      'bacharelado.pdf': 'Bacharelado em Engenharia de Software',
       'ensino medio.pdf': 'Certificado do Ensino Médio',
       '678C7F83.pdf': 'Organizando seus Estudos com os Roadmaps DIO e o Notion',
       '150B98B8.pdf': 'Introdução aos Conceitos Básicos em Lógica de Programação',

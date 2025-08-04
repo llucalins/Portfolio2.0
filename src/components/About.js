@@ -26,10 +26,16 @@ const About = () => {
 
   const education = [
     {
-      year: '2024 - Presente',
+      year: '2025 - Presente',
       degree: 'Bacharelado em Engenharia de Software',
       institution: 'UniFatecie',
       description: 'Curso em andamento com foco em desenvolvimento de software e tecnologias web.'
+    },
+    {
+      year: '2018',
+      degree: 'Formação Técnica PRONATEC',
+      institution: 'PRONATEC',
+      description: 'Formação técnica profissional através do Programa Nacional de Acesso ao Ensino Técnico e Emprego.'
     },
     {
       year: '2024',
@@ -57,8 +63,8 @@ const About = () => {
                <p>
                  Sou um desenvolvedor apaixonado por tecnologia e inovação, com foco em 
                  desenvolvimento full stack e uma forte base em engenharia de software. 
-                 Minha jornada na programação começou recentemente e desde então tenho 
-                 trabalhado em diversos projetos pessoais e freelancer.
+                 Minha jornada na programação começou com formação técnica através do PRONATEC
+                 e desde então tenho trabalhado em diversos projetos pessoais e freelancer.
                </p>
                <p>
                  Acredito que a tecnologia tem o poder de transformar vidas e estou sempre 

@@ -221,3 +221,159 @@
     font-size: 1.1rem;
   }
 } 
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .footer-section h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .footer-section ul {
+    gap: 0.5rem;
+  }
+  
+  .footer-section ul li button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    min-height: 44px; /* iOS touch target */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .social-links {
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .social-links a {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .footer-info {
+    order: 2;
+  }
+  
+  .footer-actions {
+    order: 1;
+    margin: 0;
+  }
+  
+  .pdf-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    min-height: 50px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .pdf-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  .pdf-btn svg {
+    font-size: 1.2rem;
+  }
+  
+  .pdf-btn span {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.9);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    z-index: 1000;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .scroll-to-top:hover {
+    background: rgba(102, 126, 234, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+}
+
+/* iOS Specific Optimizations */
+@media (max-width: 768px) {
+  .footer {
+    /* Safe area for iOS */
+    padding-bottom: max(2rem, env(safe-area-inset-bottom) + 1rem);
+  }
+  
+  .footer-section ul li button {
+    /* Better touch feedback */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  .social-links a {
+    /* Better touch targets */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .pdf-btn {
+    /* Better touch feedback */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  .scroll-to-top {
+    /* Safe area for iOS */
+    bottom: max(2rem, env(safe-area-inset-bottom) + 1rem);
+    right: max(2rem, env(safe-area-inset-right) + 1rem);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Prevent text scaling */
+  .footer-section p,
+  .footer-section ul li button,
+  .pdf-btn span {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+} 
