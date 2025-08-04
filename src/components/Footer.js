@@ -360,6 +360,19 @@ const Footer = () => {
                 </a>
               ))}
             </div>
+            
+            {/* Botão de Download do Currículo */}
+            <div className="resume-download-section">
+              <button 
+                onClick={generatePDF} 
+                className="resume-download-btn"
+                title="Baixar Currículo em PDF"
+              >
+                <FaFilePdf className="resume-icon" />
+                <span className="resume-text">Baixar Currículo</span>
+                <div className="resume-glow"></div>
+              </button>
+            </div>
           </div>
         </div>
         
@@ -371,17 +384,6 @@ const Footer = () => {
             <p className="made-with">
               Feito com <FaHeart className="heart-icon" /> usando React
             </p>
-          </div>
-          
-          <div className="footer-actions">
-            <button 
-              onClick={generatePDF} 
-              className="pdf-btn"
-              title="Baixar Currículo em PDF"
-            >
-              <FaFilePdf />
-              <span>Currículo PDF</span>
-            </button>
           </div>
           
           <button 

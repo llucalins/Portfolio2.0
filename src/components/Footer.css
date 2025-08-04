@@ -182,6 +182,77 @@
   letter-spacing: 0.5px;
 }
 
+/* Novo botão de download do currículo */
+.resume-download-section {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.resume-download-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  min-width: 200px;
+  justify-content: center;
+}
+
+.resume-download-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.resume-download-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.resume-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.resume-download-btn:hover .resume-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.resume-text {
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.resume-download-btn:hover .resume-text {
+  transform: translateX(2px);
+}
+
+.resume-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.resume-download-btn:hover .resume-glow {
+  left: 100%;
+}
+
 /* Responsive para o botão PDF */
 @media (max-width: 768px) {
   .footer-content {
@@ -209,12 +280,12 @@
   }
 
   .pdf-btn {
-    padding: 6px 12px;
-    font-size: 0.8rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
   
   .pdf-btn span {
-    display: none;
+    font-size: 0.85rem;
   }
   
   .pdf-btn svg {
@@ -375,5 +446,66 @@
   .pdf-btn span {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+  }
+} 
+
+/* Responsive para o botão PDF */
+@media (max-width: 768px) {
+  .pdf-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .pdf-btn span {
+    font-size: 0.85rem;
+  }
+  
+  /* Responsive para o novo botão de currículo */
+  .resume-download-btn {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    min-width: 180px;
+  }
+  
+  .resume-icon {
+    font-size: 1.1rem;
+  }
+  
+  .resume-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.8rem;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .pdf-btn span {
+    font-size: 0.8rem;
+  }
+  
+  /* Responsive para telas muito pequenas */
+  .resume-download-btn {
+    padding: 12px 16px;
+    font-size: 0.8rem;
+    min-width: 160px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .resume-icon {
+    font-size: 1rem;
+  }
+  
+  .resume-text {
+    font-size: 0.8rem;
+  }
+  
+  .resume-download-section {
+    margin-top: 1rem;
   }
 } 

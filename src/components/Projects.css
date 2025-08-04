@@ -365,6 +365,8 @@
   .filter-btn {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
+    min-height: 44px; /* Melhor touch target */
+    -webkit-tap-highlight-color: transparent;
   }
   
   .projects-grid {
@@ -391,10 +393,64 @@
   .certificate-iframe {
     height: 100%;
   }
+  
+  /* Ajustes específicos para rotação do PRONATEC no mobile */
+  .certificate-iframe.pronatec-rotation {
+    transform: rotate(270deg) scale(0.8);
+    transform-origin: center center;
+  }
+  
+  /* Melhorar botões de ação no mobile */
+  .certificate-actions {
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+  
+  .certificate-action-btn {
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    min-height: 40px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .certificate-action-btn span {
+    display: none; /* Esconder texto em mobile, manter apenas ícones */
+  }
+  
+  /* Melhorar overlay no mobile */
+  .certificate-overlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Ajustar featured badge no mobile */
+  .featured-badge {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
 }
 
 @media (max-width: 480px) {
   .pdf-preview iframe {
     height: 250px;
+  }
+  
+  /* Ajustes adicionais para telas muito pequenas */
+  .certificate-iframe.pronatec-rotation {
+    transform: rotate(270deg) scale(0.7);
+  }
+  
+  .certificate-action-btn {
+    padding: 8px 12px;
+    font-size: 0.7rem;
+    min-height: 36px;
+  }
+  
+  .project-image {
+    height: 200px;
+  }
+  
+  .certificate-preview-container {
+    border-radius: 6px;
   }
 } 
