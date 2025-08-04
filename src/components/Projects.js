@@ -87,7 +87,7 @@ const Projects = () => {
                 <div className="certificate-preview-container">
                   <iframe
                     src={`/certificates/${encodeURIComponent(certificate.filename)}#toolbar=0&navpanes=0&scrollbar=0`}
-                    className="certificate-iframe"
+                    className={`certificate-iframe ${certificate.filename === 'PRONATEC.pdf' ? 'pronatec-rotation' : ''}`}
                     title={certificate.title}
                     onError={(e) => {
                       console.log('❌ Erro no iframe:', certificate.filename, e);

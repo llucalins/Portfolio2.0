@@ -197,6 +197,14 @@
   background: #f8f9fa;
 }
 
+/* Rotação específica para o PRONATEC */
+.certificate-iframe.pronatec-rotation {
+  transform: rotate(270deg);
+  transform-origin: center center;
+  width: 100%;
+  height: 100%;
+}
+
 .certificate-overlay {
   position: absolute;
   top: 0;
