@@ -381,9 +381,6 @@ const Footer = () => {
             <p>
               © {currentYear} Todos os direitos reservados.
             </p>
-            <p className="made-with">
-              Feito com <FaHeart className="heart-icon" /> usando React
-            </p>
           </div>
           
           <button 
