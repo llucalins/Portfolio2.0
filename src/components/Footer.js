@@ -8,17 +8,17 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: <FaGithub />,
-      url: 'https://github.com/seu-usuario',
+      url: 'https://github.com/llucalins',
       label: 'GitHub'
     },
     {
       icon: <FaLinkedin />,
-      url: 'https://linkedin.com/in/seu-usuario',
+      url: 'https://www.linkedin.com/in/lucas-virginio-55311627b',
       label: 'LinkedIn'
     },
     {
       icon: <FaEnvelope />,
-      url: 'mailto:seu-email@exemplo.com',
+      url: 'mailto:lvirginio.dev@gmail.com',
       label: 'Email'
     }
   ];
@@ -35,7 +35,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>Seu Nome</h3>
+            <h3>Lucas Virginio</h3>
             <p>
               Desenvolvedor Full Stack apaixonado por criar soluções inovadoras 
               e experiências digitais excepcionais.
@@ -74,7 +74,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-info">
             <p>
-              © {currentYear} Seu Nome. Todos os direitos reservados.
+              © {currentYear} Lucas Virginio. Todos os direitos reservados.
             </p>
             <p className="made-with">
               Feito com <FaHeart className="heart-icon" /> usando React

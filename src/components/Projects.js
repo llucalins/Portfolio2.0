@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { FaDownload, FaFilePdf, FaEye } from 'react-icons/fa';
+import { FaDownload, FaFilePdf, FaEye, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { autoDetectAllCertificates } from '../utils/autoDetector';
 import './Projects.css';
 
 const Projects = () => {
   const [certificates, setCertificates] = useState([]);
+  const [showAll, setShowAll] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   // Função para detectar automaticamente os certificados na pasta
   useEffect(() => {
@@ -14,7 +16,7 @@ const Projects = () => {
         const detectedCertificates = await autoDetectAllCertificates();
         console.log('✅ Certificados detectados:', detectedCertificates);
         
-                console.log('📋 Lista final com todos os certificados:', detectedCertificates.map(c => c.filename));
+        console.log('📋 Lista final com todos os certificados:', detectedCertificates.map(c => c.filename));
         setCertificates(detectedCertificates);
       } catch (error) {
         console.error('❌ Erro ao carregar certificados:', error);
@@ -25,6 +27,13 @@ const Projects = () => {
     loadCertificates();
   }, []);
 
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+    setVisibleCount(showAll ? 6 : certificates.length);
+  };
+
+  const visibleCertificates = certificates.slice(0, visibleCount);
+  const hasMoreCertificates = certificates.length > 6;
 
 
   const downloadCertificate = (filename) => {
@@ -72,89 +81,89 @@ const Projects = () => {
         <h2 className="section-title">Meus Certificados</h2>
         
         <div className="projects-grid">
-          {certificates.map(certificate => (
+          {visibleCertificates.map(certificate => (
             <div key={certificate.id} className={`project-card ${certificate.featured ? 'featured' : ''}`}>
               <div className="project-image">
-                                 <div className="certificate-preview-container">
-                   <iframe
-                     src={`/certificates/${encodeURIComponent(certificate.filename)}#toolbar=0&navpanes=0&scrollbar=0`}
-                     className="certificate-iframe"
-                     title={certificate.title}
-                     onError={(e) => {
-                       console.log('❌ Erro no iframe:', certificate.filename, e);
-                       // Fallback visual se iframe falhar
-                       e.target.style.display = 'none';
-                       const fallback = document.createElement('div');
-                       fallback.className = 'certificate-fallback';
-                       fallback.innerHTML = `
-                         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 2rem;">
-                           <div style="margin-bottom: 1rem;">
-                             <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
-                               <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                             </svg>
-                           </div>
-                           <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; font-weight: 600;">${certificate.title}</h4>
-                           <p style="margin: 0 0 0.25rem 0; font-size: 0.9rem; opacity: 0.9;">${certificate.issuer}</p>
-                           <small style="font-size: 0.8rem; opacity: 0.7;">${certificate.date}</small>
-                         </div>
-                       `;
-                       e.target.parentNode.appendChild(fallback);
-                     }}
-                     onLoad={(e) => {
-                       console.log('✅ Iframe carregado com sucesso:', certificate.filename);
-                     }}
-                     ref={(iframe) => {
-                       // Timeout para forçar fallback se demorar muito
-                       if (iframe) {
-                         console.log('🔄 Configurando timeout para:', certificate.filename);
-                         setTimeout(() => {
-                           try {
-                             if (iframe.contentDocument && iframe.contentDocument.body.innerHTML === '') {
-                               console.log('⏰ Timeout - forçando fallback para:', certificate.filename);
-                               iframe.style.display = 'none';
-                               const fallback = document.createElement('div');
-                               fallback.className = 'certificate-fallback';
-                               fallback.innerHTML = `
-                                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 2rem;">
-                                   <div style="margin-bottom: 1rem;">
-                                     <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
-                                       <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                                     </svg>
-                                   </div>
-                                   <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; font-weight: 600;">${certificate.title}</h4>
-                                   <p style="margin: 0 0 0.25rem 0; font-size: 0.9rem; opacity: 0.9;">${certificate.issuer}</p>
-                                   <small style="font-size: 0.8rem; opacity: 0.7;">${certificate.date}</small>
-                                 </div>
-                               `;
-                               iframe.parentNode.appendChild(fallback);
-                             }
-                           } catch (error) {
-                             console.log('⚠️ Erro no timeout check:', error);
-                           }
-                         }, 3000); // 3 segundos de timeout para dar mais tempo
-                       }
-                     }}
-                   />
-                 </div>
+                <div className="certificate-preview-container">
+                  <iframe
+                    src={`/certificates/${encodeURIComponent(certificate.filename)}#toolbar=0&navpanes=0&scrollbar=0`}
+                    className="certificate-iframe"
+                    title={certificate.title}
+                    onError={(e) => {
+                      console.log('❌ Erro no iframe:', certificate.filename, e);
+                      // Fallback visual se iframe falhar
+                      e.target.style.display = 'none';
+                      const fallback = document.createElement('div');
+                      fallback.className = 'certificate-fallback';
+                      fallback.innerHTML = `
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 2rem;">
+                          <div style="margin-bottom: 1rem;">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
+                              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                          </div>
+                          <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; font-weight: 600;">${certificate.title}</h4>
+                          <p style="margin: 0 0 0.25rem 0; font-size: 0.9rem; opacity: 0.9;">${certificate.issuer}</p>
+                          <small style="font-size: 0.8rem; opacity: 0.7;">${certificate.date}</small>
+                        </div>
+                      `;
+                      e.target.parentNode.appendChild(fallback);
+                    }}
+                    onLoad={(e) => {
+                      console.log('✅ Iframe carregado com sucesso:', certificate.filename);
+                    }}
+                    ref={(iframe) => {
+                      // Timeout para forçar fallback se demorar muito
+                      if (iframe) {
+                        console.log('🔄 Configurando timeout para:', certificate.filename);
+                        setTimeout(() => {
+                          try {
+                            if (iframe.contentDocument && iframe.contentDocument.body.innerHTML === '') {
+                              console.log('⏰ Timeout - forçando fallback para:', certificate.filename);
+                              iframe.style.display = 'none';
+                              const fallback = document.createElement('div');
+                              fallback.className = 'certificate-fallback';
+                              fallback.innerHTML = `
+                                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 2rem;">
+                                  <div style="margin-bottom: 1rem;">
+                                    <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
+                                      <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                                    </svg>
+                                  </div>
+                                  <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; font-weight: 600;">${certificate.title}</h4>
+                                  <p style="margin: 0 0 0.25rem 0; font-size: 0.9rem; opacity: 0.9;">${certificate.issuer}</p>
+                                  <small style="font-size: 0.8rem; opacity: 0.7;">${certificate.date}</small>
+                                </div>
+                              `;
+                              iframe.parentNode.appendChild(fallback);
+                            }
+                          } catch (error) {
+                            console.log('⚠️ Erro no timeout check:', error);
+                          }
+                        }, 3000); // 3 segundos de timeout para dar mais tempo
+                      }
+                    }}
+                  />
+                </div>
                 <div className="certificate-overlay">
-                                     <div className="certificate-actions">
-                     <button 
-                       className="certificate-action-btn"
-                       onClick={() => openPdfPreview(certificate.filename)}
-                       title="Visualizar"
-                     >
-                       <FaEye />
-                       <span>Visualizar</span>
-                     </button>
-                     <button 
-                       className="certificate-action-btn"
-                       onClick={() => downloadCertificate(certificate.filename)}
-                       title="Download"
-                     >
-                       <FaDownload />
-                       <span>Download</span>
-                     </button>
-                   </div>
+                  <div className="certificate-actions">
+                    <button 
+                      className="certificate-action-btn"
+                      onClick={() => openPdfPreview(certificate.filename)}
+                      title="Visualizar"
+                    >
+                      <FaEye />
+                      <span>Visualizar</span>
+                    </button>
+                    <button 
+                      className="certificate-action-btn"
+                      onClick={() => downloadCertificate(certificate.filename)}
+                      title="Download"
+                    >
+                      <FaDownload />
+                      <span>Download</span>
+                    </button>
+                  </div>
                 </div>
                 {certificate.featured && (
                   <div className="featured-badge">
@@ -176,7 +185,17 @@ const Projects = () => {
           ))}
         </div>
         
-
+        {hasMoreCertificates && (
+          <div className="show-more-container">
+            <button 
+              className="show-more-btn"
+              onClick={toggleShowAll}
+              title={showAll ? "Mostrar Menos" : "Ver Todos os Certificados"}
+            >
+              {showAll ? <FaChevronUp /> : <span>+</span>}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,53 +1,32 @@
 import React from 'react';
-import { FaCode, FaDatabase, FaTools, FaCloud } from 'react-icons/fa';
+import { FaCode, FaDatabase } from 'react-icons/fa';
 import './Skills.css';
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: 'Frontend',
+      title: 'Linguagens de Programação',
       icon: <FaCode />,
       skills: [
-        { name: 'React', level: 90 },
-        { name: 'JavaScript', level: 85 },
-        { name: 'HTML/CSS', level: 95 },
-        { name: 'TypeScript', level: 80 },
-        { name: 'Vue.js', level: 75 }
+        { name: 'Java', level: 85 },
+        { name: 'Python', level: 80 },
+        { name: 'C#', level: 80 },
+        { name: 'JavaScript', level: 75 },
+        { name: 'Lógica de Programação', level: 90 }
       ]
     },
     {
-      title: 'Backend',
+      title: 'Frameworks & Plataformas',
       icon: <FaDatabase />,
       skills: [
-        { name: 'Node.js', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'Express.js', level: 90 },
-        { name: 'MongoDB', level: 75 },
-        { name: 'PostgreSQL', level: 70 }
+        { name: '.NET', level: 85 },
+        { name: 'Flutter', level: 75 },
+        { name: 'Node.js', level: 70 },
+        { name: 'React', level: 70 },
+        { name: 'IDEs', level: 90 }
       ]
     },
-    {
-      title: 'Ferramentas',
-      icon: <FaTools />,
-      skills: [
-        { name: 'Git', level: 90 },
-        { name: 'Docker', level: 75 },
-        { name: 'Webpack', level: 80 },
-        { name: 'Jest', level: 85 },
-        { name: 'Figma', level: 70 }
-      ]
-    },
-    {
-      title: 'Cloud & DevOps',
-      icon: <FaCloud />,
-      skills: [
-        { name: 'AWS', level: 75 },
-        { name: 'Docker', level: 80 },
-        { name: 'CI/CD', level: 70 },
-        { name: 'Linux', level: 85 },
-        { name: 'Kubernetes', level: 65 }
-      ]
-    }
+
   ];
 
   return (
@@ -88,19 +67,15 @@ const Skills = () => {
         <div className="skills-summary">
           <div className="summary-item">
             <h4>Linguagens</h4>
-            <p>JavaScript, TypeScript, Python, HTML, CSS</p>
+            <p>Java, Python, C#, JavaScript, Lógica de Programação</p>
           </div>
           <div className="summary-item">
-            <h4>Frameworks</h4>
-            <p>React, Vue.js, Node.js, Express.js</p>
+            <h4>Frameworks & Plataformas</h4>
+            <p>.NET, Flutter, Node.js, React, IDEs</p>
           </div>
           <div className="summary-item">
-            <h4>Banco de Dados</h4>
-            <p>MongoDB, PostgreSQL, MySQL</p>
-          </div>
-          <div className="summary-item">
-            <h4>Ferramentas</h4>
-            <p>Git, Docker, AWS, Figma, VS Code</p>
+            <h4>Conhecimentos</h4>
+            <p>Algoritmos, Fluxogramas, Client-Server, Cloud Computing</p>
           </div>
         </div>
       </div>

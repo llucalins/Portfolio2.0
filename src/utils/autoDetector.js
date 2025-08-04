@@ -63,8 +63,73 @@ const KNOWN_CERTIFICATES = {
     title: 'Certificado do Ensino Médio',
     description: 'Certificado de conclusão do ensino médio.',
     issuer: 'Colégio Menino Jesus de Praga',
-    date: '2024',
+    date: '2019',
     category: 'education',
+    featured: false
+  },
+  // Novos certificados adicionados
+  '678C7F83.pdf': {
+    title: 'Certificado DIO - Desenvolvimento Web',
+    description: 'Certificado de desenvolvimento web da plataforma DIO.',
+    issuer: 'DIO',
+    date: '2024',
+    category: 'frontend',
+    featured: false
+  },
+  '150B98B8.pdf': {
+    title: 'Introdução aos Conceitos Básicos em Lógica de Programação',
+    description: 'Curso sobre conceitos básicos de lógica de programação com carga horária de 1 hora.',
+    issuer: 'DIO',
+    date: '2024',
+    category: 'backend',
+    featured: false
+  },
+  'D47C72EB.pdf': {
+    title: 'Entendendo Algoritmos e Fluxogramas',
+    description: 'Curso sobre algoritmos e fluxogramas com carga horária de 1 hora.',
+    issuer: 'DIO',
+    date: '2024',
+    category: 'fullstack',
+    featured: false
+  },
+  'QHAJQVUM.pdf': {
+    title: 'Introdução ao .NET',
+    description: 'Curso de introdução ao framework .NET com carga horária de 2 horas.',
+    issuer: 'DIO',
+    date: '2024',
+    category: 'fullstack',
+    featured: false
+  },
+  'V3BM8GH7.pdf': {
+    title: 'Introdução as IDEs e Configuração de Ambiente.NET',
+    description: 'Curso sobre IDEs e configuração de ambiente .NET com carga horária de 2 horas.',
+    issuer: 'DIO',
+    date: '2024',
+    category: 'software',
+    featured: false
+  },
+  '4KPXNSBP.pdf': {
+    title: 'Introdução a Experiência TONNIE - Java and AI in Europe',
+    description: 'Curso sobre experiência TONNIE com Java e IA na Europa.',
+    issuer: 'DIO',
+    date: '2024',
+    category: 'devops',
+    featured: false
+  },
+  'HCRDIGHK.pdf': {
+    title: 'Entendendo Comunicação Client x Server',
+    description: 'Curso sobre comunicação cliente-servidor e arquitetura web.',
+    issuer: 'DIO',
+    date: '2024',
+    category: 'devops',
+    featured: false
+  },
+  'YTMYDEXJ.pdf': {
+    title: 'Introdução ao Flutter',
+    description: 'Curso de introdução ao framework Flutter para desenvolvimento mobile.',
+    issuer: 'DIO',
+    date: '2024',
+    category: 'software',
     featured: false
   }
 };
@@ -89,6 +154,8 @@ const checkPdfExists = async (filename) => {
 // Função para tentar extrair informações do PDF
 const extractPdfInfo = async (filename) => {
   try {
+    console.log(`📄 Extraindo título para: ${filename}`);
+    
     // Mapeamento direto dos títulos corretos baseado nos certificados visíveis
     const titleMapping = {
       '1GFKQMF2.pdf': 'Introdução ao Desenvolvimento Full Stack com a XP Inc',
@@ -98,13 +165,21 @@ const extractPdfInfo = async (filename) => {
       'EABD3805.pdf': 'Versionamento de Código com Git e GitHub',
       'OPCYCM0Y.pdf': 'Estrutura de um Software e Seu Ambiente de Desenvolvimento',
       'bacharelado.pdf': 'Bacharelado em Andamento',
-      'ensino medio.pdf': 'Certificado do Ensino Médio'
+      'ensino medio.pdf': 'Certificado do Ensino Médio',
+      '678C7F83.pdf': 'Organizando seus Estudos com os Roadmaps DIO e o Notion',
+      '150B98B8.pdf': 'Introdução aos Conceitos Básicos em Lógica de Programação',
+      'D47C72EB.pdf': 'Entendendo Algoritmos e Fluxogramas',
+      'QHAJQVUM.pdf': 'Introdução ao .NET',
+      'V3BM8GH7.pdf': 'Introdução as IDEs e Configuração de Ambiente.NET',
+      '4KPXNSBP.pdf': 'Introdução a Experiência TONNIE - Java and AI in Europe',
+      'HCRDIGHK.pdf': 'Entendendo Comunicação Client x Server',
+      'YTMYDEXJ.pdf': 'Introdução ao Flutter'
     };
     
     // Retornar o título mapeado diretamente
     const mappedTitle = titleMapping[filename];
     if (mappedTitle) {
-      console.log(`📄 Título mapeado para ${filename}:`, mappedTitle);
+      console.log(`✅ Título mapeado para ${filename}:`, mappedTitle);
       return mappedTitle;
     }
     

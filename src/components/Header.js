@@ -36,7 +36,7 @@ const Header = () => {
       <div className="container">
         <div className="header-content">
           <div className="logo">
-            <h2>Portfólio</h2>
+            <h2>L.V</h2>
           </div>
           
           <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>

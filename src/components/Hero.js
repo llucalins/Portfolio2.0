@@ -42,9 +42,9 @@ const Hero = () => {
             <div className="hero-buttons">
               <button 
                 className="btn btn-primary"
-                onClick={() => scrollToSection('projects')}
+                onClick={() => scrollToSection('about')}
               >
-                Ver Projetos
+                Sobre Mim
               </button>
               <button 
                 className="btn btn-secondary"

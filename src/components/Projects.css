@@ -273,6 +273,82 @@
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
+/* Estilos para o botão de expandir */
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 2rem 0;
+}
+
+.show-more-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.show-more-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.show-more-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.show-more-btn svg,
+.show-more-btn span {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.show-more-btn:hover svg,
+.show-more-btn:hover span {
+  transform: scale(1.1);
+}
+
+/* Responsive para o botão */
+@media (max-width: 768px) {
+  .show-more-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+  
+  .show-more-btn svg,
+  .show-more-btn span {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .show-more-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+  
+  .show-more-btn svg,
+  .show-more-btn span {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .projects-filters {
     gap: 0.5rem;

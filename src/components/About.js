@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUser, FaGraduationCap, FaBriefcase, FaHeart, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaUser, FaGraduationCap, FaBriefcase, FaHeart } from 'react-icons/fa';
 import './About.css';
 
 const About = () => {
@@ -125,18 +125,8 @@ const About = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-              
-                             <div className="dio-certificates-section">
-                 <button 
-                   className="dio-button"
-                   onClick={() => window.open('https://web.dio.me/certificates', '_blank')}
-                 >
-                   <FaExternalLinkAlt />
-                   Ver Todos os Certificados DIO
-                 </button>
-               </div>
-            </div>
+                             </div>
+             </div>
           </div>
         </div>
       </div>
