@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUser, FaGraduationCap, FaBriefcase, FaHeart } from 'react-icons/fa';
+import { FaUser, FaGraduationCap, FaBriefcase, FaHeart, FaExternalLinkAlt } from 'react-icons/fa';
 import './About.css';
 
 const About = () => {
@@ -38,7 +38,7 @@ const About = () => {
       description: 'Múltiplos certificados em desenvolvimento Full Stack, DevOps e tecnologias modernas.'
     },
     {
-      year: '2024',
+      year: '2019',
       degree: 'Ensino Médio',
       institution: 'Colégio Menino Jesus de Praga',
       description: 'Concluído com foco em preparação para o ensino superior.'
@@ -76,13 +76,13 @@ const About = () => {
                    <p>de Experiência</p>
                  </div>
                </div>
-               <div className="stat-item">
-                 <FaBriefcase className="stat-icon" />
-                 <div className="stat-content">
-                   <h4>8+ Certificados</h4>
-                   <p>Concluídos</p>
-                 </div>
-               </div>
+                               <div className="stat-item">
+                  <FaBriefcase className="stat-icon" />
+                  <div className="stat-content">
+                    <h4>21+ Certificados</h4>
+                    <p>Concluídos</p>
+                  </div>
+                </div>
                <div className="stat-item">
                  <FaHeart className="stat-icon" />
                  <div className="stat-content">
@@ -126,6 +126,16 @@ const About = () => {
                   </div>
                 ))}
               </div>
+              
+                             <div className="dio-certificates-section">
+                 <button 
+                   className="dio-button"
+                   onClick={() => window.open('https://web.dio.me/certificates', '_blank')}
+                 >
+                   <FaExternalLinkAlt />
+                   Ver Todos os Certificados DIO
+                 </button>
+               </div>
             </div>
           </div>
         </div>
