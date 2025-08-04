@@ -143,6 +143,46 @@
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
+/* Estilos para o botão PDF */
+.footer-actions {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pdf-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+}
+
+.pdf-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.pdf-btn svg {
+  font-size: 1rem;
+}
+
+.pdf-btn span {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive para o botão PDF */
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
@@ -166,5 +206,18 @@
   
   .scroll-top {
     order: 1;
+  }
+
+  .pdf-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .pdf-btn span {
+    display: none;
+  }
+  
+  .pdf-btn svg {
+    font-size: 1.1rem;
   }
 } 
