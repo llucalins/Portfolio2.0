@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Particles from './components/Particles';
 import MetaTagsManager from './components/MetaTagsManager';
 import PreviewTester from './components/PreviewTester';
+import PreviewCard from './components/PreviewCard';
 import { LanguageProvider } from './contexts/LanguageContext';
 import './App.css';
 
@@ -48,6 +49,7 @@ function App() {
             <Projects />
             <Contact />
             <PreviewTester />
+            <PreviewCard />
           </main>
           <Footer />
         </div>
