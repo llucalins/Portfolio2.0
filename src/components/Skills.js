@@ -1,11 +1,14 @@
 import React from 'react';
 import { FaCode, FaDatabase } from 'react-icons/fa';
+import { useTranslation } from '../hooks/useTranslation';
 import './Skills.css';
 
 const Skills = () => {
+  const { t } = useTranslation();
+  
   const skillCategories = [
     {
-      title: 'Linguagens de Programação',
+      title: t('skills.programmingLanguages'),
       icon: <FaCode />,
       skills: [
         { name: 'Java', level: 85 },
@@ -16,7 +19,7 @@ const Skills = () => {
       ]
     },
     {
-      title: 'Frameworks & Plataformas',
+      title: t('skills.frameworksPlatforms'),
       icon: <FaDatabase />,
       skills: [
         { name: '.NET', level: 85 },
@@ -32,7 +35,7 @@ const Skills = () => {
   return (
     <section id="skills" className="skills">
       <div className="container">
-        <h2 className="section-title">Minhas Habilidades</h2>
+        <h2 className="section-title">{t('skills.title')}</h2>
         
         <div className="skills-content">
           {skillCategories.map((category, categoryIndex) => (
@@ -66,15 +69,15 @@ const Skills = () => {
         
         <div className="skills-summary">
           <div className="summary-item">
-            <h4>Linguagens</h4>
+            <h4>{t('skills.languages')}</h4>
             <p>Java, Python, C#, JavaScript, Lógica de Programação</p>
           </div>
           <div className="summary-item">
-            <h4>Frameworks & Plataformas</h4>
+            <h4>{t('skills.frameworksPlatforms')}</h4>
             <p>.NET, Flutter, Node.js, React, IDEs</p>
           </div>
           <div className="summary-item">
-            <h4>Conhecimentos</h4>
+            <h4>{t('skills.knowledge')}</h4>
             <p>Algoritmos, Fluxogramas, Client-Server, Cloud Computing</p>
           </div>
         </div>

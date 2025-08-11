@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useCallback, useMemo } from "react";
+import { useTranslation } from "../hooks/useTranslation";
 import "./ProfileCard.css";
 
 const DEFAULT_BEHIND_GRADIENT =
@@ -53,6 +54,7 @@ const ProfileCardComponent = ({
   showUserInfo = true,
   onContactClick,
 }) => {
+  const { t } = useTranslation();
   const wrapRef = useRef(null);
   const cardRef = useRef(null);
 
@@ -326,10 +328,10 @@ const ProfileCardComponent = ({
                       }}
                     />
                   </div>
-                  <div className="pc-user-text">
-                    <div className="pc-handle">@{handle}</div>
-                    <div className="pc-status">{status}</div>
-                  </div>
+                                      <div className="pc-user-text">
+                      <div className="pc-handle">@{handle}</div>
+                      <div className="pc-status">{t('profileCard.online')}</div>
+                    </div>
                 </div>
                 <button
                   className="pc-contact-btn"

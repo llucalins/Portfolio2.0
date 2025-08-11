@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FaDownload, FaFilePdf, FaEye, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { autoDetectAllCertificates } from '../utils/autoDetector';
+import { useTranslation } from '../hooks/useTranslation';
 import './Projects.css';
 
 const Projects = () => {
+  const { t } = useTranslation();
   const [certificates, setCertificates] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const [visibleCount, setVisibleCount] = useState(6);
@@ -78,7 +80,7 @@ const Projects = () => {
   return (
     <section id="projects" className="projects">
       <div className="container">
-        <h2 className="section-title">Meus Certificados</h2>
+        <h2 className="section-title">{t('projects.title')}</h2>
         
         <div className="projects-grid">
           {visibleCertificates.map(certificate => (
@@ -150,24 +152,24 @@ const Projects = () => {
                     <button 
                       className="certificate-action-btn"
                       onClick={() => openPdfPreview(certificate.filename)}
-                      title="Visualizar"
+                      title={t('projects.viewCertificate')}
                     >
                       <FaEye />
-                      <span>Visualizar</span>
+                      <span>{t('projects.viewCertificate')}</span>
                     </button>
                     <button 
                       className="certificate-action-btn"
                       onClick={() => downloadCertificate(certificate.filename)}
-                      title="Download"
+                      title={t('projects.downloadCertificate')}
                     >
                       <FaDownload />
-                      <span>Download</span>
+                      <span>{t('projects.downloadCertificate')}</span>
                     </button>
                   </div>
                 </div>
                 {certificate.featured && (
                   <div className="featured-badge">
-                    Destaque
+                    {t('projects.featured')}
                   </div>
                 )}
               </div>
@@ -190,7 +192,7 @@ const Projects = () => {
             <button 
               className="show-more-btn"
               onClick={toggleShowAll}
-              title={showAll ? "Mostrar Menos" : "Ver Todos os Certificados"}
+              title={showAll ? t('projects.showLess') : t('projects.showAll')}
             >
               {showAll ? <FaChevronUp /> : <span>+</span>}
             </button>

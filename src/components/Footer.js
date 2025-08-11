@@ -1,8 +1,10 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaFilePdf } from 'react-icons/fa';
+import { useTranslation } from '../hooks/useTranslation';
 import './Footer.css';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -330,23 +332,22 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <p>
-              Desenvolvedor Full Stack apaixonado por criar soluções inovadoras 
-              e experiências digitais excepcionais.
+              {t('footer.description')}
             </p>
           </div>
           
           <div className="footer-section">
-            <h4>Links Rápidos</h4>
+            <h4>{t('footer.quickLinks')}</h4>
             <ul>
-              <li><button onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}>Sobre</button></li>
-              <li><button onClick={() => document.getElementById('skills').scrollIntoView({ behavior: 'smooth' })}>Habilidades</button></li>
-              <li><button onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>Certificados</button></li>
-              <li><button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>Contato</button></li>
+              <li><button onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}>{t('nav.about')}</button></li>
+              <li><button onClick={() => document.getElementById('skills').scrollIntoView({ behavior: 'smooth' })}>{t('nav.skills')}</button></li>
+              <li><button onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>{t('nav.projects')}</button></li>
+              <li><button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>{t('nav.contact')}</button></li>
             </ul>
           </div>
           
           <div className="footer-section">
-            <h4>Redes Sociais</h4>
+            <h4>{t('footer.socialMedia')}</h4>
             <div className="social-links">
               {socialLinks.map((link, index) => (
                 <a
@@ -369,7 +370,7 @@ const Footer = () => {
                 title="Baixar Currículo em PDF"
               >
                 <FaFilePdf className="resume-icon" />
-                <span className="resume-text">Baixar Currículo</span>
+                <span className="resume-text">{t('footer.downloadResume')}</span>
                 <div className="resume-glow"></div>
               </button>
             </div>
@@ -379,7 +380,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-info">
             <p>
-              © {currentYear} Todos os direitos reservados.
+              © {currentYear} {t('footer.rights')}.
             </p>
           </div>
           

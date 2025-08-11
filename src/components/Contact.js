@@ -1,9 +1,12 @@
 import React from 'react';
 import { FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa';
 import GooeyNav from './GooeyNav';
+import { useTranslation } from '../hooks/useTranslation';
 import './Contact.css';
 
 const Contact = () => {
+  const { t } = useTranslation();
+  
   const contactItems = [
     { 
       label: "Email", 
@@ -42,11 +45,9 @@ const Contact = () => {
       <div className="container">
         <div className="contact-content">
           <div className="contact-info">
-            <h3>Vamos Conversar!</h3>
+            <h3>{t('contact.title')}</h3>
             <p>
-              Estou sempre aberto a novas oportunidades e colaborações interessantes. 
-              Se você tem um projeto em mente ou gostaria de discutir possibilidades, 
-              não hesite em entrar em contato através de qualquer uma das opções abaixo!
+              {t('contact.subtitle')}
             </p>
           </div>
           

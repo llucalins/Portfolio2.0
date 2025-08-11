@@ -1,8 +1,11 @@
 import React from 'react';
 import ProfileCard from './ProfileCard';
+import { useTranslation } from '../hooks/useTranslation';
 import './Hero.css';
 
 const Hero = () => {
+  const { t } = useTranslation();
+  
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -12,11 +15,11 @@ const Hero = () => {
 
   const profileData = {
     name: "Lucas Virginio",
-    title: "Full Stack Developer",
+    title: t('hero.title'),
     handle: "lin.s30",
-    status: "Online",
+    status: t('profileCard.online'),
     avatarUrl: "/lucas-virginio-avatar.png",
-    contactText: "Contato",
+    contactText: t('profileCard.contact'),
     showUserInfo: true,
     enableTilt: true,
     enableMobileTilt: false,
@@ -29,14 +32,13 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              Olá, eu sou <span className="highlight">Lucas Virginio</span>
+              {t('hero.greeting')} <span className="highlight">Lucas Virginio</span>
             </h1>
             <h2 className="hero-subtitle">
-              Full Stack Developer
+              {t('hero.title')}
             </h2>
             <p className="hero-description">
-              Apaixonado por criar soluções inovadoras e experiências digitais excepcionais. 
-              Especializado em desenvolvimento web moderno com foco em performance e usabilidade.
+              {t('hero.description')}
             </p>
             
             <div className="hero-buttons">
@@ -44,13 +46,13 @@ const Hero = () => {
                 className="btn btn-primary"
                 onClick={() => scrollToSection('about')}
               >
-                Sobre Mim
+                {t('hero.aboutMe')}
               </button>
               <button 
                 className="btn btn-secondary"
                 onClick={() => scrollToSection('contact')}
               >
-                Entre em Contato
+                {t('hero.contactMe')}
               </button>
             </div>
           </div>

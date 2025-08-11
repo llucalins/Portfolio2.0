@@ -1,8 +1,11 @@
 import React from 'react';
 import { FaUser, FaGraduationCap, FaBriefcase, FaHeart } from 'react-icons/fa';
+import { useTranslation } from '../hooks/useTranslation';
 import './About.css';
 
 const About = () => {
+  const { t } = useTranslation();
+  
   const experiences = [
     {
       year: '2024 - Presente',
@@ -54,23 +57,14 @@ const About = () => {
   return (
     <section id="about" className="about">
       <div className="container">
-        <h2 className="section-title">Sobre Mim</h2>
+        <h2 className="section-title">{t('about.title')}</h2>
         
         <div className="about-content">
           <div className="about-text">
                          <div className="about-intro">
-               <h3>Quem sou eu?</h3>
+               <h3>{t('about.subtitle')}</h3>
                <p>
-                 Sou um desenvolvedor apaixonado por tecnologia e inovação, com foco em 
-                 desenvolvimento full stack e uma forte base em engenharia de software. 
-                 Minha jornada na programação começou com formação técnica através do PRONATEC
-                 e desde então tenho trabalhado em diversos projetos pessoais e freelancer.
-               </p>
-               <p>
-                 Acredito que a tecnologia tem o poder de transformar vidas e estou sempre 
-                 em busca de aprender novas tecnologias e metodologias para criar soluções 
-                 cada vez melhores. Atualmente estou cursando Engenharia de Software na 
-                 UniFatecie e desenvolvendo projetos pessoais para aprimorar minhas habilidades.
+                 {t('about.description')}
                </p>
              </div>
             
@@ -79,21 +73,21 @@ const About = () => {
                  <FaUser className="stat-icon" />
                  <div className="stat-content">
                    <h4>1+ Ano</h4>
-                   <p>de Experiência</p>
+                   <p>{t('about.experience')}</p>
                  </div>
                </div>
                                <div className="stat-item">
                   <FaBriefcase className="stat-icon" />
                   <div className="stat-content">
                     <h4>21+ Certificados</h4>
-                    <p>Concluídos</p>
+                    <p>{t('about.projects')}</p>
                   </div>
                 </div>
                <div className="stat-item">
                  <FaHeart className="stat-icon" />
                  <div className="stat-content">
                    <h4>100%</h4>
-                   <p>Dedicação</p>
+                   <p>{t('about.clients')}</p>
                  </div>
                </div>
              </div>
