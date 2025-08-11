@@ -8,8 +8,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Particles from './components/Particles';
 import MetaTagsManager from './components/MetaTagsManager';
-import PreviewTester from './components/PreviewTester';
-import PreviewCard from './components/PreviewCard';
 import { LanguageProvider } from './contexts/LanguageContext';
 import './App.css';
 
@@ -48,8 +46,6 @@ function App() {
             <Skills />
             <Projects />
             <Contact />
-            <PreviewTester />
-            <PreviewCard />
           </main>
           <Footer />
         </div>
