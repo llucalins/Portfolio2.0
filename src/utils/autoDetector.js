@@ -4,7 +4,7 @@
 // Lista de arquivos conhecidos com suas informações
 const KNOWN_CERTIFICATES = {
   'PRONATEC.pdf': {
-    title: 'Formação Técnica PRONATEC',
+    titleKey: 'pronatec',
     description: 'Formação técnica profissional através do Programa Nacional de Acesso ao Ensino Técnico e Emprego.',
     issuer: 'PRONATEC',
     date: '2018',
@@ -12,7 +12,7 @@ const KNOWN_CERTIFICATES = {
     featured: true
   },
   '1GFKQMF2.pdf': {
-    title: 'Introdução ao Desenvolvimento Full Stack com a XP Inc',
+    titleKey: 'fullstackXP',
     description: 'Curso de desenvolvimento Full Stack com carga horária de 1 hora.',
     issuer: 'DIO',
     date: '2024',
@@ -20,7 +20,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   '4DQBEV3R.pdf': {
-    title: 'Sintaxe e Tipos de Dados em C#',
+    titleKey: 'csharpSyntax',
     description: 'Fundamentos da linguagem C# com carga horária de 3 horas.',
     issuer: 'DIO',
     date: '2024',
@@ -28,7 +28,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   '7773CD70.pdf': {
-    title: 'Princípios de Desenvolvimento de Software',
+    titleKey: 'softwarePrinciples',
     description: 'Módulo sobre princípios fundamentais com carga horária de 6 horas.',
     issuer: 'DIO',
     date: '2023',
@@ -36,7 +36,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   '8E04057A.pdf': {
-    title: 'Ambiente de Desenvolvimento Java',
+    titleKey: 'javaEnvironment',
     description: 'Curso sobre ambiente de desenvolvimento Java com carga horária de 1 hora.',
     issuer: 'DIO',
     date: '2024',
@@ -44,7 +44,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   'EABD3805.pdf': {
-    title: 'Versionamento de Código com Git e GitHub',
+    titleKey: 'gitGitHub',
     description: 'Curso sobre controle de versão com carga horária de 2 horas.',
     issuer: 'DIO',
     date: '2023',
@@ -52,7 +52,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   'OPCYCM0Y.pdf': {
-    title: 'Estrutura de um Software e Seu Ambiente de Desenvolvimento',
+    titleKey: 'softwareStructure',
     description: 'DevOps, Docker, CI/CD, AWS e práticas de desenvolvimento ágil.',
     issuer: 'DIO',
     date: '2024',
@@ -60,7 +60,7 @@ const KNOWN_CERTIFICATES = {
     featured: true
   },
   'bacharelado.pdf': {
-    title: 'Bacharelado em Engenharia de Software',
+    titleKey: 'softwareEngineering',
     description: 'Curso de bacharelado em andamento - Em progresso.',
     issuer: 'UniFatecie',
     date: '2025 - Presente',
@@ -68,7 +68,7 @@ const KNOWN_CERTIFICATES = {
     featured: true
   },
   'ensino medio.pdf': {
-    title: 'Certificado do Ensino Médio',
+    titleKey: 'highSchool',
     description: 'Certificado de conclusão do ensino médio.',
     issuer: 'Colégio Menino Jesus de Praga',
     date: '2019',
@@ -77,7 +77,7 @@ const KNOWN_CERTIFICATES = {
   },
   // Novos certificados adicionados
   '678C7F83.pdf': {
-    title: 'Organizando seus Estudos com os Roadmaps DIO e o Notion',
+    titleKey: 'studyOrganization',
     description: 'Certificado de organização de estudos da plataforma DIO.',
     issuer: 'DIO',
     date: '2024',
@@ -85,7 +85,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   '150B98B8.pdf': {
-    title: 'Introdução aos Conceitos Básicos em Lógica de Programação',
+    titleKey: 'programmingLogic',
     description: 'Curso sobre conceitos básicos de lógica de programação com carga horária de 1 hora.',
     issuer: 'DIO',
     date: '2023',
@@ -93,7 +93,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   'D47C72EB.pdf': {
-    title: 'Entendendo Algoritmos e Fluxogramas',
+    titleKey: 'algorithmsFlowcharts',
     description: 'Curso sobre algoritmos e fluxogramas com carga horária de 1 hora.',
     issuer: 'DIO',
     date: '2023',
@@ -101,7 +101,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   'QHAJQVUM.pdf': {
-    title: 'Introdução ao .NET',
+    titleKey: 'dotnetIntro',
     description: 'Curso de introdução ao framework .NET com carga horária de 2 horas.',
     issuer: 'DIO',
     date: '2025',
@@ -109,7 +109,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   'V3BM8GH7.pdf': {
-    title: 'Introdução as IDEs e Configuração de Ambiente.NET',
+    titleKey: 'idesDotnet',
     description: 'Curso sobre IDEs e configuração de ambiente .NET com carga horária de 2 horas.',
     issuer: 'DIO',
     date: '2025',
@@ -117,7 +117,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   '4KPXNSBP.pdf': {
-    title: 'Introdução a Experiência TONNIE - Java and AI in Europe',
+    titleKey: 'tonnieJava',
     description: 'Curso sobre experiência TONNIE com Java e IA na Europa.',
     issuer: 'DIO',
     date: '2024',
@@ -125,7 +125,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   'HCRDIGHK.pdf': {
-    title: 'Entendendo Comunicação Client x Server',
+    titleKey: 'clientServer',
     description: 'Curso sobre comunicação cliente-servidor e arquitetura web.',
     issuer: 'DIO',
     date: '2024',
@@ -133,7 +133,7 @@ const KNOWN_CERTIFICATES = {
     featured: false
   },
   'YTMYDEXJ.pdf': {
-    title: 'Introdução ao Flutter',
+    titleKey: 'flutterIntro',
     description: 'Curso de introdução ao framework Flutter para desenvolvimento mobile.',
     issuer: 'DIO',
     date: '2025',
@@ -238,7 +238,8 @@ export const autoDetectAllCertificates = async () => {
       const certificate = {
         id: index + 1,
         filename: filename,
-        title: extractedTitle || info.title, // Usar título extraído ou fallback
+        titleKey: info.titleKey, // Chave para tradução
+        title: extractedTitle || info.titleKey, // Usar título extraído ou chave como fallback
         description: info.description,
         issuer: info.issuer,
         date: info.date,

@@ -11,17 +11,17 @@ const Footer = () => {
     {
       icon: <FaGithub />,
       url: 'https://github.com/llucalins',
-      label: 'GitHub'
+      label: t('footer.github')
     },
     {
       icon: <FaLinkedin />,
       url: 'https://www.linkedin.com/in/lucas-virginio-55311627b',
-      label: 'LinkedIn'
+      label: t('footer.linkedin')
     },
     {
       icon: <FaEnvelope />,
       url: 'mailto:lvirginio.dev@gmail.com',
-      label: 'Email'
+      label: t('footer.email')
     }
   ];
 
@@ -32,7 +32,7 @@ const Footer = () => {
       <html>
       <head>
         <meta charset="UTF-8">
-        <title>Lucas Virginio - Currículo</title>
+        <title>Lucas Virginio - {t('footer.resume')}</title>
         <style>
           body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -177,7 +177,7 @@ const Footer = () => {
       <body>
         <div class="header">
           <h1>Lucas Virginio</h1>
-          <h2>Desenvolvedor Full Stack</h2>
+          <h2>${t('hero.title')}</h2>
           <div class="contact-info">
             <span>📧 lvirginio.dev@gmail.com</span>
             <span>📱 +55 (83) 98602-3472</span>
@@ -186,128 +186,128 @@ const Footer = () => {
         </div>
 
         <div class="section">
-          <h3>Educação</h3>
-          <div class="timeline-item">
-            <div class="timeline-year">2025 - Presente</div>
-            <h4>Bacharelado em Engenharia de Software</h4>
-            <h5>UniFatecie</h5>
-            <p>Curso em andamento com foco em desenvolvimento de software e tecnologias web.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2018</div>
-            <h4>Formação Técnica PRONATEC</h4>
-            <h5>PRONATEC</h5>
-            <p>Formação técnica profissional através do Programa Nacional de Acesso ao Ensino Técnico e Emprego.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2024</div>
-            <h4>Certificados DIO</h4>
-            <h5>Digital Innovation One</h5>
-            <p>Múltiplos certificados em desenvolvimento Full Stack, DevOps e tecnologias modernas.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2019</div>
-            <h4>Ensino Médio</h4>
-            <h5>Colégio Menino Jesus de Praga</h5>
-            <p>Concluído com foco em preparação para o ensino superior.</p>
-          </div>
+          <h3>${t('about.education')}</h3>
+                     <div class="timeline-item">
+             <div class="timeline-year">${t('about.educationItems.software.year')}</div>
+             <h4>${t('about.educationItems.software.degree')}</h4>
+             <h5>${t('about.educationItems.software.institution')}</h5>
+             <p>${t('about.educationItems.software.description')}</p>
+           </div>
+           <div class="timeline-item">
+             <div class="timeline-year">${t('about.educationItems.pronatec.year')}</div>
+             <h4>${t('about.educationItems.pronatec.degree')}</h4>
+             <h5>${t('about.educationItems.pronatec.institution')}</h5>
+             <p>${t('about.educationItems.pronatec.description')}</p>
+           </div>
+           <div class="timeline-item">
+             <div class="timeline-year">${t('about.educationItems.dio.year')}</div>
+             <h4>${t('about.educationItems.dio.degree')}</h4>
+             <h5>${t('about.educationItems.dio.institution')}</h5>
+             <p>${t('about.educationItems.dio.description')}</p>
+           </div>
+           <div class="timeline-item">
+             <div class="timeline-year">${t('about.educationItems.highschool.year')}</div>
+             <h4>${t('about.educationItems.highschool.degree')}</h4>
+             <h5>${t('about.educationItems.highschool.institution')}</h5>
+             <p>${t('about.educationItems.highschool.description')}</p>
+           </div>
         </div>
 
         <div class="section">
-          <h3>Experiência Profissional</h3>
+          <h3>${t('about.professionalExperience')}</h3>
           <div class="timeline-item">
-            <div class="timeline-year">2024 - Presente</div>
-            <h4>Desenvolvedor Full Stack</h4>
-            <h5>Freelancer</h5>
-            <p>Desenvolvimento de aplicações web completas usando React, Node.js, TypeScript e tecnologias modernas.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2023 - 2024</div>
-            <h4>Desenvolvedor Frontend</h4>
-            <h5>Projetos Pessoais</h5>
-            <p>Criação de interfaces responsivas e otimização de performance de aplicações web.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2022 - 2023</div>
-            <h4>Estudante de Desenvolvimento</h4>
-            <h5>Cursos Online</h5>
-            <p>Aprendizado prático em desenvolvimento web através de cursos e projetos pessoais.</p>
-          </div>
+             <div class="timeline-year">${t('about.experiences.fullstack.year')}</div>
+             <h4>${t('about.experiences.fullstack.title')}</h4>
+             <h5>${t('about.experiences.fullstack.company')}</h5>
+             <p>${t('about.experiences.fullstack.description')}</p>
+           </div>
+           <div class="timeline-item">
+             <div class="timeline-year">${t('about.experiences.frontend.year')}</div>
+             <h4>${t('about.experiences.frontend.title')}</h4>
+             <h5>${t('about.experiences.frontend.company')}</h5>
+             <p>${t('about.experiences.frontend.description')}</p>
+           </div>
+           <div class="timeline-item">
+             <div class="timeline-year">${t('about.experiences.student.year')}</div>
+             <h4>${t('about.experiences.student.title')}</h4>
+             <h5>${t('about.experiences.student.company')}</h5>
+             <p>${t('about.experiences.student.description')}</p>
+           </div>
         </div>
 
         <div class="section">
-          <h3>Habilidades Técnicas</h3>
+          <h3>${t('skills.title')}</h3>
           <div class="skills-grid">
             <div class="skill-category">
-              <h4>Linguagens de Programação</h4>
+              <h4>${t('skills.programmingLanguages')}</h4>
               <ul>
-                <li>Java (85%)</li>
-                <li>Python (80%)</li>
-                <li>C# (80%)</li>
-                <li>JavaScript (75%)</li>
-                <li>Lógica de Programação (90%)</li>
+                                                 <li>${t('skills.java')} (85%)</li>
+                <li>${t('skills.python')} (80%)</li>
+                <li>${t('skills.csharp')} (80%)</li>
+                <li>${t('skills.javascript')} (75%)</li>
+                <li>${t('skills.programmingLogic')} (90%)</li>
               </ul>
             </div>
             <div class="skill-category">
-              <h4>Frameworks & Plataformas</h4>
+              <h4>${t('skills.frameworksPlatforms')}</h4>
               <ul>
-                <li>.NET (85%)</li>
-                <li>Flutter (75%)</li>
-                <li>Node.js (70%)</li>
-                <li>React (70%)</li>
-                <li>IDEs (90%)</li>
+                <li>${t('skills.dotnet')} (85%)</li>
+                <li>${t('skills.flutter')} (75%)</li>
+                <li>${t('skills.nodejs')} (70%)</li>
+                <li>${t('skills.react')} (70%)</li>
+                <li>${t('skills.ides')} (90%)</li>
               </ul>
             </div>
             <div class="skill-category">
-              <h4>Conhecimentos</h4>
+              <h4>${t('skills.knowledge')}</h4>
               <ul>
-                <li>Algoritmos</li>
-                <li>Fluxogramas</li>
-                <li>Client-Server</li>
-                <li>Cloud Computing</li>
+                                                 <li>${t('skills.summary.knowledge').split(', ')[0]}</li>
+                <li>${t('skills.summary.knowledge').split(', ')[1]}</li>
+                <li>${t('skills.summary.knowledge').split(', ')[2]}</li>
+                <li>${t('skills.summary.knowledge').split(', ')[3]}</li>
               </ul>
             </div>
           </div>
         </div>
 
         <div class="section">
-          <h3>Certificados (21+)</h3>
+          <h3>${t('projects.title')} (21+)</h3>
           <div class="certificates">
-            <div class="certificate">Java Developer</div>
-            <div class="certificate">Python Developer</div>
-            <div class="certificate">C# Developer</div>
-            <div class="certificate">JavaScript Developer</div>
-            <div class="certificate">React Developer</div>
-            <div class="certificate">Node.js Developer</div>
-            <div class="certificate">.NET Developer</div>
-            <div class="certificate">Flutter Developer</div>
+            <div class="certificate">${t('skills.java')} Developer</div>
+            <div class="certificate">${t('skills.python')} Developer</div>
+            <div class="certificate">${t('skills.csharp')} Developer</div>
+            <div class="certificate">${t('skills.javascript')} Developer</div>
+            <div class="certificate">${t('skills.react')} Developer</div>
+            <div class="certificate">${t('skills.nodejs')} Developer</div>
+            <div class="certificate">${t('skills.dotnet')} Developer</div>
+            <div class="certificate">${t('skills.flutter')} Developer</div>
             <div class="certificate">Full Stack Developer</div>
             <div class="certificate">DevOps</div>
             <div class="certificate">Cloud Computing</div>
-            <div class="certificate">Algoritmos</div>
-            <div class="certificate">Lógica de Programação</div>
-            <div class="certificate">IDEs</div>
-            <div class="certificate">Git & GitHub</div>
-            <div class="certificate">Metodologias Ágeis</div>
-            <div class="certificate">Clean Code</div>
-            <div class="certificate">TDD</div>
-            <div class="certificate">DDD</div>
-            <div class="certificate">Arquitetura de Software</div>
+            <div class="certificate">${t('skills.summary.knowledge').split(', ')[0]}</div>
+            <div class="certificate">${t('skills.programmingLogic')}</div>
+            <div class="certificate">${t('skills.ides')}</div>
+             <div class="certificate">Git & GitHub</div>
+             <div class="certificate">Metodologias Ágeis</div>
+             <div class="certificate">Clean Code</div>
+             <div class="certificate">TDD</div>
+             <div class="certificate">DDD</div>
+             <div class="certificate">Arquitetura de Software</div>
           </div>
         </div>
 
         <div class="section">
-          <h3>Sobre Mim</h3>
+          <h3>${t('footer.aboutMe')}</h3>
           <div class="experience">
-            <p>Sou um desenvolvedor apaixonado por tecnologia e inovação, com foco em desenvolvimento full stack e uma forte base em engenharia de software. Minha jornada na programação começou com formação técnica através do PRONATEC e desde então tenho trabalhado em diversos projetos pessoais e freelancer.</p>
-            <p>Acredito que a tecnologia tem o poder de transformar vidas e estou sempre em busca de aprender novas tecnologias e metodologias para criar soluções cada vez melhores. Atualmente estou cursando Engenharia de Software na UniFatecie e desenvolvendo projetos pessoais para aprimorar minhas habilidades.</p>
+            <p>${t('footer.aboutDescription1')}</p>
+            <p>${t('footer.aboutDescription2')}</p>
           </div>
         </div>
 
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/lucas-virginio-55311627b" target="_blank">LinkedIn</a>
-          <a href="https://github.com/llucalins" target="_blank">GitHub</a>
-          <a href="mailto:lvirginio.dev@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/lucas-virginio-55311627b" target="_blank">${t('footer.linkedin')}</a>
+          <a href="https://github.com/llucalins" target="_blank">${t('footer.github')}</a>
+          <a href="mailto:lvirginio.dev@gmail.com">${t('footer.email')}</a>
         </div>
       </body>
       </html>
@@ -367,7 +367,7 @@ const Footer = () => {
               <button 
                 onClick={generatePDF} 
                 className="resume-download-btn"
-                title="Baixar Currículo em PDF"
+                title={t('footer.downloadResumeTitle')}
               >
                 <FaFilePdf className="resume-icon" />
                 <span className="resume-text">{t('footer.downloadResume')}</span>
@@ -387,7 +387,7 @@ const Footer = () => {
           <button 
             className="scroll-to-top"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label="Voltar ao topo"
+            aria-label={t('footer.scrollToTop')}
           >
             ↑
           </button>

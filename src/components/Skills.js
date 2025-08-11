@@ -11,22 +11,22 @@ const Skills = () => {
       title: t('skills.programmingLanguages'),
       icon: <FaCode />,
       skills: [
-        { name: 'Java', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'C#', level: 80 },
-        { name: 'JavaScript', level: 75 },
-        { name: 'Lógica de Programação', level: 90 }
+        { name: t('skills.java'), level: 85 },
+        { name: t('skills.python'), level: 80 },
+        { name: t('skills.csharp'), level: 80 },
+        { name: t('skills.javascript'), level: 75 },
+        { name: t('skills.programmingLogic'), level: 90 }
       ]
     },
     {
       title: t('skills.frameworksPlatforms'),
       icon: <FaDatabase />,
       skills: [
-        { name: '.NET', level: 85 },
-        { name: 'Flutter', level: 75 },
-        { name: 'Node.js', level: 70 },
-        { name: 'React', level: 70 },
-        { name: 'IDEs', level: 90 }
+        { name: t('skills.dotnet'), level: 85 },
+        { name: t('skills.flutter'), level: 75 },
+        { name: t('skills.nodejs'), level: 70 },
+        { name: t('skills.react'), level: 70 },
+        { name: t('skills.ides'), level: 90 }
       ]
     },
 
@@ -70,15 +70,15 @@ const Skills = () => {
         <div className="skills-summary">
           <div className="summary-item">
             <h4>{t('skills.languages')}</h4>
-            <p>Java, Python, C#, JavaScript, Lógica de Programação</p>
+            <p>{t('skills.summary.languages')}</p>
           </div>
           <div className="summary-item">
             <h4>{t('skills.frameworksPlatforms')}</h4>
-            <p>.NET, Flutter, Node.js, React, IDEs</p>
+            <p>{t('skills.summary.frameworks')}</p>
           </div>
           <div className="summary-item">
             <h4>{t('skills.knowledge')}</h4>
-            <p>Algoritmos, Fluxogramas, Client-Server, Cloud Computing</p>
+            <p>{t('skills.summary.knowledge')}</p>
           </div>
         </div>
       </div>

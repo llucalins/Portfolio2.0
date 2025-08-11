@@ -9,33 +9,33 @@ const Contact = () => {
   
   const contactItems = [
     { 
-      label: "Email", 
+      label: t('contact.email'), 
       href: "mailto:lvirginio.dev@gmail.com",
       info: "lvirginio.dev@gmail.com",
       icon: <FaEnvelope />
     },
     { 
-      label: "LinkedIn", 
+      label: t('contact.linkedin'), 
       href: "https://www.linkedin.com/in/lucas-virginio-55311627b",
       info: "linkedin.com/in/lucas-virginio-55311627b",
       icon: <FaLinkedin />
     },
     { 
-      label: "GitHub", 
+      label: t('contact.github'), 
       href: "https://github.com/llucalins",
       info: "github.com/llucalins",
       icon: <FaGithub />
     },
     { 
-      label: "WhatsApp", 
+      label: t('contact.whatsapp'), 
       href: "https://wa.me/5583986023472",
       info: "+55 (83) 98602-3472",
       icon: <FaWhatsapp />
     },
     { 
-      label: "Localização", 
+      label: t('contact.location'), 
       href: null,
-      info: "Campina Grande, PB - Brasil",
+      info: t('contact.locationInfo'),
       icon: <FaMapMarkerAlt />
     }
   ];

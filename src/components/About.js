@@ -8,49 +8,49 @@ const About = () => {
   
   const experiences = [
     {
-      year: '2024 - Presente',
-      title: 'Desenvolvedor Full Stack',
-      company: 'Freelancer',
-      description: 'Desenvolvimento de aplicações web completas usando React, Node.js, TypeScript e tecnologias modernas.'
+      year: t('about.experiences.fullstack.year'),
+      title: t('about.experiences.fullstack.title'),
+      company: t('about.experiences.fullstack.company'),
+      description: t('about.experiences.fullstack.description')
     },
     {
-      year: '2023 - 2024',
-      title: 'Desenvolvedor Frontend',
-      company: 'Projetos Pessoais',
-      description: 'Criação de interfaces responsivas e otimização de performance de aplicações web.'
+      year: t('about.experiences.frontend.year'),
+      title: t('about.experiences.frontend.title'),
+      company: t('about.experiences.frontend.company'),
+      description: t('about.experiences.frontend.description')
     },
     {
-      year: '2022 - 2023',
-      title: 'Estudante de Desenvolvimento',
-      company: 'Cursos Online',
-      description: 'Aprendizado prático em desenvolvimento web através de cursos e projetos pessoais.'
+      year: t('about.experiences.student.year'),
+      title: t('about.experiences.student.title'),
+      company: t('about.experiences.student.company'),
+      description: t('about.experiences.student.description')
     }
   ];
 
   const education = [
     {
-      year: '2025 - Presente',
-      degree: 'Bacharelado em Engenharia de Software',
-      institution: 'UniFatecie',
-      description: 'Curso em andamento com foco em desenvolvimento de software e tecnologias web.'
+      year: t('about.educationItems.software.year'),
+      degree: t('about.educationItems.software.degree'),
+      institution: t('about.educationItems.software.institution'),
+      description: t('about.educationItems.software.description')
     },
     {
-      year: '2018',
-      degree: 'Formação Técnica PRONATEC',
-      institution: 'PRONATEC',
-      description: 'Formação técnica profissional através do Programa Nacional de Acesso ao Ensino Técnico e Emprego.'
+      year: t('about.educationItems.pronatec.year'),
+      degree: t('about.educationItems.pronatec.degree'),
+      institution: t('about.educationItems.pronatec.institution'),
+      description: t('about.educationItems.pronatec.description')
     },
     {
-      year: '2024',
-      degree: 'Certificados DIO',
-      institution: 'Digital Innovation One',
-      description: 'Múltiplos certificados em desenvolvimento Full Stack, DevOps e tecnologias modernas.'
+      year: t('about.educationItems.dio.year'),
+      degree: t('about.educationItems.dio.degree'),
+      institution: t('about.educationItems.dio.institution'),
+      description: t('about.educationItems.dio.description')
     },
     {
-      year: '2019',
-      degree: 'Ensino Médio',
-      institution: 'Colégio Menino Jesus de Praga',
-      description: 'Concluído com foco em preparação para o ensino superior.'
+      year: t('about.educationItems.highschool.year'),
+      degree: t('about.educationItems.highschool.degree'),
+      institution: t('about.educationItems.highschool.institution'),
+      description: t('about.educationItems.highschool.description')
     }
   ];
 
@@ -95,7 +95,7 @@ const About = () => {
           
           <div className="about-details">
             <div className="experience-section">
-              <h3><FaBriefcase /> Experiência Profissional</h3>
+              <h3><FaBriefcase /> {t('about.professionalExperience')}</h3>
               <div className="timeline">
                 {experiences.map((exp, index) => (
                   <div key={index} className="timeline-item">
@@ -112,7 +112,7 @@ const About = () => {
             </div>
             
             <div className="education-section">
-              <h3><FaGraduationCap /> Educação</h3>
+              <h3><FaGraduationCap /> {t('about.education')}</h3>
               <div className="timeline">
                 {education.map((edu, index) => (
                   <div key={index} className="timeline-item">

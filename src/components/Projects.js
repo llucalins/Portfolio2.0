@@ -175,7 +175,9 @@ const Projects = () => {
               </div>
               
               <div className="project-content">
-                <h3 className="project-title">{certificate.title}</h3>
+                <h3 className="project-title">
+                  {certificate.titleKey ? t(`projects.certificates.${certificate.titleKey}`) : certificate.title}
+                </h3>
                 <p className="project-description">{certificate.description}</p>
                 
                 <div className="project-technologies">
