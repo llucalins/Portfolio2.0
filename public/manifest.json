@@ -1,0 +1,25 @@
+{
+  "short_name": "Lucas Virginio",
+  "name": "Lucas Virginio - Full Stack Developer Portfolio",
+  "description": "Portfólio profissional de Lucas Virginio - Desenvolvedor Full Stack apaixonado por criar soluções inovadoras e experiências digitais excepcionais.",
+  "icons": [
+    {
+      "src": "lucas-virginio-avatar.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "lucas-virginio-avatar.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#667eea",
+  "background_color": "#000000",
+  "orientation": "portrait",
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "pt-BR",
+  "dir": "ltr"
+}

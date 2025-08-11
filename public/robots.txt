@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://portfolio2-0-two-bay.vercel.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1

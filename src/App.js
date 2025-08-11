@@ -7,12 +7,15 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Particles from './components/Particles';
+import MetaTagsManager from './components/MetaTagsManager';
+import PreviewTester from './components/PreviewTester';
 import { LanguageProvider } from './contexts/LanguageContext';
 import './App.css';
 
 function App() {
   return (
     <LanguageProvider>
+      <MetaTagsManager />
       <div className="App">
         {/* Background Particles */}
         <div style={{ 
@@ -44,6 +47,7 @@ function App() {
             <Skills />
             <Projects />
             <Contact />
+            <PreviewTester />
           </main>
           <Footer />
         </div>
