@@ -32,18 +32,35 @@ const Footer = () => {
       <head>
         <meta charset="UTF-8">
         <title>Lucas Virginio - ${t('footer.resume')}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
         <style>
+          :root {
+            --ink: #0f172a;
+            --ink-soft: #334155;
+            --muted: #64748b;
+            --accent: #6366f1;
+            --accent-soft: #e0e7ff;
+            --surface: #f8fafc;
+            --line: #e2e8f0;
+          }
+
           @page {
-            margin: 15mm 15mm 12mm 15mm;
+            margin: 14mm 14mm 11mm 14mm;
             size: A4;
           }
+
           * { margin: 0; padding: 0; box-sizing: border-box; }
+
           body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.45;
-            color: #333;
-            background: white;
+            font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            line-height: 1.5;
+            color: var(--ink-soft);
+            background: #fff;
             font-size: 10.5pt;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
           }
 
           /* ── Header ── */
@@ -51,131 +68,180 @@ const Footer = () => {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            border-bottom: 2.5px solid #2c3e6b;
-            padding-bottom: 14px;
-            margin-bottom: 16px;
+            gap: 20px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            background: linear-gradient(125deg, #0f172a 0%, #1e293b 55%, #312e81 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.12);
           }
           .header-name {
-            font-size: 28pt;
+            font-size: 26pt;
             font-weight: 700;
-            color: #2c3e6b;
-            line-height: 1.1;
-            letter-spacing: -0.5px;
+            color: #fff;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
           }
           .header-name span {
             display: block;
           }
+          .header-name span:last-child {
+            font-weight: 600;
+            opacity: 0.92;
+          }
           .header-contacts {
             text-align: right;
-            font-size: 9pt;
-            color: #444;
-            line-height: 1.7;
+            font-size: 8.75pt;
+            color: #cbd5e1;
+            line-height: 1.75;
           }
           .header-contacts .label {
-            color: #2c3e6b;
+            color: #a5b4fc;
             font-weight: 600;
+            margin-right: 4px;
           }
           .header-contacts a {
-            color: #444;
+            color: #e2e8f0;
             text-decoration: none;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.35);
           }
 
           /* ── Section titles ── */
           .section-title {
-            font-size: 11pt;
+            font-size: 9.5pt;
             font-weight: 700;
-            color: #2c3e6b;
+            color: var(--ink);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1.5px solid #2c3e6b;
-            padding-bottom: 3px;
-            margin: 18px 0 10px 0;
+            letter-spacing: 0.14em;
+            margin: 20px 0 10px 0;
+            padding-left: 12px;
+            border-left: 3px solid var(--accent);
+            line-height: 1.3;
           }
 
           /* ── Summary ── */
           .summary {
             font-size: 10pt;
-            color: #444;
-            line-height: 1.55;
+            color: var(--ink-soft);
+            line-height: 1.58;
             margin-bottom: 2px;
+            padding: 12px 14px;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--accent);
           }
 
           /* ── Skills list ── */
           .skills-list {
             font-size: 10pt;
-            line-height: 1.7;
+            line-height: 1.65;
+            padding: 10px 12px;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--line);
           }
           .skills-list .row {
-            margin-bottom: 2px;
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed var(--line);
+          }
+          .skills-list .row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
           }
           .skills-list .cat {
             font-weight: 600;
-            color: #2c3e6b;
+            color: var(--ink);
           }
 
           /* ── Experience ── */
           .exp-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 2px;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 4px;
           }
           .exp-title {
             font-weight: 700;
             font-size: 10.5pt;
-            color: #333;
+            color: var(--ink);
           }
           .exp-period {
-            font-size: 9.5pt;
-            color: #666;
-            font-weight: 600;
+            font-size: 8.5pt;
+            color: var(--accent);
+            font-weight: 700;
+            background: var(--accent-soft);
+            padding: 3px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
           }
           .exp-company {
             font-size: 9.5pt;
-            color: #2c3e6b;
+            color: var(--accent);
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
           }
           .exp-desc {
             font-size: 9.5pt;
-            color: #555;
+            color: var(--muted);
             font-style: italic;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            line-height: 1.5;
           }
           .exp-bullets {
-            padding-left: 16px;
+            padding-left: 18px;
             font-size: 9.5pt;
-            color: #444;
+            color: var(--ink-soft);
             line-height: 1.55;
           }
           .exp-bullets li {
-            margin-bottom: 3px;
+            margin-bottom: 4px;
+          }
+          .exp-bullets li::marker {
+            color: var(--accent);
           }
           .exp-block {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 2px solid var(--line);
           }
 
           /* ── Education ── */
           .edu-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 4px;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 0;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--line);
+          }
+          .edu-item:last-child {
+            border-bottom: none;
           }
           .edu-degree {
             font-weight: 600;
             font-size: 10pt;
-            color: #333;
+            color: var(--ink);
           }
           .edu-inst {
             font-size: 9.5pt;
-            color: #2c3e6b;
+            color: var(--muted);
+            margin-top: 2px;
           }
           .edu-year {
-            font-size: 9.5pt;
-            color: #666;
-            font-weight: 600;
+            font-size: 9pt;
+            color: var(--ink);
+            font-weight: 700;
             text-align: right;
             white-space: nowrap;
+            background: var(--surface);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--line);
           }
         </style>
       </head>
