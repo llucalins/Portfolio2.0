@@ -12,9 +12,11 @@ export const en = {
   // Hero Section
   hero: {
     greeting: 'Hello, I am',
-    title: 'Full Stack Developer',
-    description: 'Passionate about creating innovative solutions and exceptional digital experiences. Specialized in modern web development with focus on performance and usability.',
-    aboutMe: 'About Me',
+    title: 'Frontend Developer | Vue 3, TypeScript & React',
+    subtitle: 'Specialized in building modern, responsive interfaces integrated with real-world products.',
+    description: 'Frontend Developer with experience building modern, responsive and scalable interfaces for web systems, dashboards and digital products. Focused on Vue 3, TypeScript, Pinia and React, building applications with API integration, component organization and attention to user experience.',
+    secondaryDescription: 'Hands-on experience developing solutions for e-commerce with live streaming, operational dashboards and multi-business SaaS platforms.',
+    aboutMe: 'View Experience',
     contactMe: 'Get in Touch'
   },
 
@@ -28,34 +30,42 @@ export const en = {
   about: {
     title: 'About Me',
     subtitle: 'Who am I?',
-    description: 'I am a developer passionate about technology and innovation, with a focus on full stack development and a strong foundation in software engineering. My programming journey began with technical training through PRONATEC and since then I have worked on various personal and freelance projects. I believe that technology has the power to transform lives and I am always seeking to learn new technologies and methodologies to create better solutions. I am currently studying Software Engineering at UniFatecie and developing personal projects to enhance my skills.',
+    description: 'I am a frontend developer focused on building modern, high-performance web interfaces oriented towards user experience. I have hands-on experience developing applications for different business contexts, working on real projects involving e-commerce with live streaming, management dashboards and platforms connected to external services.\n\nMy work includes development with Vue 3, TypeScript, Vite, Pinia and React, as well as API integration, application state management and supporting communication between frontend, backend and database. I am also familiar with PostgreSQL and API documentation and testing tools such as Swagger and Insomnia.\n\nI am looking for frontend opportunities where I can contribute with quality interfaces, good code structure and product vision.',
     experience: 'of Experience',
     projects: 'Completed',
     clients: 'Dedication',
     professionalExperience: 'Professional Experience',
     education: 'Education',
-    // Professional experiences
     experiences: {
-      fullstack: {
-        year: '2024 - Present',
-        title: 'Full Stack Developer',
-        company: 'Freelancer',
-        description: 'Development of complete web applications using React, Node.js, TypeScript and modern technologies.'
+      frontendRemote: {
+        year: '2024 (9 months)',
+        title: 'Frontend Developer — Remote',
+        company: 'Remote Work',
+        description: 'Remote work on frontend development of web systems for different business contexts, focused on functional interfaces, API integration and scalable application architecture.',
+        bullets: [
+          'Interface development for e-commerce structures with live streaming integration',
+          'Creation and maintenance of a measurement management dashboard, with communication between web system and mobile app',
+          'Development of a control dashboard for WhatsApp assistants, focused on usability and operations',
+          'Feature implementation using Vue 3, TypeScript and Vite',
+          'Application state management with Pinia',
+          'API integration and support for communication flow with backend and PostgreSQL database',
+          'Use of Swagger and Insomnia for endpoint validation, documentation and testing',
+          'Component and screen organization focused on maintainability, clarity and user experience'
+        ]
       },
       frontend: {
         year: '2023 - 2024',
         title: 'Frontend Developer',
         company: 'Personal Projects',
-        description: 'Creation of responsive interfaces and optimization of web application performance.'
+        description: 'Creation of responsive interfaces and web application performance optimization with focus on componentization and frontend development best practices.'
       },
       student: {
         year: '2022 - 2023',
         title: 'Development Student',
         company: 'Online Courses',
-        description: 'Practical learning in web development through courses and personal projects.'
+        description: 'Practical learning in web development through courses and personal projects, focused on frontend fundamentals and modern technologies.'
       }
     },
-    // Education
     educationItems: {
       software: {
         year: '2025 - Present',
@@ -73,7 +83,7 @@ export const en = {
         year: '2024',
         degree: 'DIO Certificates',
         institution: 'Digital Innovation One',
-        description: 'Multiple certificates in Full Stack development, DevOps and modern technologies.'
+        description: 'Multiple certificates in web development, frontend and modern technologies.'
       },
       highschool: {
         year: '2019',
@@ -87,32 +97,42 @@ export const en = {
   // Skills Section
   skills: {
     title: 'My Skills',
-    subtitle: 'Technologies I master',
+    subtitle: 'Technologies and tools I work with',
     frontend: 'Frontend',
-    backend: 'Backend',
+    stateManagement: 'State Management',
+    apisIntegration: 'Integration & APIs',
     database: 'Database',
-    tools: 'Tools',
-    programmingLanguages: 'Programming Languages',
-    frameworksPlatforms: 'Frameworks & Platforms',
-    languages: 'Languages',
-    knowledge: 'Knowledge',
-    // Skill names
-    java: 'Java',
-    python: 'Python',
-    csharp: 'C#',
+    toolsVersioning: 'Tools & Versioning',
+    differentials: 'Differentials',
+    // Skill names - Frontend
+    vue3: 'Vue 3',
+    vue2: 'Vue 2',
+    typescript: 'TypeScript',
     javascript: 'JavaScript',
-    programmingLogic: 'Programming Logic',
-    dotnet: '.NET',
-    flutter: 'Flutter',
-    nodejs: 'Node.js',
     react: 'React',
-    ides: 'IDEs',
-    // Skills summary
-    summary: {
-      languages: 'Java, Python, C#, JavaScript, Programming Logic',
-      frameworks: '.NET, Flutter, Node.js, React, IDEs',
-      knowledge: 'Algorithms, Flowcharts, Client-Server, Cloud Computing'
-    }
+    html5: 'HTML5',
+    css3: 'CSS3',
+    vite: 'Vite',
+    // Skill names - State Management
+    pinia: 'Pinia',
+    vuex: 'Vuex',
+    contextApi: 'Context API',
+    // Skill names - APIs
+    restApis: 'REST APIs',
+    backendIntegration: 'Backend Integration',
+    swagger: 'Swagger',
+    insomnia: 'Insomnia',
+    // Skill names - Database
+    postgresql: 'PostgreSQL',
+    // Skill names - Tools
+    git: 'Git',
+    github: 'GitHub',
+    // Skill names - Differentials
+    componentization: 'Componentization',
+    responsiveness: 'Responsiveness',
+    performance: 'Performance',
+    dashboardsSaas: 'Dashboards & SaaS Products',
+    frontendBackendComm: 'Frontend, Backend & DB Communication'
   },
 
   // Projects Section
@@ -124,10 +144,9 @@ export const en = {
     featured: 'Featured',
     showLess: 'Show Less',
     showAll: 'View All Certificates',
-    // Certificate titles
     certificates: {
       pronatec: 'PRONATEC Technical Training',
-      fullstackXP: 'Introduction to Full Stack Development with XP Inc',
+      fullstackXP: 'Introduction to Web Development with XP Inc',
       csharpSyntax: 'C# Syntax and Data Types',
       softwarePrinciples: 'Software Development Principles',
       javaEnvironment: 'Java Development Environment',
@@ -149,7 +168,7 @@ export const en = {
   // Contact Section
   contact: {
     title: 'Let\'s Talk!',
-    subtitle: 'I\'m always open to new opportunities and interesting collaborations. If you have a text in mind or would like to discuss possibilities, don\'t hesitate to get in touch through any of the options below!',
+    subtitle: 'I am available for frontend opportunities and product project collaborations. If you are looking for a developer with hands-on experience in Vue 3, TypeScript and React, feel free to reach out through any of the options below.',
     name: 'Name',
     email: 'Email',
     message: 'Message',
@@ -159,7 +178,6 @@ export const en = {
     messagePlaceholder: 'Your message...',
     success: 'Message sent successfully!',
     error: 'Error sending message. Please try again.',
-    // Contact items
     email: 'Email',
     linkedin: 'LinkedIn',
     github: 'GitHub',
@@ -172,19 +190,17 @@ export const en = {
   footer: {
     rights: 'All rights reserved',
     madeWith: 'Made with ❤️ by',
-    description: 'Full Stack Developer passionate about creating innovative solutions and exceptional digital experiences.',
+    description: 'Frontend Developer with experience in Vue 3, TypeScript, Pinia and React, building modern interfaces for digital products.',
     quickLinks: 'Quick Links',
     socialMedia: 'Social Media',
     downloadResume: 'Download Resume',
-    // Social links
     github: 'GitHub',
     linkedin: 'LinkedIn',
     email: 'Email',
-    // PDF and others
     resume: 'Resume',
     aboutMe: 'About Me',
-    aboutDescription1: 'I am a developer passionate about technology and innovation, with a focus on full stack development and a strong foundation in software engineering. My programming journey began with technical training through PRONATEC and since then I have worked on various personal and freelance projects.',
-    aboutDescription2: 'I believe that technology has the power to transform lives and I am always seeking to learn new technologies and methodologies to create better solutions. I am currently studying Software Engineering at UniFatecie and developing personal projects to enhance my skills.',
+    aboutDescription1: 'I am a frontend developer focused on building modern, high-performance web interfaces oriented towards user experience. I have hands-on experience developing applications for different business contexts, working on real projects involving e-commerce with live streaming, management dashboards and platforms connected to external services.',
+    aboutDescription2: 'My work includes development with Vue 3, TypeScript, Vite, Pinia and React, as well as API integration, application state management and supporting communication between frontend, backend and database. I am also familiar with PostgreSQL and tools such as Swagger and Insomnia.',
     downloadResumeTitle: 'Download Resume in PDF',
     scrollToTop: 'Back to top'
   },

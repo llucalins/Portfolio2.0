@@ -1,7 +1,7 @@
 {
   "short_name": "Lucas Virginio",
-  "name": "Lucas Virginio - Full Stack Developer Portfolio",
-  "description": "Portfólio profissional de Lucas Virginio - Desenvolvedor Full Stack apaixonado por criar soluções inovadoras e experiências digitais excepcionais.",
+  "name": "Lucas Virginio - Frontend Developer Portfolio",
+  "description": "Portfólio de Lucas Virginio, desenvolvedor frontend com foco em Vue 3, TypeScript, Pinia, React, integração com APIs, PostgreSQL e construção de interfaces modernas.",
   "icons": [
     {
       "src": "lucas-virginio-avatar.png",

@@ -7,21 +7,19 @@ export const useMetaTags = () => {
   useEffect(() => {
     const updateMetaTags = () => {
       if (language === 'pt') {
-        // Português
-        document.querySelector('meta[property="og:title"]').setAttribute('content', 'Lucas Virginio - Desenvolvedor Full Stack');
-        document.querySelector('meta[property="og:description"]').setAttribute('content', 'Portfólio profissional de Lucas Virginio - Desenvolvedor Full Stack apaixonado por criar soluções inovadoras e experiências digitais excepcionais.');
-        document.querySelector('meta[property="twitter:title"]').setAttribute('content', 'Lucas Virginio - Desenvolvedor Full Stack');
-        document.querySelector('meta[property="twitter:description"]').setAttribute('content', 'Portfólio profissional de Lucas Virginio - Desenvolvedor Full Stack apaixonado por criar soluções inovadoras e experiências digitais excepcionais.');
+        document.querySelector('meta[property="og:title"]').setAttribute('content', 'Lucas Virginio | Desenvolvedor Frontend');
+        document.querySelector('meta[property="og:description"]').setAttribute('content', 'Portfólio de Lucas Virginio, desenvolvedor frontend com foco em Vue 3, TypeScript, Pinia, React, integração com APIs, PostgreSQL e construção de interfaces modernas.');
+        document.querySelector('meta[property="twitter:title"]').setAttribute('content', 'Lucas Virginio | Desenvolvedor Frontend');
+        document.querySelector('meta[property="twitter:description"]').setAttribute('content', 'Portfólio de Lucas Virginio, desenvolvedor frontend com foco em Vue 3, TypeScript, Pinia, React, integração com APIs, PostgreSQL e construção de interfaces modernas.');
         document.querySelector('meta[property="og:locale"]').setAttribute('content', 'pt_BR');
-        document.title = 'Lucas Virginio - Desenvolvedor Full Stack';
+        document.title = 'Lucas Virginio | Desenvolvedor Frontend';
       } else {
-        // Inglês
-        document.querySelector('meta[property="og:title"]').setAttribute('content', 'Lucas Virginio - Full Stack Developer');
-        document.querySelector('meta[property="og:description"]').setAttribute('content', 'Professional portfolio of Lucas Virginio - Full Stack Developer passionate about creating innovative solutions and exceptional digital experiences.');
-        document.querySelector('meta[property="twitter:title"]').setAttribute('content', 'Lucas Virginio - Full Stack Developer');
-        document.querySelector('meta[property="twitter:description"]').setAttribute('content', 'Professional portfolio of Lucas Virginio - Full Stack Developer passionate about creating innovative solutions and exceptional digital experiences.');
+        document.querySelector('meta[property="og:title"]').setAttribute('content', 'Lucas Virginio | Frontend Developer');
+        document.querySelector('meta[property="og:description"]').setAttribute('content', 'Portfolio of Lucas Virginio, frontend developer focused on Vue 3, TypeScript, Pinia, React, API integration, PostgreSQL and modern interface development.');
+        document.querySelector('meta[property="twitter:title"]').setAttribute('content', 'Lucas Virginio | Frontend Developer');
+        document.querySelector('meta[property="twitter:description"]').setAttribute('content', 'Portfolio of Lucas Virginio, frontend developer focused on Vue 3, TypeScript, Pinia, React, API integration, PostgreSQL and modern interface development.');
         document.querySelector('meta[property="og:locale"]').setAttribute('content', 'en_US');
-        document.title = 'Lucas Virginio - Full Stack Developer';
+        document.title = 'Lucas Virginio | Frontend Developer';
       }
     };
 

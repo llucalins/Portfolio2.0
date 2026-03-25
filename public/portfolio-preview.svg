@@ -46,32 +46,32 @@
     
     <!-- Título -->
     <text x="0" y="140" font-family="Arial, sans-serif" font-size="36" font-weight="400" fill="url(#textGradient)">
-      Full Stack Developer
+      Frontend Developer
     </text>
     
     <!-- Descrição -->
     <text x="0" y="200" font-family="Arial, sans-serif" font-size="24" fill="#cccccc">
-      <tspan x="0" dy="0">Desenvolvedor apaixonado por criar</tspan>
-      <tspan x="0" dy="35">soluções inovadoras e experiências</tspan>
-      <tspan x="0" dy="35">digitais excepcionais</tspan>
+      <tspan x="0" dy="0">Interfaces modernas e responsivas</tspan>
+      <tspan x="0" dy="35">para produtos digitais com</tspan>
+      <tspan x="0" dy="35">Vue 3, TypeScript e React</tspan>
     </text>
     
     <!-- Tags de tecnologia -->
     <g transform="translate(0, 280)">
-      <rect x="0" y="0" width="120" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
-      <text x="60" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">React</text>
+      <rect x="0" y="0" width="100" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
+      <text x="50" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">Vue 3</text>
       
-      <rect x="140" y="0" width="120" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
-      <text x="200" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">Node.js</text>
+      <rect x="120" y="0" width="140" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
+      <text x="190" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">TypeScript</text>
       
-      <rect x="280" y="0" width="140" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
-      <text x="350" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">TypeScript</text>
+      <rect x="280" y="0" width="100" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
+      <text x="330" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">Pinia</text>
       
-      <rect x="440" y="0" width="100" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
-      <text x="490" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">Python</text>
+      <rect x="400" y="0" width="100" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
+      <text x="450" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">React</text>
       
-      <rect x="560" y="0" width="80" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
-      <text x="600" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">Java</text>
+      <rect x="520" y="0" width="80" height="40" rx="20" fill="rgba(102,126,234,0.2)" stroke="rgba(102,126,234,0.3)" stroke-width="1"/>
+      <text x="560" y="25" font-family="Arial, sans-serif" font-size="18" fill="#667eea" text-anchor="middle">Vite</text>
     </g>
   </g>
   

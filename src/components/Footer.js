@@ -26,299 +26,271 @@ const Footer = () => {
   ];
 
   const generatePDF = () => {
-    // Criar conteúdo HTML para o PDF
     const htmlContent = `
       <!DOCTYPE html>
       <html>
       <head>
         <meta charset="UTF-8">
-        <title>Lucas Virginio - {t('footer.resume')}</title>
+        <title>Lucas Virginio - ${t('footer.resume')}</title>
         <style>
+          @page {
+            margin: 15mm 15mm 12mm 15mm;
+            size: A4;
+          }
+          * { margin: 0; padding: 0; box-sizing: border-box; }
           body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            line-height: 1.45;
             color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
             background: white;
+            font-size: 10.5pt;
           }
+
+          /* ── Header ── */
           .header {
-            text-align: center;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-          }
-          .header h1 {
-            color: #667eea;
-            font-size: 2.5em;
-            margin: 0;
-            font-weight: 700;
-          }
-          .header h2 {
-            color: #764ba2;
-            font-size: 1.3em;
-            margin: 10px 0;
-            font-weight: 400;
-          }
-          .contact-info {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 15px 0;
-            font-size: 0.9em;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2.5px solid #2c3e6b;
+            padding-bottom: 14px;
+            margin-bottom: 16px;
           }
-          .section {
-            margin: 30px 0;
+          .header-name {
+            font-size: 28pt;
+            font-weight: 700;
+            color: #2c3e6b;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
           }
-          .section h3 {
-            color: #667eea;
-            font-size: 1.4em;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
+          .header-name span {
+            display: block;
           }
-          .timeline-item {
-            margin: 20px 0;
-            padding-left: 20px;
-            border-left: 3px solid #667eea;
-            position: relative;
+          .header-contacts {
+            text-align: right;
+            font-size: 9pt;
+            color: #444;
+            line-height: 1.7;
           }
-          .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 0;
-            width: 13px;
-            height: 13px;
-            background: #667eea;
-            border-radius: 50%;
-          }
-          .timeline-year {
-            color: #764ba2;
+          .header-contacts .label {
+            color: #2c3e6b;
             font-weight: 600;
-            font-size: 0.9em;
+          }
+          .header-contacts a {
+            color: #444;
+            text-decoration: none;
+          }
+
+          /* ── Section titles ── */
+          .section-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #2c3e6b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1.5px solid #2c3e6b;
+            padding-bottom: 3px;
+            margin: 18px 0 10px 0;
+          }
+
+          /* ── Summary ── */
+          .summary {
+            font-size: 10pt;
+            color: #444;
+            line-height: 1.55;
+            margin-bottom: 2px;
+          }
+
+          /* ── Skills list ── */
+          .skills-list {
+            font-size: 10pt;
+            line-height: 1.7;
+          }
+          .skills-list .row {
+            margin-bottom: 2px;
+          }
+          .skills-list .cat {
+            font-weight: 600;
+            color: #2c3e6b;
+          }
+
+          /* ── Experience ── */
+          .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+          }
+          .exp-title {
+            font-weight: 700;
+            font-size: 10.5pt;
+            color: #333;
+          }
+          .exp-period {
+            font-size: 9.5pt;
+            color: #666;
+            font-weight: 600;
+          }
+          .exp-company {
+            font-size: 9.5pt;
+            color: #2c3e6b;
+            font-weight: 600;
             margin-bottom: 5px;
           }
-          .timeline-item h4 {
+          .exp-desc {
+            font-size: 9.5pt;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 5px;
+          }
+          .exp-bullets {
+            padding-left: 16px;
+            font-size: 9.5pt;
+            color: #444;
+            line-height: 1.55;
+          }
+          .exp-bullets li {
+            margin-bottom: 3px;
+          }
+          .exp-block {
+            margin-bottom: 14px;
+          }
+
+          /* ── Education ── */
+          .edu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+          }
+          .edu-degree {
+            font-weight: 600;
+            font-size: 10pt;
             color: #333;
-            margin: 5px 0;
-            font-size: 1.1em;
           }
-          .timeline-item h5 {
-            color: #667eea;
-            margin: 5px 0;
-            font-size: 1em;
+          .edu-inst {
+            font-size: 9.5pt;
+            color: #2c3e6b;
           }
-          .timeline-item p {
-            margin: 5px 0;
+          .edu-year {
+            font-size: 9.5pt;
             color: #666;
-            font-size: 0.9em;
-          }
-          .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 15px 0;
-          }
-          .skill-category {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-          }
-          .skill-category h4 {
-            color: #667eea;
-            margin: 0 0 10px 0;
-            font-size: 1.1em;
-          }
-          .skill-category ul {
-            margin: 0;
-            padding-left: 20px;
-          }
-          .skill-category li {
-            margin: 3px 0;
-          }
-          .certificates {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            margin: 15px 0;
-          }
-          .certificate {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-            border: 1px solid #e9ecef;
-          }
-          .experience {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #764ba2;
-          }
-          .social-links {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 0.9em;
-          }
-          .social-links a {
-            color: #667eea;
-            text-decoration: none;
-            margin: 0 10px;
-          }
-          .social-links a:hover {
-            text-decoration: underline;
+            font-weight: 600;
+            text-align: right;
+            white-space: nowrap;
           }
         </style>
       </head>
       <body>
+
+        <!-- HEADER -->
         <div class="header">
-          <h1>Lucas Virginio</h1>
-          <h2>${t('hero.title')}</h2>
-          <div class="contact-info">
-            <span>📧 lvirginio.dev@gmail.com</span>
-            <span>📱 +55 (83) 98602-3472</span>
-            <span>📍 Campina Grande, Paraíba</span>
+          <div class="header-name">
+            <span>LUCAS</span>
+            <span>VIRGINIO</span>
+          </div>
+          <div class="header-contacts">
+            <div><span class="label">Telefone:</span> (83) 9 8602-3472</div>
+            <div><span class="label">E-mail:</span> lvirginio.dev@gmail.com</div>
+            <div><span class="label">LinkedIn:</span> <a href="https://www.linkedin.com/in/lucas-virginio-55311627b">lucas-virginio-55311627b</a></div>
+            <div><span class="label">GitHub:</span> <a href="https://github.com/llucalins">llucalins</a></div>
           </div>
         </div>
 
-        <div class="section">
-          <h3>${t('about.education')}</h3>
-                     <div class="timeline-item">
-             <div class="timeline-year">${t('about.educationItems.software.year')}</div>
-             <h4>${t('about.educationItems.software.degree')}</h4>
-             <h5>${t('about.educationItems.software.institution')}</h5>
-             <p>${t('about.educationItems.software.description')}</p>
-           </div>
-           <div class="timeline-item">
-             <div class="timeline-year">${t('about.educationItems.pronatec.year')}</div>
-             <h4>${t('about.educationItems.pronatec.degree')}</h4>
-             <h5>${t('about.educationItems.pronatec.institution')}</h5>
-             <p>${t('about.educationItems.pronatec.description')}</p>
-           </div>
-           <div class="timeline-item">
-             <div class="timeline-year">${t('about.educationItems.dio.year')}</div>
-             <h4>${t('about.educationItems.dio.degree')}</h4>
-             <h5>${t('about.educationItems.dio.institution')}</h5>
-             <p>${t('about.educationItems.dio.description')}</p>
-           </div>
-           <div class="timeline-item">
-             <div class="timeline-year">${t('about.educationItems.highschool.year')}</div>
-             <h4>${t('about.educationItems.highschool.degree')}</h4>
-             <h5>${t('about.educationItems.highschool.institution')}</h5>
-             <p>${t('about.educationItems.highschool.description')}</p>
-           </div>
+        <!-- RESUMO PROFISSIONAL -->
+        <div class="section-title">Resumo Profissional</div>
+        <p class="summary">
+          Desenvolvedor Frontend com experiência prática em Vue 3, TypeScript, Pinia e React, atuando na construção de interfaces para e-commerce com live integrada, dashboards operacionais e produtos digitais. Experiência com integração de APIs, organização de estado, PostgreSQL e ferramentas como Swagger e Insomnia. Busco oportunidades em frontend onde eu possa contribuir com interfaces de qualidade, boa estrutura de código e visão de produto.
+        </p>
+
+        <!-- COMPETÊNCIAS TÉCNICAS -->
+        <div class="section-title">Competências Técnicas</div>
+        <div class="skills-list">
+          <div class="row"><span class="cat">Linguagens de Programação:</span> JavaScript, TypeScript</div>
+          <div class="row"><span class="cat">Frameworks e Bibliotecas:</span> Vue 3, Vue 2, React, Vite</div>
+          <div class="row"><span class="cat">Gerenciamento de Estado:</span> Pinia, Vuex, Context API</div>
+          <div class="row"><span class="cat">Estilização:</span> CSS3, HTML5, Responsividade</div>
+          <div class="row"><span class="cat">Integração e APIs:</span> APIs REST, Swagger, Insomnia</div>
+          <div class="row"><span class="cat">Banco de Dados:</span> PostgreSQL</div>
+          <div class="row"><span class="cat">Ferramentas de Versionamento:</span> Git, GitHub</div>
         </div>
 
-        <div class="section">
-          <h3>${t('about.professionalExperience')}</h3>
-          <div class="timeline-item">
-             <div class="timeline-year">${t('about.experiences.fullstack.year')}</div>
-             <h4>${t('about.experiences.fullstack.title')}</h4>
-             <h5>${t('about.experiences.fullstack.company')}</h5>
-             <p>${t('about.experiences.fullstack.description')}</p>
-           </div>
-           <div class="timeline-item">
-             <div class="timeline-year">${t('about.experiences.frontend.year')}</div>
-             <h4>${t('about.experiences.frontend.title')}</h4>
-             <h5>${t('about.experiences.frontend.company')}</h5>
-             <p>${t('about.experiences.frontend.description')}</p>
-           </div>
-           <div class="timeline-item">
-             <div class="timeline-year">${t('about.experiences.student.year')}</div>
-             <h4>${t('about.experiences.student.title')}</h4>
-             <h5>${t('about.experiences.student.company')}</h5>
-             <p>${t('about.experiences.student.description')}</p>
-           </div>
-        </div>
+        <!-- EXPERIÊNCIA -->
+        <div class="section-title">Experiência</div>
 
-        <div class="section">
-          <h3>${t('skills.title')}</h3>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h4>${t('skills.programmingLanguages')}</h4>
-              <ul>
-                                                 <li>${t('skills.java')} (85%)</li>
-                <li>${t('skills.python')} (80%)</li>
-                <li>${t('skills.csharp')} (80%)</li>
-                <li>${t('skills.javascript')} (75%)</li>
-                <li>${t('skills.programmingLogic')} (90%)</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h4>${t('skills.frameworksPlatforms')}</h4>
-              <ul>
-                <li>${t('skills.dotnet')} (85%)</li>
-                <li>${t('skills.flutter')} (75%)</li>
-                <li>${t('skills.nodejs')} (70%)</li>
-                <li>${t('skills.react')} (70%)</li>
-                <li>${t('skills.ides')} (90%)</li>
-              </ul>
-            </div>
-            <div class="skill-category">
-              <h4>${t('skills.knowledge')}</h4>
-              <ul>
-                                                 <li>${t('skills.summary.knowledge').split(', ')[0]}</li>
-                <li>${t('skills.summary.knowledge').split(', ')[1]}</li>
-                <li>${t('skills.summary.knowledge').split(', ')[2]}</li>
-                <li>${t('skills.summary.knowledge').split(', ')[3]}</li>
-              </ul>
-            </div>
+        <div class="exp-block">
+          <div class="exp-header">
+            <span class="exp-title">Desenvolvedor Frontend — Atuação Remota</span>
+            <span class="exp-period">2024 (9 meses)</span>
           </div>
+          <div class="exp-desc">Atuação remota no desenvolvimento frontend de sistemas web voltados para diferentes contextos de negócio, com foco em interfaces funcionais, integração com APIs e organização de aplicações escaláveis.</div>
+          <ul class="exp-bullets">
+            <li>Desenvolvimento de interfaces para estruturas de e-commerce com live integrada.</li>
+            <li>Criação e manutenção de dashboard para gerenciamento de medições, com comunicação entre sistema web e aplicativo mobile.</li>
+            <li>Desenvolvimento de dashboard de controle para assistentes de WhatsApp, com foco em usabilidade e operação.</li>
+            <li>Implementação de funcionalidades utilizando Vue 3, TypeScript e Vite.</li>
+            <li>Gerenciamento de estado da aplicação com Pinia.</li>
+            <li>Integração com APIs e apoio ao fluxo de comunicação com backend e banco de dados PostgreSQL.</li>
+            <li>Utilização de Swagger e Insomnia para validação, documentação e testes de endpoints.</li>
+            <li>Organização de componentes e telas com foco em manutenção, clareza e experiência do usuário.</li>
+          </ul>
         </div>
 
-        <div class="section">
-          <h3>${t('projects.title')} (21+)</h3>
-          <div class="certificates">
-            <div class="certificate">${t('skills.java')} Developer</div>
-            <div class="certificate">${t('skills.python')} Developer</div>
-            <div class="certificate">${t('skills.csharp')} Developer</div>
-            <div class="certificate">${t('skills.javascript')} Developer</div>
-            <div class="certificate">${t('skills.react')} Developer</div>
-            <div class="certificate">${t('skills.nodejs')} Developer</div>
-            <div class="certificate">${t('skills.dotnet')} Developer</div>
-            <div class="certificate">${t('skills.flutter')} Developer</div>
-            <div class="certificate">Full Stack Developer</div>
-            <div class="certificate">DevOps</div>
-            <div class="certificate">Cloud Computing</div>
-            <div class="certificate">${t('skills.summary.knowledge').split(', ')[0]}</div>
-            <div class="certificate">${t('skills.programmingLogic')}</div>
-            <div class="certificate">${t('skills.ides')}</div>
-             <div class="certificate">Git & GitHub</div>
-             <div class="certificate">Metodologias Ágeis</div>
-             <div class="certificate">Clean Code</div>
-             <div class="certificate">TDD</div>
-             <div class="certificate">DDD</div>
-             <div class="certificate">Arquitetura de Software</div>
+        <div class="exp-block">
+          <div class="exp-header">
+            <span class="exp-title">Desenvolvedor Frontend</span>
+            <span class="exp-period">2023 - 2024</span>
           </div>
+          <div class="exp-company">Projetos Pessoais</div>
+          <ul class="exp-bullets">
+            <li>Criação de interfaces responsivas e otimização de performance de aplicações web com foco em componentização e boas práticas de desenvolvimento frontend.</li>
+          </ul>
         </div>
 
-        <div class="section">
-          <h3>${t('footer.aboutMe')}</h3>
-          <div class="experience">
-            <p>${t('footer.aboutDescription1')}</p>
-            <p>${t('footer.aboutDescription2')}</p>
+        <div class="exp-block">
+          <div class="exp-header">
+            <span class="exp-title">Estudante de Desenvolvimento</span>
+            <span class="exp-period">2022 - 2023</span>
           </div>
+          <div class="exp-company">Cursos Online</div>
+          <ul class="exp-bullets">
+            <li>Aprendizado prático em desenvolvimento web através de cursos e projetos pessoais, com foco em fundamentos de frontend e tecnologias modernas.</li>
+          </ul>
         </div>
 
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/lucas-virginio-55311627b" target="_blank">${t('footer.linkedin')}</a>
-          <a href="https://github.com/llucalins" target="_blank">${t('footer.github')}</a>
-          <a href="mailto:lvirginio.dev@gmail.com">${t('footer.email')}</a>
+        <!-- EDUCAÇÃO -->
+        <div class="section-title">Educação</div>
+
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">Bacharelado em Engenharia de Software</div>
+            <div class="edu-inst">UniFatecie</div>
+          </div>
+          <div class="edu-year">2025 - Presente</div>
         </div>
+
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">Formação Técnica PRONATEC</div>
+            <div class="edu-inst">PRONATEC</div>
+          </div>
+          <div class="edu-year">2018</div>
+        </div>
+
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">Certificados DIO</div>
+            <div class="edu-inst">Digital Innovation One — Desenvolvimento web, frontend e tecnologias modernas</div>
+          </div>
+          <div class="edu-year">2024</div>
+        </div>
+
       </body>
       </html>
     `;
 
-    // Criar blob e abrir em nova aba para impressão
     const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const newWindow = window.open(url, '_blank');
     
-    // Aguardar carregamento e imprimir
     if (newWindow) {
       newWindow.onload = () => {
         newWindow.print();
@@ -362,7 +334,6 @@ const Footer = () => {
               ))}
             </div>
             
-            {/* Botão de Download do Currículo */}
             <div className="resume-download-section">
               <button 
                 onClick={generatePDF} 
@@ -397,4 +368,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

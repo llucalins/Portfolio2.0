@@ -8,10 +8,10 @@ const About = () => {
   
   const experiences = [
     {
-      year: t('about.experiences.fullstack.year'),
-      title: t('about.experiences.fullstack.title'),
-      company: t('about.experiences.fullstack.company'),
-      description: t('about.experiences.fullstack.description')
+      year: t('about.experiences.frontendRemote.year'),
+      title: t('about.experiences.frontendRemote.title'),
+      company: t('about.experiences.frontendRemote.company'),
+      description: t('about.experiences.frontendRemote.description')
     },
     {
       year: t('about.experiences.frontend.year'),

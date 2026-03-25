@@ -13,10 +13,10 @@ const KNOWN_CERTIFICATES = {
   },
   '1GFKQMF2.pdf': {
     titleKey: 'fullstackXP',
-    description: 'Curso de desenvolvimento Full Stack com carga horária de 1 hora.',
+    description: 'Curso introdutório de desenvolvimento web com carga horária de 1 hora.',
     issuer: 'DIO',
     date: '2024',
-    category: 'fullstack',
+    category: 'frontend',
     featured: false
   },
   '4DQBEV3R.pdf': {
@@ -97,7 +97,7 @@ const KNOWN_CERTIFICATES = {
     description: 'Curso sobre algoritmos e fluxogramas com carga horária de 1 hora.',
     issuer: 'DIO',
     date: '2023',
-    category: 'fullstack',
+    category: 'software',
     featured: false
   },
   'QHAJQVUM.pdf': {
@@ -105,7 +105,7 @@ const KNOWN_CERTIFICATES = {
     description: 'Curso de introdução ao framework .NET com carga horária de 2 horas.',
     issuer: 'DIO',
     date: '2025',
-    category: 'fullstack',
+    category: 'software',
     featured: false
   },
   'V3BM8GH7.pdf': {
@@ -167,7 +167,7 @@ const extractPdfInfo = async (filename) => {
     // Mapeamento direto dos títulos corretos baseado nos certificados visíveis
     const titleMapping = {
       'PRONATEC.pdf': 'Formação Técnica PRONATEC',
-      '1GFKQMF2.pdf': 'Introdução ao Desenvolvimento Full Stack com a XP Inc',
+      '1GFKQMF2.pdf': 'Introdução ao Desenvolvimento Web com a XP Inc',
       '4DQBEV3R.pdf': 'Sintaxe e Tipos de Dados em C#',
       '7773CD70.pdf': 'Princípios de Desenvolvimento de Software',
       '8E04057A.pdf': 'Ambiente de Desenvolvimento Java',

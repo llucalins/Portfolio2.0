@@ -47,7 +47,7 @@ const ProfileCardComponent = ({
   mobileTiltSensitivity = 5,
   miniAvatarUrl,
   name = "Lucas Virginio",
-  title = "Full Stack Developer",
+  title = "Frontend Developer",
   handle = "lin.s30",
   status = "Online",
   contactText = "Contato",
