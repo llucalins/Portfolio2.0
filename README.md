@@ -153,5 +153,3 @@ Contribuições são bem-vindas! Sinta-se à vontade para:
 Se você tiver dúvidas ou precisar de ajuda, entre em contato através do formulário no portfólio ou abra uma issue no GitHub.
 
 ---
-
-**Desenvolvido com ❤️ usando React** 
