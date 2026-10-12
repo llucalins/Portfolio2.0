@@ -14,7 +14,7 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
     // Verifica se há um idioma salvo no localStorage
     const savedLanguage = localStorage.getItem('language');
-    return savedLanguage || 'pt';
+    return savedLanguage === 'en' ? 'en' : 'pt';
   });
 
   const toggleLanguage = () => {
@@ -26,6 +26,7 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     // Salva o idioma no localStorage sempre que mudar
     localStorage.setItem('language', language);
+    document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en';
   }, [language]);
 
   const value = {

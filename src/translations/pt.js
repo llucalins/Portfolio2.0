@@ -4,19 +4,87 @@ export const pt = {
     home: 'Início',
     about: 'Sobre',
     skills: 'Habilidades',
-    projects: 'Certificados',
-    contact: 'Contato'
+    projects: 'Projetos',
+    contact: 'Contato',
+    resume: 'Currículo',
+    primaryLabel: 'Navegação principal',
+    languageLabel: 'Selecionar idioma',
+    openMenu: 'Abrir menu',
+    closeMenu: 'Fechar menu',
+    skipToContent: 'Pular para o conteúdo'
   },
 
   // Hero Section
   hero: {
     greeting: 'Olá, eu sou',
-    title: 'Desenvolvedor Frontend | Vue 3, TypeScript e React',
-    subtitle: 'Especializado na construção de interfaces modernas, responsivas e integradas a produtos reais.',
-    description: 'Desenvolvedor Frontend com experiência na criação de interfaces modernas, responsivas e escaláveis para sistemas web, dashboards e produtos digitais. Atuo com foco em Vue 3, TypeScript, Pinia e React, construindo aplicações com integração a APIs, organização de componentes e atenção à experiência do usuário.',
-    secondaryDescription: 'Experiência prática em desenvolvimento de soluções para e-commerce com live integrada, dashboards operacionais e plataformas SaaS para múltiplos negócios.',
+    title: 'Desenvolvedor Full Stack',
+    subtitle: 'Aplicações web de ponta a ponta',
+    description: 'Desenvolvo aplicações web conectando interfaces, APIs, regras de negócio e persistência de dados.',
+    secondaryDescription: 'Experiência em desenvolvimento de sistemas, suporte tecnológico e organização de processos.',
     aboutMe: 'Ver Experiência',
+    projectsCta: 'Ver Projetos',
     contactMe: 'Entrar em Contato'
+  },
+
+  profile: {
+    summaryPrimary: 'Desenvolvedor Full Stack com experiência profissional em aplicações web, definição de arquitetura, integração REST e estruturação de sistemas.',
+    summarySecondary: 'Atuação com desenvolvimento, troubleshooting, documentação e ambientes com Git e Docker, somada à experiência em suporte tecnológico e processos administrativos.'
+  },
+
+  homeOverview: {
+    label: 'Em poucas palavras',
+    title: 'Desenvolvo aplicações web claras e funcionais.',
+    description: 'Cada projeto conecta interface, regras de negócio e serviços externos com atenção à usabilidade e à manutenção.',
+    navigationLabel: 'Explorar portfólio',
+    workTitle: 'Projetos',
+    workDescription: 'Uma seleção de produtos, problemas resolvidos e decisões de implementação.',
+    resumeTitle: 'Currículo',
+    resumeDescription: 'Experiência profissional, formação e certificados em uma leitura objetiva.',
+    contactPrompt: 'Tem um projeto ou uma oportunidade em mente?',
+    contactLink: 'Entrar em contato'
+  },
+
+  resumePage: {
+    eyebrow: 'Currículo profissional',
+    print: 'Imprimir / Salvar PDF',
+    sidebarLabel: 'Contatos, competências e idiomas',
+    contact: 'Contato',
+    technologies: 'Tecnologias',
+    specialties: 'Especialidades',
+    experience: 'Experiência profissional',
+    education: 'Formação',
+    projects: 'Projetos relevantes',
+    scope: 'Escopo',
+    repository: 'Ver repositório',
+    languages: 'Idiomas',
+    certificates: 'Certificados',
+    loadingCertificates: 'Carregando certificados…',
+    noCertificates: 'Nenhum certificado disponível no momento.',
+    openCertificate: 'Abrir certificado em uma nova aba'
+  },
+
+  contactPage: {
+    title: 'Vamos conversar.',
+    intro: 'Escolha o canal mais adequado para entrar em contato.',
+    directoryLabel: 'Canais de contato',
+    newTab: 'abre em uma nova aba'
+  },
+
+  routes: {
+    work: {
+      title: 'Projetos'
+    },
+    resume: {
+      title: 'Currículo'
+    },
+    contact: {
+      title: 'Contato'
+    },
+    notFound: {
+      title: 'Página não encontrada',
+      description: 'O endereço informado não corresponde a uma página disponível.'
+    },
+    backHome: 'Voltar para a Home'
   },
 
   // Profile Card
@@ -29,66 +97,51 @@ export const pt = {
   about: {
     title: 'Sobre Mim',
     subtitle: 'Quem sou eu?',
-    description: 'Sou um desenvolvedor frontend com foco na construção de interfaces web modernas, performáticas e orientadas à experiência do usuário. Tenho experiência prática no desenvolvimento de aplicações para diferentes contextos de negócio, com atuação em projetos reais envolvendo e-commerce com live integrada, dashboards de gerenciamento e plataformas conectadas a serviços externos.\n\nMinha atuação inclui desenvolvimento com Vue 3, TypeScript, Vite, Pinia e React, além de integração com APIs, organização de estado da aplicação e suporte à comunicação entre frontend, backend e banco de dados. Também possuo familiaridade com PostgreSQL e ferramentas de documentação e testes de API, como Swagger e Insomnia.\n\nBusco oportunidades em frontend onde eu possa contribuir com interfaces de qualidade, boa estrutura de código e visão de produto.',
+    description: 'Desenvolvedor Full Stack com experiência em aplicações web, integração entre frontend e backend, suporte tecnológico e organização de processos.',
     experience: 'de Experiência',
     projects: 'Concluídos',
     clients: 'Dedicação',
     professionalExperience: 'Experiência Profissional',
     education: 'Educação',
     experiences: {
-      frontendRemote: {
-        year: '2024 (9 meses)',
-        title: 'Desenvolvedor Frontend — Atuação Remota',
-        company: 'Atuação Remota',
-        description: 'Atuação remota no desenvolvimento frontend de sistemas web voltados para diferentes contextos de negócio, com foco em interfaces funcionais, integração com APIs e organização de aplicações escaláveis.',
+      andersonRios: {
+        period: 'mai/2025 — dez/2025',
+        title: 'Desenvolvedor Full Stack',
+        company: 'Anderson Rios Consultoria · Remoto',
+        description: 'Desenvolvimento e estruturação de aplicações web com atuação em frontend, backend e ambiente de execução.',
         bullets: [
-          'Desenvolvimento de interfaces para estruturas de e-commerce com live integrada',
-          'Criação e manutenção de dashboard para gerenciamento de medições, com comunicação entre sistema web e aplicativo mobile',
-          'Desenvolvimento de dashboard de controle para assistentes de WhatsApp, com foco em usabilidade e operação',
-          'Implementação de funcionalidades utilizando Vue 3, TypeScript e Vite',
-          'Gerenciamento de estado da aplicação com Pinia',
-          'Integração com APIs e apoio ao fluxo de comunicação com backend e banco de dados PostgreSQL',
-          'Utilização de Swagger e Insomnia para validação, documentação e testes de endpoints',
-          'Organização de componentes e telas com foco em manutenção, clareza e experiência do usuário'
+          'Desenvolvimento com React, Next.js, TypeScript, JavaScript, Node.js e Python',
+          'Definição de arquitetura e estruturação de sistemas',
+          'Integração e consumo de APIs REST',
+          'Versionamento com Git e uso de Docker',
+          'Troubleshooting e documentação técnica'
         ]
       },
-      frontend: {
-        year: '2023 - 2024',
-        title: 'Desenvolvedor Frontend',
-        company: 'Projetos Pessoais',
-        description: 'Criação de interfaces responsivas e otimização de performance de aplicações web com foco em componentização e boas práticas de desenvolvimento frontend.'
+      instructor: {
+        period: 'mar/2023 — ago/2025',
+        title: 'Instrutor de Informática',
+        company: 'Prefeitura de Esperança',
+        description: 'Suporte tecnológico e criação de atividades digitais educativas para o ensino de informática.'
       },
-      student: {
-        year: '2022 - 2023',
-        title: 'Estudante de Desenvolvimento',
-        company: 'Cursos Online',
-        description: 'Aprendizado prático em desenvolvimento web através de cursos e projetos pessoais, com foco em fundamentos de frontend e tecnologias modernas.'
+      administrative: {
+        period: 'jan/2021 — mar/2023',
+        title: 'Profissional Administrativo',
+        company: 'Prefeitura de Esperança',
+        description: 'Atuação com documentação, planilhas, registros e apoio a processos administrativos.'
       }
     },
     educationItems: {
-      software: {
-        year: '2025 - Presente',
-        degree: 'Bacharelado em Engenharia de Software',
-        institution: 'UniFatecie',
-        description: 'Curso em andamento com foco em desenvolvimento de software e tecnologias web.'
-      },
-      pronatec: {
+      systemsProgrammer: {
         year: '2018',
-        degree: 'Formação Técnica PRONATEC',
-        institution: 'PRONATEC',
-        description: 'Formação técnica profissional através do Programa Nacional de Acesso ao Ensino Técnico e Emprego.'
+        degree: 'Programador de Sistemas',
+        institution: 'PRONATEC / CAVN-CCHSA-UFPB',
+        description: 'Formação profissional em programação de sistemas.'
       },
-      dio: {
+      webDevelopment: {
         year: '2024',
-        degree: 'Certificados DIO',
+        degree: 'Desenvolvimento Web / Front-end',
         institution: 'Digital Innovation One',
-        description: 'Múltiplos certificados em desenvolvimento web, frontend e tecnologias modernas.'
-      },
-      highschool: {
-        year: '2019',
-        degree: 'Ensino Médio',
-        institution: 'Colégio Menino Jesus de Praga',
-        description: 'Concluído com foco em preparação para o ensino superior.'
+        description: 'Formação complementar em desenvolvimento web e front-end.'
       }
     }
   },
@@ -99,43 +152,58 @@ export const pt = {
     subtitle: 'Tecnologias e ferramentas que utilizo',
     // Category names
     frontend: 'Frontend',
-    stateManagement: 'Gerenciamento de Estado',
-    apisIntegration: 'Integração e APIs',
-    database: 'Banco de Dados',
-    toolsVersioning: 'Ferramentas e Versionamento',
-    differentials: 'Diferenciais',
-    // Skill names - Frontend
-    vue3: 'Vue 3',
-    vue2: 'Vue 2',
+    backend: 'Backend',
+    data: 'Dados',
+    delivery: 'Ferramentas e entrega',
+    knowledge: 'Conhecimentos',
     typescript: 'TypeScript',
     javascript: 'JavaScript',
     react: 'React',
-    html5: 'HTML5',
-    css3: 'CSS3',
-    vite: 'Vite',
-    // Skill names - State Management
-    pinia: 'Pinia',
-    vuex: 'Vuex',
-    contextApi: 'Context API',
-    // Skill names - APIs
+    nextjs: 'Next.js',
+    html: 'HTML',
+    css: 'CSS',
+    nodejs: 'Node.js',
+    java: 'Java',
+    springBoot: 'Spring Boot',
+    python: 'Python',
     restApis: 'APIs REST',
-    backendIntegration: 'Integração com Backend',
-    swagger: 'Swagger',
-    insomnia: 'Insomnia',
-    // Skill names - Database
     postgresql: 'PostgreSQL',
-    // Skill names - Tools
+    sql: 'SQL',
     git: 'Git',
     github: 'GitHub',
-    // Skill names - Differentials
-    componentization: 'Componentização',
-    responsiveness: 'Responsividade',
-    performance: 'Performance',
-    dashboardsSaas: 'Dashboards e Produtos SaaS',
-    frontendBackendComm: 'Comunicação Frontend, Backend e BD'
+    docker: 'Docker',
+    architecture: 'Arquitetura',
+    devops: 'DevOps',
+    cicd: 'CI/CD — conceitos',
+    scrum: 'Scrum — familiaridade'
   },
 
-  // Projects Section
+  languages: {
+    portuguese: 'Português — nativo',
+    english: 'Inglês — intermediário'
+  },
+
+  // Selected Work Section
+  work: {
+    kicker: 'Portfólio',
+    title: 'Projetos selecionados',
+    intro: 'Aplicações apresentadas pelo contexto, pelo escopo entregue e pelas decisões técnicas.',
+    scope: 'Escopo e estado',
+    stack: 'Stack',
+    language: 'Linguagem',
+    stars: 'estrelas',
+    forks: 'forks',
+    updated: 'Atualizado',
+    repository: 'Ver repositório',
+    repositoryLabel: 'Abrir repositório no GitHub em uma nova aba:',
+    demo: 'Ver demonstração',
+    noPublicUrl: 'Sem URL pública confirmada',
+    complementaryKicker: 'Outros trabalhos',
+    complementaryTitle: 'Projetos complementares',
+    apiUnavailable: 'Os dados dinâmicos do GitHub estão temporariamente indisponíveis.'
+  },
+
+  // Certificates Section
   projects: {
     title: 'Meus Certificados',
     subtitle: 'Minhas conquistas acadêmicas e profissionais',
@@ -152,7 +220,7 @@ export const pt = {
       javaEnvironment: 'Ambiente de Desenvolvimento Java',
       gitGitHub: 'Versionamento de Código com Git e GitHub',
       softwareStructure: 'Estrutura de um Software e Seu Ambiente de Desenvolvimento',
-      softwareEngineering: 'Bacharelado em Engenharia de Software',
+      softwareEngineering: 'Documento acadêmico',
       highSchool: 'Certificado do Ensino Médio',
       studyOrganization: 'Organizando seus Estudos com os Roadmaps DIO e o Notion',
       programmingLogic: 'Introdução aos Conceitos Básicos em Lógica de Programação',
@@ -168,7 +236,7 @@ export const pt = {
   // Contact Section
   contact: {
     title: 'Vamos Conversar!',
-    subtitle: 'Estou disponível para oportunidades em frontend e colaborações em projetos de produto. Se você busca um desenvolvedor com experiência prática em Vue 3, TypeScript e React, entre em contato por qualquer uma das opções abaixo.',
+    subtitle: 'Estou disponível para oportunidades em desenvolvimento Full Stack e colaborações em aplicações web.',
     name: 'Nome',
     email: 'E-mail',
     message: 'Mensagem',
@@ -190,7 +258,7 @@ export const pt = {
   footer: {
     rights: 'Todos os direitos reservados',
     madeWith: 'Feito com ❤️ por',
-    description: 'Desenvolvedor Frontend com experiência em Vue 3, TypeScript, Pinia e React, construindo interfaces modernas para produtos digitais.',
+    description: 'Desenvolvedor Full Stack com experiência em aplicações web, APIs e estruturação de sistemas.',
     quickLinks: 'Links Rápidos',
     socialMedia: 'Redes Sociais',
     downloadResume: 'Baixar Currículo',
@@ -199,8 +267,8 @@ export const pt = {
     email: 'Email',
     resume: 'Currículo',
     aboutMe: 'Sobre Mim',
-    aboutDescription1: 'Sou um desenvolvedor frontend com foco na construção de interfaces web modernas, performáticas e orientadas à experiência do usuário. Tenho experiência prática no desenvolvimento de aplicações para diferentes contextos de negócio, com atuação em projetos reais envolvendo e-commerce com live integrada, dashboards de gerenciamento e plataformas conectadas a serviços externos.',
-    aboutDescription2: 'Minha atuação inclui desenvolvimento com Vue 3, TypeScript, Vite, Pinia e React, além de integração com APIs, organização de estado da aplicação e suporte à comunicação entre frontend, backend e banco de dados. Também possuo familiaridade com PostgreSQL e ferramentas como Swagger e Insomnia.',
+    aboutDescription1: 'Desenvolvedor Full Stack com experiência profissional em aplicações web e integração REST.',
+    aboutDescription2: 'Atuação em arquitetura, estruturação de sistemas, troubleshooting e documentação.',
     downloadResumeTitle: 'Baixar Currículo em PDF',
     scrollToTop: 'Voltar ao topo'
   },

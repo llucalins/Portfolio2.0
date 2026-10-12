@@ -203,4 +203,4 @@ const GooeyNav = ({
   );
 };
 
-export default GooeyNav; 
+export default GooeyNav;

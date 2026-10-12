@@ -231,4 +231,4 @@ const Particles = ({
   );
 };
 
-export default Particles; 
+export default Particles;

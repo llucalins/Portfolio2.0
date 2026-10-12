@@ -1,53 +1,26 @@
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #0a0a0a;
-  color: #ffffff;
-  line-height: 1.6;
+:root {
+  color-scheme: dark;
+  --color-background: #111015;
+  --color-surface: #17161c;
+  --color-surface-raised: #1d1b22;
+  --color-text: #f4f3ef;
+  --color-secondary: #aaa7a0;
+  --color-muted: #77746e;
+  --color-border: rgba(244, 243, 239, 0.16);
+  --color-border-strong: rgba(244, 243, 239, 0.32);
+  --color-accent: #eab308;
+  --color-accent-cool: #96c8ff;
+  --container-width: 76rem;
+  --space-page: clamp(1.25rem, 4vw, 3rem);
+  --space-section: clamp(5rem, 10vw, 9rem);
+  --space-grid: clamp(1.5rem, 4vw, 4rem);
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Garantir que o conteúdo fique sobre o background */
-.container {
-  position: relative;
-  z-index: 2;
-}
-
-/* Ajustes para seções com background */
-section {
-  position: relative;
-  z-index: 2;
-}
-
-/* Header com background transparente */
-.header {
-  background: rgba(0, 0, 0, 0.8) !important;
-  backdrop-filter: blur(10px);
-}
-
-/* Ajustes para cards e elementos */
-.project-card,
-.contact-info,
-.gooey-nav-container {
-  background: rgba(0, 0, 0, 0.7) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-} 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--color-background); }
+body { color: var(--color-text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; }
+img { max-width: 100%; height: auto; }
+a { color: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--color-accent-cool); outline-offset: 4px; }
+::selection { background: var(--color-accent); color: var(--color-background); }
