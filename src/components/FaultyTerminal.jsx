@@ -418,4 +418,4 @@ export default function FaultyTerminal({
       {...rest}
     />
   );
-} 
+}

@@ -1,77 +1,26 @@
 .App {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  overflow: clip;
+  background: var(--color-background);
 }
 
-main {
-  padding-top: 80px;
+main { padding-top: 5rem; }
+main:focus { outline: none; }
+.skip-link { position: fixed; top: .75rem; left: var(--space-page); z-index: 10000; padding: .65rem 1rem; background: var(--color-text); color: var(--color-background); font-size: .85rem; text-decoration: none; transform: translateY(-200%); transition: transform 160ms ease; }
+.skip-link:focus { transform: translateY(0); }
+section { padding: var(--space-section) 0; }
+.container { width: min(100% - 2 * var(--space-page), var(--container-width)); margin: 0 auto; }
+.about-heading, .skills-heading, .projects-heading, .contact-heading, .selected-work-heading { display: grid; grid-template-columns: minmax(5rem, 1fr) 3fr; gap: var(--space-grid); align-items: start; }
+.section-index { padding-top: .4rem; color: var(--color-muted); font-size: .75rem; font-weight: 600; letter-spacing: .14em; }
+.section-title { max-width: 14ch; color: var(--color-text); font-size: clamp(2.5rem, 6vw, 5.5rem); font-weight: 600; line-height: 0.95; letter-spacing: -0.055em; }
+.btn { display: inline-flex; min-height: 2.75rem; align-items: center; justify-content: center; padding: .75rem 1.25rem; border: 1px solid var(--color-border-strong); border-radius: 0; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+.btn-primary { background: var(--color-text); color: var(--color-background); }
+.btn-primary:hover { background: var(--color-accent); border-color: var(--color-accent); }
+.btn-secondary { background: transparent; color: var(--color-text); }
+.btn-secondary:hover { background: var(--color-text); color: var(--color-background); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }
+@media (max-width: 700px) {
+  .about-heading, .skills-heading, .projects-heading, .contact-heading, .selected-work-heading { grid-template-columns: 1fr; gap: 1rem; }
+  .section-index { padding-top: 0; }
 }
-
-section {
-  padding: 80px 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 3rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  font-size: 1rem;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #667eea;
-  border: 2px solid #667eea;
-}
-
-.btn-secondary:hover {
-  background: #667eea;
-  color: white;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  section {
-    padding: 60px 0;
-  }
-  
-  .container {
-    padding: 0 15px;
-  }
-} 

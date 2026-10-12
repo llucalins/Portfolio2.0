@@ -46,7 +46,7 @@ npm install
 
 3. **Inicie o servidor de desenvolvimento**:
 ```bash
-npm start
+npm run dev
 ```
 
 4. **Abra no navegador**:
@@ -59,10 +59,10 @@ http://localhost:3000
 ### 1. Informações Pessoais
 Edite os seguintes arquivos para personalizar suas informações:
 
-- `src/components/Hero.js` - Nome, título e descrição
-- `src/components/About.js` - Experiência e educação
-- `src/components/Contact.js` - Informações de contato
-- `src/components/Projects.js` - Seus projetos
+- `src/components/Hero.jsx` - Nome, título e descrição
+- `src/components/About.jsx` - Experiência e educação
+- `src/components/Contact.jsx` - Informações de contato
+- `src/components/Projects.jsx` - Seus projetos
 
 ### 2. Cores e Estilo
 As cores principais estão definidas em:
@@ -76,7 +76,7 @@ Atualize os links nas seguintes seções:
 - Footer component
 
 ### 4. Projetos
-Adicione seus projetos em `src/components/Projects.js`:
+Adicione seus projetos em `src/components/Projects.jsx`:
 ```javascript
 {
   id: 1,
@@ -96,7 +96,7 @@ Adicione seus projetos em `src/components/Projects.js`:
 ### Netlify (Recomendado)
 1. Conecte seu repositório ao Netlify
 2. Configure o build command: `npm run build`
-3. Configure o publish directory: `build`
+3. Configure o publish directory: `dist`
 
 ### Vercel
 1. Conecte seu repositório ao Vercel

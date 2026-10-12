@@ -1,0 +1,6 @@
+.route-page { min-height: calc(100vh - 5rem); border-top: 1px solid var(--color-border); background: var(--color-background); }
+.route-page-content { display: flex; min-height: calc(100vh - 5rem - 2 * var(--space-section)); flex-direction: column; align-items: flex-start; justify-content: center; }
+.route-page-eyebrow { margin-bottom: 1rem; color: var(--color-accent); font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.route-page h1 { max-width: 13ch; font-size: clamp(3rem, 9vw, 7rem); font-weight: 600; line-height: .9; letter-spacing: -.06em; }
+.route-page-content > p:not(.route-page-eyebrow) { max-width: 38rem; margin-top: 1.5rem; color: var(--color-secondary); font-size: clamp(1rem, 2vw, 1.2rem); }
+.route-page a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .75rem; margin-top: 2rem; border-bottom: 1px solid var(--color-border-strong); font-size: .85rem; text-decoration: none; }
