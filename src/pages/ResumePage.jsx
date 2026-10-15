@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { localizeSkillCategory, professionalProfile } from '../data/professionalProfile';
 import { selectedWork } from '../data/selectedWork';
+import ResumeCertificates from '../components/ResumeCertificates';
 import './ResumePage.css';
 
 const ResumePage = () => {
+  const [certificatesReady, setCertificatesReady] = useState(false);
   const { t } = useTranslation();
   const { isPortuguese } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,15 +20,24 @@ const ResumePage = () => {
   const localize = (value) => typeof value === 'string' ? value : value[language];
 
   useEffect(() => {
-    if (searchParams.get('print') !== '1') return undefined;
+    if (searchParams.get('print') !== '1' || !certificatesReady) return undefined;
 
-    const timeout = window.setTimeout(() => {
-      window.print();
-      setSearchParams({}, { replace: true });
-    }, 250);
+    let cancelled = false;
+    let frame;
+    // Wait for certificate rendering and fonts before measuring the printed layout.
+    document.fonts.ready.then(() => {
+      if (cancelled) return;
+      frame = window.requestAnimationFrame(() => {
+        window.print();
+        setSearchParams({}, { replace: true });
+      });
+    });
 
-    return () => window.clearTimeout(timeout);
-  }, [searchParams, setSearchParams]);
+    return () => {
+      cancelled = true;
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [searchParams, setSearchParams, certificatesReady]);
 
   return (
     <section className="resume-page" aria-labelledby="resume-name">
@@ -146,6 +157,7 @@ const ResumePage = () => {
                 ))}
               </ul>
             </section>
+            <ResumeCertificates onReady={setCertificatesReady} />
           </aside>
         </div>
       </div>

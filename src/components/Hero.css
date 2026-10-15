@@ -73,7 +73,7 @@
   margin: 0;
   font-size: clamp(2rem, 4vw, 3.75rem);
   font-weight: 600;
-  line-height: 0.95;
+  line-height: 1.08;
   letter-spacing: -0.05em;
 }
 
@@ -81,7 +81,7 @@
   max-width: 64rem;
   margin-top: 1rem;
   color: rgba(244, 243, 239, 0.72);
-  font-size: clamp(0.6875rem, 1.05vw, 0.875rem);
+  font-size: var(--type-small);
   font-weight: 600;
   line-height: 1.7;
   letter-spacing: 0.035em;
@@ -120,7 +120,7 @@
   border: 1px solid rgba(244, 243, 239, 0.38);
   border-radius: 0;
   font: inherit;
-  font-size: 0.75rem;
+  font-size: var(--type-small);
   font-weight: 650;
   letter-spacing: 0.04em;
   cursor: pointer;

@@ -6,16 +6,16 @@
 }
 
 .contact-page-shell { display: grid; gap: clamp(4rem, 9vw, 8rem); }
-.contact-page-header { display: grid; grid-template-columns: minmax(5rem, .55fr) minmax(0, 2.45fr); gap: var(--space-grid); align-items: start; }
-.contact-page-eyebrow { color: var(--color-accent); font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.contact-page h1 { max-width: 12ch; font-size: clamp(2.75rem, 6vw, 4.75rem); font-weight: 600; line-height: .95; letter-spacing: -.055em; }
+.contact-page-header { display: grid; grid-template-columns: minmax(5rem, 1fr) minmax(0, 3fr); gap: var(--space-grid); align-items: start; }
+.contact-page-eyebrow { color: var(--color-accent); font-size: var(--type-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.contact-page h1 { max-width: 12ch; font-size: var(--type-page-title); font-weight: 600; line-height: 1.04; letter-spacing: -.055em; }
 .contact-page-intro { max-width: 38rem; margin-top: 1.5rem; color: var(--color-secondary); font-size: clamp(1rem, 1.5vw, 1.125rem); line-height: 1.7; }
 .contact-directory { border-top: 1px solid var(--color-border-strong); font-style: normal; }
 .contact-directory-row { display: grid; grid-template-columns: minmax(7rem, .65fr) minmax(0, 2.35fr) auto; gap: var(--space-grid); align-items: center; min-height: 5.5rem; padding-block: 1.25rem; border-bottom: 1px solid var(--color-border); text-decoration: none; }
-.contact-directory-label { color: var(--color-muted); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.contact-directory-label { color: var(--color-muted); font-size: var(--type-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .contact-directory-row strong { overflow-wrap: anywhere; font-size: clamp(.95rem, 1.7vw, 1.3rem); font-weight: 500; line-height: 1.4; }
 .contact-directory-arrow { color: var(--color-secondary); transition: color 160ms ease, transform 160ms ease; }
-a.contact-directory-row:hover .contact-directory-arrow { color: var(--color-accent-cool); transform: translate(.2rem, -.2rem); }
+a.contact-directory-row:hover .contact-directory-arrow { color: var(--color-accent); transform: translate(.2rem, -.2rem); }
 
 @media (prefers-reduced-motion: reduce) {
   .contact-directory-arrow { transition: none; }

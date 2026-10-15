@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from '../hooks/useTranslation';
 import { autoDetectAllCertificates } from '../utils/autoDetector';
 
-const ResumeCertificates = () => {
+// Selected for the web/mobile role; the complete list remains available on screen.
+const PRINT_CERTIFICATES = new Set(['gitGitHub', 'softwareStructure', 'clientServer', 'flutterIntro']);
+
+const ResumeCertificates = ({ onReady }) => {
   const { t } = useTranslation();
   const [certificates, setCertificates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,6 +26,10 @@ const ResumeCertificates = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!loading) onReady?.(true);
+  }, [loading, onReady]);
+
   return (
     <section className="resume-section resume-certificates" aria-labelledby="resume-certificates-title">
       <h2 id="resume-certificates-title">{t('resumePage.certificates')}</h2>
@@ -38,7 +45,7 @@ const ResumeCertificates = () => {
               : certificate.title;
 
             return (
-              <li key={certificate.id}>
+              <li key={certificate.id} className={PRINT_CERTIFICATES.has(certificate.titleKey) ? undefined : 'resume-certificate-web-only'}>
                 <a
                   href={`/certificates/${encodeURIComponent(certificate.filename)}`}
                   target="_blank"
