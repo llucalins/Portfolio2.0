@@ -19,22 +19,22 @@ export const useMetaTags = () => {
     }[routePath] || 'notFound';
 
     const pageTitles = {
-      home: t('hero.title'),
+      home: t(professionalProfile.roleKey),
       work: t('routes.work.title'),
       resume: t('routes.resume.title'),
       contact: t('routes.contact.title'),
       notFound: t('routes.notFound.title')
     };
     const descriptions = {
-      home: t('hero.description'),
+      home: t('profile.metaDescription'),
       work: t('work.intro'),
-      resume: t('footer.description'),
+      resume: t('profile.metaDescription'),
       contact: t('contactPage.intro'),
       notFound: t('routes.notFound.description')
     };
     const title = routeKey === 'home'
       ? `${professionalProfile.name} | ${pageTitles.home}`
-      : `${pageTitles[routeKey]} | ${professionalProfile.name}`;
+      : `${pageTitles[routeKey]} | ${professionalProfile.name} | ${pageTitles.home}`;
     const description = descriptions[routeKey];
     const canonicalUrl = new URL(routePath || '/', window.location.origin).toString();
 

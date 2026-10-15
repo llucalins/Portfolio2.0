@@ -1,6 +1,6 @@
 .footer { padding: clamp(3rem, 7vw, 6rem) 0 max(2rem, env(safe-area-inset-bottom)); border-top: 1px solid var(--color-border-strong); background: var(--color-background); }
 .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-grid); padding-bottom: clamp(3rem, 6vw, 5rem); }
-.footer-section h4 { margin-bottom: 1.25rem; color: var(--color-muted); font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.footer-section h4 { margin-bottom: 1.25rem; color: var(--color-muted); font-size: var(--type-label); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
 .footer-section p { max-width: 30rem; color: var(--color-secondary); font-size: .9rem; }
 .footer-section .footer-name { margin-bottom: .75rem; color: var(--color-text); font-size: clamp(1.3rem, 2vw, 1.8rem); font-weight: 600; letter-spacing: -.03em; }
 .footer-links { list-style: none; }
@@ -11,10 +11,10 @@
 .social-links a { display: inline-flex; width: 2.75rem; height: 2.75rem; align-items: center; justify-content: center; border: 1px solid var(--color-border); color: var(--color-secondary); text-decoration: none; transition: color 160ms ease, border-color 160ms ease; }
 .social-links a:hover { color: var(--color-text); border-color: var(--color-border-strong); }
 .resume-download-section { margin-top: 1.25rem; }
-.resume-download-btn { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--color-border-strong); background: transparent; color: var(--color-text); font: inherit; font-size: .8rem; text-decoration: none; cursor: pointer; transition: background-color 160ms ease, color 160ms ease; }
+.resume-download-btn { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--color-border-strong); background: transparent; color: var(--color-text); font: inherit; font-size: var(--type-small); text-decoration: none; cursor: pointer; transition: background-color 160ms ease, color 160ms ease; }
 .resume-download-btn:hover { background: var(--color-text); color: var(--color-background); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
-.footer-info p { color: var(--color-muted); font-size: .75rem; }
+.footer-info p { color: var(--color-muted); font-size: var(--type-label); }
 .scroll-to-top { display: inline-flex; width: 2.75rem; height: 2.75rem; align-items: center; justify-content: center; border: 1px solid var(--color-border); background: transparent; color: var(--color-text); font-size: 1rem; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) { .footer-links a, .social-links a, .resume-download-btn { transition: none; } }
 @media (max-width: 700px) {

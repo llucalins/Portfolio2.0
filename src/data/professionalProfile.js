@@ -1,6 +1,7 @@
 export const professionalProfile = {
   name: 'Lucas Virginio da Silva Santos',
-  roleKey: 'hero.title',
+  roleKey: 'profile.title',
+  heroStackKeys: ['reactNative', 'react', 'typescript', 'openaiApis', 'javascript', 'nextjs', 'nodejs', 'python'],
   summaryKeys: ['profile.summaryPrimary', 'profile.summarySecondary'],
   contacts: [
     {
@@ -51,6 +52,16 @@ export const professionalProfile = {
     { id: 'web-development', baseKey: 'about.educationItems.webDevelopment' }
   ],
   skillCategories: [
+    {
+      id: 'mobile',
+      titleKey: 'skills.mobile',
+      skillKeys: ['reactNative']
+    },
+    {
+      id: 'ai',
+      titleKey: 'skills.ai',
+      skillKeys: ['openaiApis']
+    },
     {
       id: 'frontend',
       titleKey: 'skills.frontend',

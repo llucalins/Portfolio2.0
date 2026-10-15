@@ -60,7 +60,7 @@ const SelectedWork = () => {
     <section id="projects" className="selected-work" aria-labelledby="selected-work-title">
       <div className="container">
         <header className="selected-work-heading">
-          <span className="section-index" aria-hidden="true">01</span>
+          <span className="section-index" aria-hidden="true">/work</span>
           <div>
             <p className="selected-work-kicker">{t('work.kicker')}</p>
             <h1 id="selected-work-title" className="selected-work-title">{t('work.title')}</h1>
@@ -69,7 +69,7 @@ const SelectedWork = () => {
         </header>
 
         <div className="work-list">
-          {primaryProjects.map((project, index) => {
+          {primaryProjects.map((project) => {
             const repositoryMetadata = metadata[project.id];
             const updatedAt = formatDate(repositoryMetadata?.updatedAt);
             const facts = [
@@ -82,7 +82,6 @@ const SelectedWork = () => {
             return (
               <article key={project.id} className="work-case">
                 <div className="work-case-index">
-                  <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                   <p>{localize(project.category)}</p>
                 </div>
 

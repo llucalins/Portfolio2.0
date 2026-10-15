@@ -24,3 +24,32 @@ section { padding: var(--space-section) 0; }
   .about-heading, .skills-heading, .projects-heading, .contact-heading, .selected-work-heading { grid-template-columns: 1fr; gap: 1rem; }
   .section-index { padding-top: 0; }
 }
+
+/* Shared feedback keeps the same interaction language across routes. */
+:is(.home-destinations a, a.contact-directory-row):hover,
+:is(.home-destinations a, a.contact-directory-row):focus-visible {
+  background: var(--color-surface);
+}
+:is(.work-case-meta a, .resume-project a, .resume-contact-list a, .resume-certificates a, .home-contact-callout a):hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+.scroll-to-top:hover { border-color: var(--color-accent); color: var(--color-accent); }
+@media screen {
+  .resume-sidebar section { padding-block: 0; }
+  .resume-contact-list a { min-height: 2.75rem; display: flex; align-items: center; }
+  .resume-entry-description, .resume-entry ul, .resume-project > p, .resume-education-item > p { font-size: var(--type-body); }
+  .resume-skill-group p, .resume-specialties li { font-size: var(--type-small); }
+  .footer-links a { min-height: 2.75rem; }
+}
+@media (max-width: 520px) {
+  .work-case { grid-template-columns: minmax(0, 1fr); }
+  .work-case-index { display: flex; gap: 1rem; align-items: baseline; }
+  .work-case-index p { display: block; margin-top: 0; max-width: none; }
+  .work-case-meta { grid-column: 1; }
+  .resume-actions { flex-wrap: wrap; }
+}
+@media (prefers-contrast: more) {
+  :root { --color-secondary: #d0cdc6; --color-muted: #b7b4ae; --color-border: #77746e; --color-border-strong: #aaa7a0; }
+}

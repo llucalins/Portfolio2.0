@@ -18,24 +18,26 @@ export const en = {
   // Hero Section
   hero: {
     greeting: 'Hello, I am',
-    title: 'Full Stack Developer',
-    subtitle: 'End-to-end web applications',
-    description: 'I build web applications connecting interfaces, APIs, business rules, and data persistence.',
-    secondaryDescription: 'Experience in systems development, technology support, and process organization.',
+    title: 'Full Stack Developer | Web & Mobile',
+    subtitle: 'Web and mobile applications',
+    description: 'I build web and mobile applications with React, React Native, and TypeScript, with experience integrating REST APIs and OpenAI APIs.',
+    secondaryDescription: 'Hands-on experience with React Native developing cross-platform applications for Android and iOS, including interactive interface implementation and integration with OpenAI APIs.',
     aboutMe: 'View Experience',
     projectsCta: 'View Projects',
     contactMe: 'Get in Touch'
   },
 
   profile: {
-    summaryPrimary: 'Full Stack Developer with professional experience in web applications, architecture definition, REST integration, and systems structuring.',
-    summarySecondary: 'Experience with development, troubleshooting, documentation, Git, and Docker environments, alongside technology support and administrative processes.'
+    title: 'Full Stack Developer | Web & Mobile',
+    metaDescription: 'Full Stack Developer with experience in web and mobile applications, React Native, and integration with REST and OpenAI APIs.',
+    summaryPrimary: 'Full Stack Developer with professional experience building web and mobile applications, working on interface development, feature implementation, REST API integration, and systems structuring.',
+    summarySecondary: 'Hands-on experience with React Native developing cross-platform applications for Android and iOS, including interactive interface implementation and integration with OpenAI APIs.'
   },
 
   homeOverview: {
     label: 'In a few words',
-    title: 'I build clear, functional web applications.',
-    description: 'Each project connects interfaces, business rules, and external services with attention to usability and maintainability.',
+    title: 'I build clear, functional web and mobile applications.',
+    description: 'Hands-on experience with React Native developing cross-platform applications for Android and iOS, including interactive interface implementation and integration with OpenAI APIs.',
     navigationLabel: 'Explore portfolio',
     workTitle: 'Projects',
     workDescription: 'A selection of products, solved problems, and implementation decisions.',
@@ -98,7 +100,7 @@ export const en = {
   about: {
     title: 'About Me',
     subtitle: 'Who am I?',
-    description: 'Full Stack Developer with experience in web applications, frontend and backend integration, technology support, and process organization.',
+    description: 'Full Stack Developer with professional experience building web and mobile applications, working on interface development, feature implementation, REST API integration, and systems structuring. Hands-on experience with React Native developing cross-platform applications for Android and iOS, including interactive interface implementation and integration with OpenAI APIs.',
     experience: 'of Experience',
     projects: 'Completed',
     clients: 'Dedication',
@@ -109,13 +111,16 @@ export const en = {
         period: 'May 2025 — Dec 2025',
         title: 'Full Stack Developer',
         company: 'Anderson Rios Consultoria · Remote',
-        description: 'Development and structuring of web applications across frontend, backend, and runtime environments.',
+        description: 'Web and mobile development with React Native for Android and iOS, including interactive interfaces, room measurement and AI-powered virtual furniture projection features, and participation in OpenAI API integration.',
         bullets: [
-          'Development with React, Next.js, TypeScript, JavaScript, Node.js, and Python',
-          'Architecture definition and systems structuring',
-          'REST API integration and consumption',
-          'Version control with Git and use of Docker',
-          'Troubleshooting and technical documentation'
+          'Development of mobile screens, interfaces, and features with React Native for Android and iOS.',
+          'Implementation of features related to room measurement and AI-powered virtual furniture projection.',
+          'Participation in OpenAI API integration.',
+          'Full Stack development with React, Next.js, TypeScript, JavaScript, Node.js, and Python.',
+          'Implementation and consumption of REST APIs.',
+          'Architecture definition and systems structuring.',
+          'Version control with Git and use of Docker.',
+          'Troubleshooting, bug fixes, and documentation.'
         ]
       },
       instructor: {
@@ -152,6 +157,10 @@ export const en = {
     title: 'My Skills',
     subtitle: 'Technologies and tools I work with',
     frontend: 'Frontend',
+    mobile: 'Mobile',
+    ai: 'AI integrations',
+    reactNative: 'React Native',
+    openaiApis: 'OpenAI APIs',
     backend: 'Backend',
     data: 'Data',
     delivery: 'Tools & delivery',
@@ -236,7 +245,7 @@ export const en = {
   // Contact Section
   contact: {
     title: 'Let\'s Talk!',
-    subtitle: 'I am available for Full Stack development opportunities and web application collaborations.',
+    subtitle: 'I am available for Full Stack development opportunities and web and mobile application collaborations.',
     name: 'Name',
     email: 'Email',
     message: 'Message',
@@ -258,7 +267,7 @@ export const en = {
   footer: {
     rights: 'All rights reserved',
     madeWith: 'Made with ❤️ by',
-    description: 'Full Stack Developer with experience in web applications, APIs, and systems structuring.',
+    description: 'Full Stack Developer with experience in web and mobile applications, React Native, and integration with REST and OpenAI APIs.',
     quickLinks: 'Quick Links',
     socialMedia: 'Social Media',
     downloadResume: 'Download Resume',
@@ -267,8 +276,8 @@ export const en = {
     email: 'Email',
     resume: 'Resume',
     aboutMe: 'About Me',
-    aboutDescription1: 'Full Stack Developer with professional experience in web applications and REST integration.',
-    aboutDescription2: 'Experience in architecture, systems structuring, troubleshooting, and documentation.',
+    aboutDescription1: 'Full Stack Developer with professional experience building web and mobile applications, working on interface development, feature implementation, REST API integration, and systems structuring.',
+    aboutDescription2: 'Hands-on experience with React Native developing cross-platform applications for Android and iOS, including interactive interface implementation and integration with OpenAI APIs.',
     downloadResumeTitle: 'Download Resume in PDF',
     scrollToTop: 'Back to top'
   },

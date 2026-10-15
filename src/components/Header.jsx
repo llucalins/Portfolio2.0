@@ -7,6 +7,7 @@ import './Header.css';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef(null);
   const menuButtonRef = useRef(null);
   const firstNavItemRef = useRef(null);
   const { toggleLanguage, isPortuguese } = useLanguage();
@@ -23,7 +24,23 @@ const Header = () => {
     if (!isMenuOpen) return undefined;
 
     const previousOverflow = document.body.style.overflow;
+    const background = [...document.querySelectorAll('main, .footer')];
+    const previousInert = background.map((element) => element.inert);
+    background.forEach((element) => { element.inert = true; });
     const handleKeyDown = (event) => {
+      if (event.key === 'Tab') {
+        const controls = [...headerRef.current.querySelectorAll('a, button')]
+          .filter((element) => element.getClientRects().length > 0);
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
       if (event.key === 'Escape') {
         setIsMenuOpen(false);
         menuButtonRef.current?.focus();
@@ -35,10 +52,18 @@ const Header = () => {
     firstNavItemRef.current?.focus();
 
     return () => {
+      background.forEach((element, index) => { element.inert = previousInert[index]; });
       document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 53.751rem)');
+    const closeOnDesktop = () => { if (desktop.matches) setIsMenuOpen(false); };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, []);
 
   const selectLanguage = (language) => {
     if ((language === 'pt') !== isPortuguese) toggleLanguage();
@@ -52,7 +77,7 @@ const Header = () => {
   ];
 
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+    <header ref={headerRef} className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-shell">
         <Link className="wordmark" to="/" onClick={() => setIsMenuOpen(false)} aria-label={t('nav.home')}>
           <span className="wordmark-logo-frame" aria-hidden="true">

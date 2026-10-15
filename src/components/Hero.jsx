@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SideRays from './SideRays';
 import TechText from './TechText';
 import { useTranslation } from '../hooks/useTranslation';
+import { professionalProfile } from '../data/professionalProfile';
 import './Hero.css';
 
 const Hero = () => {
@@ -46,8 +47,12 @@ const Hero = () => {
         </div>
 
         <div className="hero-intro">
-          <p className="hero-role" lang="en">Full Stack Developer</p>
-          <p className="hero-stack">React <span>·</span> JavaScript <span>·</span> TypeScript <span>·</span> Vite <span>·</span> Java <span>·</span> Spring Boot <span>·</span> PostgreSQL</p>
+          <p className="hero-role">{t(professionalProfile.roleKey)}</p>
+          <p className="hero-stack">{professionalProfile.heroStackKeys.map((key, index) => (
+            <React.Fragment key={key}>
+              {index > 0 && <> <span>·</span> </>}{t(`skills.${key}`)}
+            </React.Fragment>
+          ))}</p>
           <p className="hero-description">{t('hero.description')}</p>
 
           <div className="hero-actions">
