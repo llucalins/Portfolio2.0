@@ -1,7 +1,9 @@
 export const selectedWork = [
   {
     id: 'vmais-comunicacao',
+    resume: { contributionKey: 'resumePdf.vmaisContribution', technologies: ['React', 'Vite', 'JavaScript', 'Java 21', 'Spring Boot', 'PostgreSQL', 'Docker'] },
     kind: 'primary',
+    engagement: 'unclassified',
     repository: 'llucalins/VmaisHomePage',
     repositoryUrl: 'https://github.com/llucalins/VmaisHomePage',
     title: 'Vmais Comunicação',
@@ -22,6 +24,7 @@ export const selectedWork = [
   {
     id: 'info-dbeta',
     kind: 'primary',
+    engagement: 'unclassified',
     repository: 'llucalins/Info.DBeta',
     repositoryUrl: 'https://github.com/llucalins/Info.DBeta',
     demoUrl: 'https://info-d-beta.vercel.app',
@@ -42,7 +45,9 @@ export const selectedWork = [
   },
   {
     id: 'sistema-agendamento',
+    resume: { contributionKey: 'resumePdf.schedulingContribution', technologies: ['Next.js 16', 'React 19', 'TypeScript', 'PostgreSQL (pg)'] },
     kind: 'primary',
+    engagement: 'unclassified',
     repository: 'llucalins/lava-auto-agendamento',
     repositoryUrl: 'https://github.com/llucalins/lava-auto-agendamento',
     title: {
@@ -66,6 +71,7 @@ export const selectedWork = [
   {
     id: 'grow-ai',
     kind: 'primary',
+    engagement: 'unclassified',
     title: 'Grow AI',
     category: {
       pt: 'IA local e Full Stack',
@@ -84,6 +90,7 @@ export const selectedWork = [
   {
     id: 'painel-semanal',
     kind: 'complementary',
+    engagement: 'unclassified',
     title: {
       pt: 'Painel Semanal / Gestão de Trabalho',
       en: 'Weekly Panel / Work Management'
@@ -105,6 +112,7 @@ export const selectedWork = [
   {
     id: 'agente-ia-escolar',
     kind: 'complementary',
+    engagement: 'unclassified',
     title: {
       pt: 'Agente de IA Escolar Local',
       en: 'Local School AI Agent'

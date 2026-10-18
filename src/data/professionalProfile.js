@@ -1,6 +1,17 @@
 export const professionalProfile = {
   name: 'Lucas Virginio da Silva Santos',
   roleKey: 'profile.title',
+  portfolio: { value: 'lucasvirginio.is-a.dev', href: 'https://lucasvirginio.is-a.dev/' },
+  resume: {
+    projectIds: ['vmais-comunicacao', 'sistema-agendamento'],
+    experienceBullets: { 'anderson-rios': 'resumePdf.andersonEditorialBullets' },
+    skillGroups: [
+      { titleKey: 'resumePdf.mobileFrontend', keys: ['skills.reactNative', 'skills.react', 'skills.nextjs', 'skills.typescript', 'skills.javascript', 'skills.html', 'skills.css'] },
+      { titleKey: 'resumePdf.backendApis', keys: ['skills.java', 'skills.springBoot', 'skills.nodejs', 'skills.python', 'skills.restApis', 'skills.openaiApis'] },
+      { titleKey: 'resumePdf.dataTools', keys: ['skills.postgresql', 'skills.sql', 'skills.docker', 'skills.git', 'skills.github'] },
+      { titleKey: 'resumePdf.practices', keys: ['resumePdf.architecture', 'resumePdf.debugging', 'resumePdf.documentation', 'resumePdf.integration'] }
+    ]
+  },
   heroStackKeys: ['reactNative', 'react', 'typescript', 'openaiApis', 'javascript', 'nextjs', 'nodejs', 'python'],
   summaryKeys: ['profile.summaryPrimary', 'profile.summarySecondary'],
   contacts: [
@@ -23,6 +34,12 @@ export const professionalProfile = {
       href: 'https://linkedin.com/in/lucas-virginio-55311627b'
     }
   ],
+  freelance: {
+    titleKey: 'experience.freelanceRole',
+    descriptionKey: 'experience.freelanceDescription',
+    pdfDescriptionKey: 'resumePdf.freelanceDescription',
+    pdfBulletsKey: 'resumePdf.freelanceBullets'
+  },
   experiences: [
     {
       id: 'anderson-rios',
@@ -30,7 +47,8 @@ export const professionalProfile = {
       titleKey: 'about.experiences.andersonRios.title',
       companyKey: 'about.experiences.andersonRios.company',
       descriptionKey: 'about.experiences.andersonRios.description',
-      bulletsKey: 'about.experiences.andersonRios.bullets'
+      bulletsKey: 'about.experiences.andersonRios.bullets',
+      resumeBulletsKey: 'resumePdf.andersonRiosBullets'
     },
     {
       id: 'esperanca-instructor',

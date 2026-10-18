@@ -4,7 +4,7 @@ export const pt = {
     home: 'Início',
     about: 'Sobre',
     skills: 'Habilidades',
-    projects: 'Projetos',
+    projects: 'Experiência',
     contact: 'Contato',
     resume: 'Currículo',
     primaryLabel: 'Navegação principal',
@@ -46,9 +46,45 @@ export const pt = {
     contactLink: 'Entrar em contato'
   },
 
+  resumePdf: {
+    practices: 'Práticas',
+    architecture: 'Arquitetura de software',
+    debugging: 'debugging',
+    documentation: 'documentação técnica',
+    integration: 'integração de sistemas',
+    freelanceDescription: 'Desenvolvimento de aplicações web e soluções Full Stack.',
+    freelanceBullets: [
+      'Implementação de interfaces web e integração entre Front-end e APIs.',
+      'Estruturação de aplicações e integração com persistência de dados.'
+    ],
+    andersonEditorialBullets: [
+      'Desenvolvimento mobile com React Native para Android e iOS: telas, componentes e funcionalidades.',
+      'Recursos de medição de ambientes e projeção virtual de móveis com IA; participação na integração com APIs da OpenAI.',
+      'Desenvolvimento web com React, Next.js, TypeScript, JavaScript, Node.js e Python; implementação e consumo de APIs REST.',
+      'Participação na definição de arquitetura; Git, Docker, troubleshooting, correção de bugs e documentação.'
+    ],
+    vmaisContribution: 'Interfaces React integradas à API Java/Spring Boot, funcionalidades administrativas, persistência relacional e ambiente Docker.',
+    schedulingContribution: 'Base web, documentação da arquitetura e modelagem dos módulos e regras de agendamento. Disponibilidade e reservas em planejamento.',
+    projectHeading: 'Projetos selecionados',
+    summary: 'Resumo profissional',
+    summaryText: 'Desenvolvedor Full Stack com experiência em aplicações web e mobile, interfaces, funcionalidades e integração de APIs. Atuação com React Native para Android e iOS, React, Next.js, TypeScript e Back-end, incluindo arquitetura de sistemas e integração de soluções com inteligência artificial.',
+    skills: 'Competências técnicas',
+    projects: 'Projetos selecionados',
+    education: 'Formação e cursos relevantes',
+    andersonRiosBullets: [
+      'Desenvolvimento de telas, componentes e funcionalidades com React Native para Android e iOS.',
+      'Implementação de funcionalidades de medição de ambientes e projeção virtual de móveis com IA; participação na integração com APIs da OpenAI.',
+      'Desenvolvimento Full Stack com React, Next.js, TypeScript, JavaScript, Node.js e Python; implementação e consumo de APIs REST.',
+      'Definição de arquitetura, estruturação de sistemas, Git e Docker; troubleshooting, correção de bugs e documentação.'
+    ],
+    mobileFrontend: 'Mobile e Front-end',
+    backendApis: 'Back-end e APIs',
+    dataTools: 'Banco de dados e ferramentas'
+  },
+
   resumePage: {
     eyebrow: 'Currículo profissional',
-    print: 'Imprimir / Salvar PDF',
+    viewPdf: 'Visualizar PDF',
     sidebarLabel: 'Contatos, competências e idiomas',
     contact: 'Contato',
     technologies: 'Tecnologias',
@@ -74,7 +110,7 @@ export const pt = {
 
   routes: {
     work: {
-      title: 'Projetos'
+      title: 'Experiência'
     },
     resume: {
       title: 'Currículo'
@@ -192,11 +228,26 @@ export const pt = {
     english: 'Inglês — intermediário'
   },
 
+  experience: {
+    kicker: 'Trajetória profissional',
+    companies: 'Experiência em empresas',
+    responsibilities: 'Responsabilidades técnicas',
+    technologies: 'Tecnologias e ferramentas',
+    context: 'Solução e contexto',
+    freelance: 'Desenvolvimento Freelancer',
+    freelanceRole: 'Desenvolvedor Full Stack — Freelancer',
+    freelanceDescription: 'Atuação em desenvolvimento Full Stack como freelancer.',
+    independent: 'Projetos independentes',
+    complementary: 'Trabalhos complementares',
+    complementaryIntro: 'Uma seleção de sistemas apresentados pelo contexto e pelo escopo técnico, sem associação a clientes ou contratos.',
+    repositoryLanguage: 'Linguagem no repositório',
+  },
+
   // Selected Work Section
   work: {
     kicker: 'Portfólio',
-    title: 'Projetos selecionados',
-    intro: 'Aplicações apresentadas pelo contexto, pelo escopo entregue e pelas decisões técnicas.',
+    title: 'Experiência',
+    intro: 'Experiência profissional em desenvolvimento web e mobile, atuação freelancer e trabalhos técnicos complementares.',
     scope: 'Escopo e estado',
     stack: 'Stack',
     language: 'Linguagem',

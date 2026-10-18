@@ -1,50 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { localizeSkillCategory, professionalProfile } from '../data/professionalProfile';
 import { selectedWork } from '../data/selectedWork';
 import ResumeCertificates from '../components/ResumeCertificates';
+import FreelanceExperience from '../components/FreelanceExperience';
+import { groupWork } from '../data/workExperience';
+import { resumeMarkup, resumeStyles, resumePdfPath } from '../data/resumeDocument';
 import './ResumePage.css';
 
 const ResumePage = () => {
-  const [certificatesReady, setCertificatesReady] = useState(false);
   const { t } = useTranslation();
   const { isPortuguese } = useLanguage();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const language = isPortuguese ? 'pt' : 'en';
   const skills = professionalProfile.skillCategories.map((category) => localizeSkillCategory(category, t));
   const technologies = skills.filter((category) => category.id !== 'specialties');
   const specialties = skills.find((category) => category.id === 'specialties');
-  const primaryProjects = selectedWork.filter((project) => project.kind === 'primary');
+  const workGroups = groupWork(selectedWork);
   const localize = (value) => typeof value === 'string' ? value : value[language];
+  const renderProject = (project) => (
+    <article key={project.id} className="resume-project" data-project-id={project.id}>
+      <h3>{localize(project.title)}</h3>
+      <p>{project.description[language]}</p>
+      <p><strong>{t('work.scope')}:</strong> {project.scope[language]}</p>
+      <p><strong>{t('experience.technologies')}:</strong> {project.stack.join(' · ')}</p>
+      {project.repositoryUrl && <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t('work.repositoryLabel')} ${localize(project.title)}`}>{t('resumePage.repository')} <span aria-hidden="true">↗</span></a>}
+    </article>
+  );
 
   useEffect(() => {
-    if (searchParams.get('print') !== '1' || !certificatesReady) return undefined;
-
-    let cancelled = false;
-    let frame;
-    // Wait for certificate rendering and fonts before measuring the printed layout.
-    document.fonts.ready.then(() => {
-      if (cancelled) return;
-      frame = window.requestAnimationFrame(() => {
-        window.print();
-        setSearchParams({}, { replace: true });
-      });
-    });
-
-    return () => {
-      cancelled = true;
-      if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, [searchParams, setSearchParams, certificatesReady]);
+    if (searchParams.get('print') === '1') {
+      window.location.replace(resumePdfPath(language));
+    }
+  }, [searchParams, language]);
 
   return (
     <section className="resume-page" aria-labelledby="resume-name">
+      <style>{resumeStyles}</style>
+      <div className="resume-print-document" dangerouslySetInnerHTML={{ __html: resumeMarkup(language) }} />
       <div className="container resume-shell">
         <div className="resume-actions">
           <p>{t('resumePage.eyebrow')}</p>
-          <button type="button" onClick={() => window.print()}>{t('resumePage.print')}</button>
+          <a className="resume-pdf-link" href={resumePdfPath(language)} target="_blank" rel="noopener noreferrer">{t('resumePage.viewPdf')}</a>
         </div>
 
         <div className="resume-grid">
@@ -61,13 +60,14 @@ const ResumePage = () => {
               <h2 id="resume-experience-title">{t('resumePage.experience')}</h2>
               <div className="resume-timeline">
                 {professionalProfile.experiences.map((experience) => {
-                  const bullets = experience.bulletsKey ? t(experience.bulletsKey) : [];
+                  const bulletsKey = experience.resumeBulletsKey || experience.bulletsKey;
+                  const bullets = bulletsKey ? t(bulletsKey) : [];
                   return (
                     <article key={experience.id} className="resume-entry">
                       <div className="resume-entry-heading">
                         <div>
-                          <h3>{t(experience.titleKey)}</h3>
-                          <p>{t(experience.companyKey)}</p>
+                          <h3>{t(experience.companyKey)}</h3>
+                          <p>{t(experience.titleKey)}</p>
                         </div>
                         <time>{t(experience.periodKey)}</time>
                       </div>
@@ -80,6 +80,23 @@ const ResumePage = () => {
                 })}
               </div>
             </section>
+
+            <section className="resume-section" aria-labelledby="resume-freelance-title">
+              <h2 id="resume-freelance-title">{t('experience.freelance')}</h2>
+              <FreelanceExperience />
+              {workGroups.freelance.map(renderProject)}
+            </section>
+
+            {workGroups.independent.length > 0 && <section className="resume-section" aria-labelledby="resume-independent-title">
+              <h2 id="resume-independent-title">{t('experience.independent')}</h2>
+              {workGroups.independent.map(renderProject)}
+            </section>}
+
+            {workGroups.unclassified.length > 0 && <section className="resume-section" aria-labelledby="resume-projects-title">
+              <h2 id="resume-projects-title">{t('experience.complementary')}</h2>
+              <p className="resume-work-note">{t('experience.complementaryIntro')}</p>
+              {workGroups.unclassified.map(renderProject)}
+            </section>}
 
             <section className="resume-section" aria-labelledby="resume-education-title">
               <h2 id="resume-education-title">{t('resumePage.education')}</h2>
@@ -97,21 +114,6 @@ const ResumePage = () => {
               </div>
             </section>
 
-            <section className="resume-section" aria-labelledby="resume-projects-title">
-              <h2 id="resume-projects-title">{t('resumePage.projects')}</h2>
-              {primaryProjects.map((project) => (
-                <article key={project.id} className="resume-project">
-                  <h3>{localize(project.title)}</h3>
-                  <p>{project.description[language]}</p>
-                  <p><strong>{t('resumePage.scope')}:</strong> {project.scope[language]}</p>
-                  {project.repositoryUrl && (
-                    <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer">
-                      {t('resumePage.repository')} <span aria-hidden="true">↗</span>
-                    </a>
-                  )}
-                </article>
-              ))}
-            </section>
           </div>
 
           <aside className="resume-sidebar" aria-label={t('resumePage.sidebarLabel')}>
@@ -157,7 +159,7 @@ const ResumePage = () => {
                 ))}
               </ul>
             </section>
-            <ResumeCertificates onReady={setCertificatesReady} />
+            <ResumeCertificates />
           </aside>
         </div>
       </div>

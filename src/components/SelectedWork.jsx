@@ -1,157 +1,81 @@
 import React, { useEffect, useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { selectedWork } from '../data/selectedWork';
+import { professionalProfile } from '../data/professionalProfile';
+import { groupWork } from '../data/workExperience';
 import { getRepositoryMetadata } from '../services/github';
+import FreelanceExperience from './FreelanceExperience';
 import './SelectedWork.css';
 
 const SelectedWork = () => {
-  const { isPortuguese } = useLanguage();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [metadata, setMetadata] = useState({});
   const [apiUnavailable, setApiUnavailable] = useState(false);
-  const language = isPortuguese ? 'pt' : 'en';
-  const primaryProjects = selectedWork.filter((project) => project.kind === 'primary');
-  const complementaryProjects = selectedWork.filter((project) => project.kind === 'complementary');
+  const groups = groupWork();
   const localize = (value) => typeof value === 'string' ? value : value[language];
 
   useEffect(() => {
     let active = true;
-    const publicProjects = selectedWork.filter((project) => project.repository);
-
-    Promise.allSettled(
-      publicProjects.map(async (project) => ({
-        id: project.id,
-        data: await getRepositoryMetadata(project.repository)
-      }))
-    ).then((results) => {
+    Promise.allSettled(selectedWork.filter((project) => project.repository).map(async (project) => ({
+      id: project.id, data: await getRepositoryMetadata(project.repository)
+    }))).then((results) => {
       if (!active) return;
-
-      const availableMetadata = {};
-      let hasFailure = false;
-
-      results.forEach((result) => {
-        if (result.status === 'fulfilled') {
-          availableMetadata[result.value.id] = result.value.data;
-        } else {
-          hasFailure = true;
-        }
-      });
-
-      setMetadata(availableMetadata);
-      setApiUnavailable(hasFailure);
+      setMetadata(Object.fromEntries(results.filter((result) => result.status === 'fulfilled').map((result) => [result.value.id, result.value.data])));
+      setApiUnavailable(results.some((result) => result.status === 'rejected'));
     });
-
-    return () => {
-      active = false;
-    };
+    return () => { active = false; };
   }, []);
 
-  const formatDate = (date) => {
-    if (!date) return null;
-
-    return new Intl.DateTimeFormat(isPortuguese ? 'pt-BR' : 'en-US', {
-      month: 'short',
-      year: 'numeric'
-    }).format(new Date(date));
-  };
+  const renderProject = (project) => (
+    <article key={project.id} className="experience-project" data-project-id={project.id}>
+      <div className="experience-project-heading">
+        <p>{localize(project.category)}</p>
+        <h3>{localize(project.title)}</h3>
+      </div>
+      <div className="experience-project-body">
+        <dl>
+          <div><dt>{t('experience.context')}</dt><dd>{project.description[language]}</dd></div>
+          <div><dt>{t('work.scope')}</dt><dd>{project.scope[language]}</dd></div>
+          <div><dt>{t('experience.technologies')}</dt><dd>{project.stack.join(' · ')}</dd></div>
+        </dl>
+        <div className="experience-project-links">
+          {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">{t('work.demo')} <span aria-hidden="true">↗</span></a>}
+          {project.repositoryUrl && <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t('work.repositoryLabel')} ${localize(project.title)}`}>{t('work.repository')} <span aria-hidden="true">↗</span></a>}
+        </div>
+        {metadata[project.id]?.language && <p className="experience-repository-fact">{t('experience.repositoryLanguage')}: {metadata[project.id].language}</p>}
+      </div>
+    </article>
+  );
 
   return (
-    <section id="projects" className="selected-work" aria-labelledby="selected-work-title">
+    <section className="selected-work experience-page" aria-labelledby="selected-work-title">
       <div className="container">
         <header className="selected-work-heading">
           <span className="section-index" aria-hidden="true">/work</span>
-          <div>
-            <p className="selected-work-kicker">{t('work.kicker')}</p>
-            <h1 id="selected-work-title" className="selected-work-title">{t('work.title')}</h1>
-            <p className="selected-work-intro">{t('work.intro')}</p>
-          </div>
+          <div><p className="selected-work-kicker">{t('experience.kicker')}</p><h1 id="selected-work-title" className="selected-work-title">{t('work.title')}</h1><p className="selected-work-intro">{t('work.intro')}</p></div>
         </header>
 
-        <div className="work-list">
-          {primaryProjects.map((project) => {
-            const repositoryMetadata = metadata[project.id];
-            const updatedAt = formatDate(repositoryMetadata?.updatedAt);
-            const facts = [
-              repositoryMetadata?.language && `${t('work.language')}: ${repositoryMetadata.language}`,
-              repositoryMetadata?.stars > 0 && `${repositoryMetadata.stars} ${t('work.stars')}`,
-              repositoryMetadata?.forks > 0 && `${repositoryMetadata.forks} ${t('work.forks')}`,
-              updatedAt && `${t('work.updated')}: ${updatedAt}`
-            ].filter(Boolean);
-
-            return (
-              <article key={project.id} className="work-case">
-                <div className="work-case-index">
-                  <p>{localize(project.category)}</p>
-                </div>
-
-                <div className="work-case-main">
-                  <h2>{localize(project.title)}</h2>
-                  <p className="work-case-description">{project.description[language]}</p>
-
-                  <div className="work-case-details">
-                    <div>
-                      <h3>{t('work.scope')}</h3>
-                      <p>{project.scope[language]}</p>
-                    </div>
-                    <div>
-                      <h3>{t('work.stack')}</h3>
-                      <ul aria-label={t('work.stack')}>
-                        {project.stack.map((technology) => <li key={technology}>{technology}</li>)}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <aside className="work-case-meta" aria-live="polite">
-                  {facts.length > 0 && (
-                    <ul>
-                      {facts.map((fact) => <li key={fact}>{fact}</li>)}
-                    </ul>
-                  )}
-                  <div className="work-case-links">
-                    {project.demoUrl && (
-                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                        {t('work.demo')} <span aria-hidden="true">↗</span>
-                      </a>
-                    )}
-                    {project.repositoryUrl ? (
-                      <a
-                        href={project.repositoryUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${t('work.repositoryLabel')} ${localize(project.title)}`}
-                      >
-                        {t('work.repository')} <span aria-hidden="true">↗</span>
-                      </a>
-                    ) : <p>{t('work.noPublicUrl')}</p>}
-                  </div>
-                </aside>
-              </article>
-            );
-          })}
-        </div>
-
-        <section className="work-complementary" aria-labelledby="work-complementary-title">
-          <header>
-            <p>{t('work.complementaryKicker')}</p>
-            <h2 id="work-complementary-title">{t('work.complementaryTitle')}</h2>
-          </header>
-          <div className="work-complementary-list">
-            {complementaryProjects.map((project) => (
-              <article key={project.id}>
-                <p className="work-complementary-category">{localize(project.category)}</p>
-                <h3>{localize(project.title)}</h3>
-                <p>{project.description[language]}</p>
-                <ul aria-label={t('work.stack')}>
-                  {project.stack.map((technology) => <li key={technology}>{technology}</li>)}
-                </ul>
-                <small>{project.scope[language]}</small>
-              </article>
-            ))}
-          </div>
+        <section className="experience-section" aria-labelledby="company-experience-title">
+          <h2 id="company-experience-title">{t('experience.companies')}</h2>
+          {professionalProfile.experiences.map((experience) => (
+            <article className="experience-employment" key={experience.id} data-experience-id={experience.id}>
+              <header><p className="experience-period">{t(experience.periodKey)}</p><h3>{t(experience.companyKey)}</h3><p className="experience-role">{t(experience.titleKey)}</p></header>
+              <div className="experience-employment-body">
+                <p>{t(experience.descriptionKey)}</p>
+                {experience.bulletsKey && <><h4>{t('experience.responsibilities')}</h4><ul>{t(experience.resumeBulletsKey || experience.bulletsKey).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></>}
+              </div>
+            </article>
+          ))}
         </section>
 
+        <section className="experience-section" aria-labelledby="freelance-experience-title">
+          <h2 id="freelance-experience-title">{t('experience.freelance')}</h2>
+          <FreelanceExperience />
+          {groups.freelance.map(renderProject)}
+        </section>
+
+        {groups.independent.length > 0 && <section className="experience-section" aria-labelledby="independent-work-title"><h2 id="independent-work-title">{t('experience.independent')}</h2>{groups.independent.map(renderProject)}</section>}
+        {groups.unclassified.length > 0 && <section className="experience-section" aria-labelledby="complementary-work-title"><h2 id="complementary-work-title">{t('experience.complementary')}</h2><p className="experience-section-intro">{t('experience.complementaryIntro')}</p>{groups.unclassified.map(renderProject)}</section>}
         {apiUnavailable && <p className="work-api-note" role="status">{t('work.apiUnavailable')}</p>}
       </div>
     </section>
