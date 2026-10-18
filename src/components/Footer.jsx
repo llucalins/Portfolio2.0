@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaEnvelope, FaFilePdf } from 'react-icons/fa';
 import { useTranslation } from '../hooks/useTranslation';
 import { professionalProfile } from '../data/professionalProfile';
+import { resumePdfPath } from '../data/resumeDocument';
 import './Footer.css';
 
 const socialIcons = {
@@ -12,7 +13,7 @@ const socialIcons = {
 };
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const currentYear = new Date().getFullYear();
   const socialLinks = professionalProfile.contacts.filter((contact) => socialIcons[contact.id]);
   const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -53,14 +54,15 @@ const Footer = () => {
             </div>
 
             <div className="resume-download-section">
-              <Link
-                to="/resume?print=1"
+              <a
+                href={resumePdfPath(language)}
+                download
                 className="resume-download-btn"
                 title={t('footer.downloadResumeTitle')}
               >
                 <FaFilePdf aria-hidden="true" />
                 <span className="resume-text">{t('footer.downloadResume')}</span>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

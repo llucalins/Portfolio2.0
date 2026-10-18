@@ -5,7 +5,7 @@ export const en = {
     home: 'Home',
     about: 'About',
     skills: 'Skills',
-    projects: 'Projects',
+    projects: 'Experience',
     contact: 'Contact',
     resume: 'Resume',
     primaryLabel: 'Primary navigation',
@@ -47,9 +47,45 @@ export const en = {
     contactLink: 'Get in touch'
   },
 
+  resumePdf: {
+    practices: 'Practices',
+    architecture: 'Software architecture',
+    debugging: 'debugging',
+    documentation: 'technical documentation',
+    integration: 'systems integration',
+    freelanceDescription: 'Development of web applications and Full Stack solutions.',
+    freelanceBullets: [
+      'Implementation of web interfaces and integration between Front-end and APIs.',
+      'Application structuring and integration with data persistence.'
+    ],
+    andersonEditorialBullets: [
+      'Mobile development with React Native for Android and iOS: screens, components, and features.',
+      'Room measurement and AI-powered virtual furniture projection features; participation in OpenAI API integration.',
+      'Web development with React, Next.js, TypeScript, JavaScript, Node.js, and Python; implementation and consumption of REST APIs.',
+      'Participation in architecture definition; Git, Docker, troubleshooting, bug fixes, and documentation.'
+    ],
+    vmaisContribution: 'React interfaces integrated with a Java/Spring Boot API, administrative features, relational persistence, and a Docker environment.',
+    schedulingContribution: 'Web foundation, architecture documentation, and modeling of scheduling modules and business rules. Availability and bookings remain planned.',
+    projectHeading: 'Selected projects',
+    summary: 'Professional summary',
+    summaryText: 'Full Stack Developer experienced in web and mobile applications, interfaces, features, and API integration. Hands-on work with React Native for Android and iOS, React, Next.js, TypeScript, and Back-end development, including systems architecture and integration of artificial intelligence solutions.',
+    skills: 'Technical skills',
+    projects: 'Selected projects',
+    education: 'Education and relevant courses',
+    andersonRiosBullets: [
+      'Development of screens, components, and features with React Native for Android and iOS.',
+      'Implementation of room measurement and AI-powered virtual furniture projection features; participation in OpenAI API integration.',
+      'Full Stack development with React, Next.js, TypeScript, JavaScript, Node.js, and Python; implementation and consumption of REST APIs.',
+      'Architecture definition, systems structuring, Git, and Docker; troubleshooting, bug fixes, and documentation.'
+    ],
+    mobileFrontend: 'Mobile and Front-end',
+    backendApis: 'Back-end and APIs',
+    dataTools: 'Data and tools'
+  },
+
   resumePage: {
     eyebrow: 'Professional resume',
-    print: 'Print / Save PDF',
+    viewPdf: 'View PDF',
     sidebarLabel: 'Contact details, skills, and languages',
     contact: 'Contact',
     technologies: 'Technologies',
@@ -75,7 +111,7 @@ export const en = {
 
   routes: {
     work: {
-      title: 'Work'
+      title: 'Experience'
     },
     resume: {
       title: 'Resume'
@@ -192,11 +228,26 @@ export const en = {
     english: 'English — intermediate'
   },
 
+  experience: {
+    kicker: 'Professional background',
+    companies: 'Company experience',
+    responsibilities: 'Technical responsibilities',
+    technologies: 'Technologies and tools',
+    context: 'Solution and context',
+    freelance: 'Freelance development',
+    freelanceRole: 'Full Stack Developer — Freelancer',
+    freelanceDescription: 'Full Stack development work as a freelancer.',
+    independent: 'Independent projects',
+    complementary: 'Complementary work',
+    complementaryIntro: 'A selection of systems presented through their context and technical scope, without attribution to clients or contracts.',
+    repositoryLanguage: 'Repository language',
+  },
+
   // Selected Work Section
   work: {
     kicker: 'Portfolio',
-    title: 'Selected projects',
-    intro: 'Applications presented through their context, delivered scope, and technical decisions.',
+    title: 'Experience',
+    intro: 'Professional experience in web and mobile development, freelance work, and complementary technical projects.',
     scope: 'Scope and status',
     stack: 'Stack',
     language: 'Language',
