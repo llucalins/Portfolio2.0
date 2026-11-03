@@ -1,155 +1,96 @@
-# Portfólio Profissional - React
+# Portfolio2.0 — Lucas Virginio
 
-Um portfólio moderno e responsivo desenvolvido com React, HTML e CSS para divulgar suas capacidades profissionais e se inscrever para empresas.
+Portfólio pessoal em React para apresentar trajetória profissional, trabalhos selecionados, currículo e contatos. A aplicação usa React Router para navegação, conteúdo em português e inglês e PDFs do currículo disponíveis nos dois idiomas.
 
-## 🚀 Características
+## Executar localmente
 
-- **Design Moderno**: Interface limpa e profissional com gradientes e animações
-- **Totalmente Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
-- **Navegação Suave**: Scroll suave entre seções
-- **Formulário de Contato**: Formulário funcional para receber mensagens
-- **Seção de Projetos**: Exibição de projetos com filtros por categoria
-- **Habilidades Interativas**: Barras de progresso animadas
-- **Timeline Profissional**: Histórico de experiência e educação
-- **Links Sociais**: Integração com GitHub, LinkedIn e outras redes
+Use Node.js **24 LTS** e npm. O `package.json` ainda fixa Node.js 20.19.4 na configuração Volta, uma pendência de manutenção: [Node.js 20 está fora de suporte](https://nodejs.org/en/about/previous-releases). Confira `node --version` antes de instalar as dependências. Se usar Volta, selecione Node 24 explicitamente nos comandos npm, por exemplo, `volta run --node 24 npm ci`, até que o pin seja atualizado.
 
-## 📋 Seções Incluídas
-
-1. **Header**: Navegação fixa com menu mobile
-2. **Hero**: Apresentação principal com animações
-3. **Sobre**: Informações pessoais e timeline profissional
-4. **Habilidades**: Categorias de skills com barras de progresso
-5. **Projetos**: Portfolio de projetos com filtros
-6. **Contato**: Formulário e informações de contato
-7. **Footer**: Links rápidos e redes sociais
-
-## 🛠️ Tecnologias Utilizadas
-
-- **React 18**: Framework principal
-- **CSS3**: Estilos modernos com Flexbox e Grid
-- **React Icons**: Ícones para toda a aplicação
-- **HTML5**: Estrutura semântica
-- **JavaScript ES6+**: Funcionalidades interativas
-
-## 📦 Instalação
-
-1. **Clone o repositório**:
 ```bash
-git clone https://github.com/seu-usuario/portfolio-react.git
-cd portfolio-react
-```
-
-2. **Instale as dependências**:
-```bash
-npm install
-```
-
-3. **Inicie o servidor de desenvolvimento**:
-```bash
+git clone https://github.com/llucalins/Portfolio2.0.git
+cd Portfolio2.0
+npm ci
 npm run dev
 ```
 
-4. **Abra no navegador**:
-```
-http://localhost:3000
-```
+Abra `http://localhost:3000`. O Vite usa a porta 3000 com `strictPort`; libere essa porta ou informe outra com `PORT=3001 npm run dev`. Nenhum token do GitHub é necessário: as consultas a repositórios usam a API pública.
 
-## ⚙️ Personalização
+## Páginas e funcionalidades
 
-### 1. Informações Pessoais
-Edite os seguintes arquivos para personalizar suas informações:
+| Rota | Conteúdo |
+| --- | --- |
+| `/` | Apresentação e visão geral do perfil |
+| `/work` | Experiência profissional e trabalhos selecionados |
+| `/resume` | Currículo, competências, formação, certificados e acesso ao PDF |
+| `/contact` | Links de contato por e-mail, GitHub e LinkedIn |
 
-- `src/components/Hero.jsx` - Nome, título e descrição
-- `src/components/About.jsx` - Experiência e educação
-- `src/components/Contact.jsx` - Informações de contato
-- `src/components/Projects.jsx` - Seus projetos
+Outros caminhos exibem a página de rota não encontrada. O contato é feito pelos links disponíveis; a aplicação não implementa envio de mensagens por formulário.
 
-### 2. Cores e Estilo
-As cores principais estão definidas em:
-- `src/App.css` - Variáveis de cor principais
-- `src/index.css` - Estilos globais
+Os dados dos projetos são locais. Quando disponível, a API pública do GitHub complementa a apresentação com linguagem, estrelas e forks. O serviço mantém cache no navegador por 15 minutos e o conteúdo local permanece disponível quando a API falha. A preferência de idioma também usa armazenamento local.
 
-### 3. Links Sociais
-Atualize os links nas seguintes seções:
-- Hero component
-- Contact component  
-- Footer component
+## Stack e organização
 
-### 4. Projetos
-Adicione seus projetos em `src/components/Projects.jsx`:
-```javascript
-{
-  id: 1,
-  title: 'Nome do Projeto',
-  description: 'Descrição do projeto',
-  image: 'URL da imagem',
-  technologies: ['React', 'Node.js'],
-  category: 'frontend',
-  github: 'https://github.com/seu-usuario/projeto',
-  demo: 'https://demo.com',
-  featured: true
-}
-```
+React 18, JavaScript, React Router 6, Vite 8, CSS, React Icons e OGL. Playwright é usado pelos scripts de verificação e geração de PDF.
 
-## 🚀 Deploy
+| Arquivo ou diretório | Responsabilidade |
+| --- | --- |
+| `src/App.jsx` | Rotas da aplicação |
+| `src/pages/` | Páginas de apresentação, experiência, currículo e contato |
+| `src/layouts/` | Estrutura compartilhada de navegação |
+| `src/data/professionalProfile.js` | Dados do perfil, contatos, formação e competências |
+| `src/data/selectedWork.js` | Trabalhos selecionados e links de repositórios |
+| `src/data/resumeDocument.js` | Conteúdo e estilos usados para gerar os PDFs |
+| `src/translations/` | Textos em português e inglês |
+| `src/services/github.js` | Consulta pública ao GitHub, timeout e cache |
+| `public/resumes/` | PDFs em português e inglês |
+| `public/certificates/` | Arquivos de certificados |
+| `scripts/` | Geração e verificação do currículo e da experiência |
 
-### Netlify (Recomendado)
-1. Conecte seu repositório ao Netlify
-2. Configure o build command: `npm run build`
-3. Configure o publish directory: `dist`
+Ao atualizar informações profissionais, mantenha coerência entre os dados, as traduções e o PDF. Não atribua projetos à experiência de uma empresa sem confirmação.
 
-### Vercel
-1. Conecte seu repositório ao Vercel
-2. O deploy será automático
+## Comandos
 
-### GitHub Pages
-1. Adicione `"homepage": "https://seu-usuario.github.io/portfolio-react"` no package.json
-2. Execute: `npm run deploy`
+| Comando | Finalidade |
+| --- | --- |
+| `npm run dev` ou `npm start` | Servidor de desenvolvimento Vite |
+| `npm run build` | Gera os arquivos estáticos em `dist/` |
+| `npm run preview` | Serve o build local na porta configurada |
+| `npm run resume:pdf` | Gera novamente os dois PDFs em `public/resumes/` |
 
-## 📱 Responsividade
+Não há scripts `test`, `lint` ou `typecheck` definidos no `package.json`. Os scripts de verificação existentes são executados diretamente com Node.js; sua presença não equivale a uma execução aprovada.
 
-O portfólio é totalmente responsivo e funciona em:
-- **Desktop**: 1200px+
-- **Tablet**: 768px - 1199px
-- **Mobile**: 320px - 767px
+## Currículo em PDF e verificações
 
-## 🎨 Customização Avançada
+Para gerar novamente os PDFs, instale o Chromium usado pelo Playwright e execute:
 
-### Adicionando Novas Seções
-1. Crie um novo componente em `src/components/`
-2. Adicione o componente ao `App.js`
-3. Crie os estilos correspondentes
-
-### Modificando Animações
-As animações estão definidas nos arquivos CSS de cada componente. Você pode ajustar:
-- Duração das animações
-- Efeitos de hover
-- Transições
-
-### Alterando o Tema
-Para mudar as cores principais, edite as variáveis CSS em `src/App.css`:
-```css
-:root {
-  --primary-color: #667eea;
-  --secondary-color: #764ba2;
-  --background-color: #0a0a0a;
-  --text-color: #ffffff;
-}
+```bash
+npx playwright install chromium
+npm run resume:pdf
 ```
 
-## 📄 Licença
+Essa geração atualiza os arquivos de `public/resumes/`. Revise o conteúdo gerado junto com os dados que o originaram.
 
-Este projeto está sob a licença MIT. Sinta-se livre para usar e modificar conforme necessário.
+Para executar as verificações de experiência e currículo, mantenha o servidor local ativo na porta esperada pelos scripts:
 
-## 🤝 Contribuição
+```bash
+PORT=3001 npm run dev
+```
 
-Contribuições são bem-vindas! Sinta-se à vontade para:
-- Reportar bugs
-- Sugerir melhorias
-- Enviar pull requests
+Em outro terminal:
 
-## 📞 Suporte
+```bash
+node scripts/verify-experience.mjs
+node scripts/verify-resumes.mjs
+```
 
-Se você tiver dúvidas ou precisar de ajuda, entre em contato através do formulário no portfólio ou abra uma issue no GitHub.
+O segundo script também requer `pdfinfo` e `pdftotext`, ferramentas do Poppler disponíveis no sistema. Os scripts verificam cenários em português e inglês, desktop e mobile; o de experiência simula sucesso e falha da API GitHub. O de currículo compara arquivos PDF, textos e links. Build e scripts devem ser executados no ambiente de revisão antes de considerar uma alteração validada.
 
----
+## Build e hospedagem
+
+Execute `npm run build` e confira o resultado com `npm run preview`. O servidor estático precisa servir `index.html` também nas rotas `/work`, `/resume` e `/contact`; a configuração `vercel.json` contém esse fallback. A configuração atual usa caminhos a partir da raiz do domínio. Hospedagem em subdiretório requer análise da base do Vite e do roteador.
+
+O endereço canônico declarado no código é `https://lucasvirginio.is-a.dev/`. Isso identifica a configuração do projeto, sem garantir disponibilidade do site ou publicação do último commit. Não existe script `deploy` neste repositório.
+
+## Licença
+
+Não há arquivo `LICENSE` nesta revisão do repositório. A definição dos termos de reutilização deve ser confirmada com o proprietário.
