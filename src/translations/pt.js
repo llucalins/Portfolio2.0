@@ -47,6 +47,12 @@ export const pt = {
   },
 
   resumePdf: {
+    skillsHeading: 'Competências',
+    experienceHeading: 'Experiência',
+    educationHeading: 'Educação',
+    certificatesHeading: 'Cursos e certificados',
+    courses: 'Cursos',
+    certificate: 'Certificado',
     practices: 'Práticas',
     architecture: 'Arquitetura de software',
     debugging: 'debugging',

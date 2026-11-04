@@ -48,6 +48,12 @@ export const en = {
   },
 
   resumePdf: {
+    skillsHeading: 'Skills',
+    experienceHeading: 'Experience',
+    educationHeading: 'Education',
+    certificatesHeading: 'Courses and certificates',
+    courses: 'Courses',
+    certificate: 'Certificate',
     practices: 'Practices',
     architecture: 'Software architecture',
     debugging: 'debugging',
