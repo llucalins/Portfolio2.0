@@ -13,7 +13,7 @@ export function resumeMarkup(language = 'pt') {
   const copy = language === 'en' ? en : pt;
   const t = (key) => key.split('.').reduce((value, part) => value[part], copy);
   const localize = (value) => typeof value === 'string' ? value : value[language];
-  const section = (title, body) => `<section><h2>${escape(title)}</h2>${body}</section>`;
+  const section = (title, body, className = '') => `<section${className ? ` class="${className}"` : ''}><h2>${escape(title)}</h2>${body}</section>`;
   const p = (text, className = '') => `<p${className ? ` class="${className}"` : ''}>${escape(text)}</p>`;
   const list = (items) => `<ul>${items.map((item) => `<li>${escape(item)}</li>`).join('')}</ul>`;
   const projectMarkup = (project) => {
@@ -66,7 +66,7 @@ export function resumeMarkup(language = 'pt') {
     </header>
     ${section(t('resumePdf.skillsHeading'), `<ul class="document-skills">${skills}${languages}</ul>`)}
     ${section(t('resumePdf.experienceHeading'), employment + freelance)}
-    ${projects.length ? section(t('resumePdf.projectHeading'), projects.map(projectMarkup).join('')) : ''}
+    ${projects.length ? section(t('resumePdf.projectHeading'), projects.map(projectMarkup).join(''), 'document-projects') : ''}
     ${section(t('resumePdf.educationHeading'), education)}
     ${section(t('resumePdf.certificatesHeading'), p(t('resumePdf.courses'), 'document-courses-label') + certificates)}
   </article>`;
@@ -81,40 +81,41 @@ export const resumeStyles = `
   @bottom-left { content: none; } @bottom-center { content: none; } @bottom-right { content: none; }
 }
 .resume-document {
-  font-family: "Resume Carlito", Calibri, sans-serif; font-size: 12pt; font-weight: 400;
-  line-height: 1.4; color: #000; background: #fff; text-align: left;
+  font-family: "Resume Carlito", Calibri, sans-serif; font-size: 10.5pt; font-weight: 400;
+  line-height: 1.32; color: #000; background: #fff; text-align: left;
   -webkit-print-color-adjust: exact; print-color-adjust: exact;
 }
 .resume-document * { box-sizing: border-box; margin: 0; padding: 0; letter-spacing: normal; text-transform: none; }
 .resume-document header { text-align: center; }
-.resume-document h1 { font-size: 16pt; line-height: 1.2; font-weight: 700; }
-.resume-document .document-role { font-size: 15pt; line-height: 1.2; font-weight: 700; margin-top: 4pt; }
-.resume-document .document-contacts { font-size: 12pt; line-height: 1.2; margin-top: 4pt; white-space: nowrap; }
+.resume-document h1 { font-size: 14pt; line-height: 1.2; font-weight: 700; }
+.resume-document .document-role { font-size: 12.5pt; line-height: 1.2; font-weight: 700; margin-top: 4pt; }
+.resume-document .document-contacts { font-size: 10.5pt; line-height: 1.2; margin-top: 4pt; white-space: nowrap; }
 .resume-document a { color: inherit; text-decoration: none; }
-.resume-document section { margin-top: 16pt; padding: 0; }
+.resume-document section { margin-top: 12pt; padding: 0; }
 .resume-document header + section { margin-top: 8pt; }
-.resume-document h2 { border-top: .5pt solid #808080; margin-inline: 3.5pt; padding-top: 6pt; margin-bottom: 18pt; font-size: 14pt; line-height: 1.2; font-weight: 700; text-align: center; text-transform: uppercase; break-after: avoid; }
-.resume-document header + section h2 { margin-bottom: 14pt; }
-.resume-document h3 { font-size: 14pt; line-height: 1.2; font-weight: 700; break-after: avoid; }
+.resume-document h2 { border-top: .5pt solid #808080; margin-inline: 3.5pt; padding-top: 5pt; margin-bottom: 10pt; font-size: 12pt; line-height: 1.2; font-weight: 700; text-align: center; text-transform: uppercase; break-after: avoid; }
+.resume-document header + section h2 { margin-bottom: 8pt; }
+.resume-document h3 { font-size: 12pt; line-height: 1.2; font-weight: 700; break-after: avoid; }
 .resume-document strong { font-weight: 700; }
-.resume-document .document-position { font-size: 12pt; line-height: 1.2; font-weight: 700; margin-top: 2pt; break-after: avoid; }
-.resume-document .document-period { color: #424242; font-size: 11pt; line-height: 1.2; margin-top: 2pt; break-after: avoid; }
-.resume-document .document-entry + .document-entry { margin-top: 36pt; }
-.resume-document ul { padding-left: 36pt; margin-top: 18pt; list-style-type: disc; }
+.resume-document .document-position { font-size: 10.5pt; line-height: 1.2; font-weight: 700; margin-top: 2pt; break-after: avoid; }
+.resume-document .document-period { color: #424242; font-size: 10pt; line-height: 1.2; margin-top: 2pt; break-after: avoid; }
+.resume-document .document-entry + .document-entry { margin-top: 20pt; }
+.resume-document ul { padding-left: 27pt; margin-top: 9pt; list-style-type: disc; }
 .resume-document li { text-align: justify; padding-left: 0; orphans: 2; widows: 2; }
-.resume-document li::marker { content: '●   '; font-family: Arial, sans-serif; font-size: 12pt; }
-.resume-document .document-skills { padding-left: 21pt; margin-top: 0; line-height: 1.2; }
+.resume-document li::marker { content: '●   '; font-family: Arial, sans-serif; font-size: 10.5pt; }
+.resume-document .document-skills { padding-left: 18pt; margin-top: 0; line-height: 1.2; }
 .resume-document .document-entry > h3, .resume-document .document-project > h3 { break-after: avoid; }
 .resume-document .document-freelance > p { margin-top: 2pt; }
-.resume-document .document-project + .document-project, .resume-document .document-education + .document-education { margin-top: 24pt; }
+.resume-document .document-project + .document-project, .resume-document .document-education + .document-education { margin-top: 14pt; }
 .resume-document .document-project > p { margin-top: 4pt; text-align: justify; }
-.resume-document .document-stack { color: #424242; font-size: 11pt; }
+.resume-document .document-stack { color: #424242; font-size: 10pt; }
 .resume-document .document-education, .resume-document .document-certificate { break-inside: avoid; }
-.resume-document .document-education h3, .resume-document .document-certificate h3 { font-size: 12pt; }
-.resume-document .document-courses-label { font-size: 13pt; text-transform: uppercase; text-decoration: underline; margin-bottom: 18pt; break-after: avoid; }
+.resume-document .document-projects { break-inside: avoid; }
+.resume-document .document-education h3, .resume-document .document-certificate h3 { font-size: 10.5pt; }
+.resume-document .document-courses-label { font-size: 11pt; text-transform: uppercase; text-decoration: underline; margin-bottom: 10pt; break-after: avoid; }
 .resume-document .document-certificate { line-height: 1.2; }
-.resume-document .document-certificate + .document-certificate { margin-top: 24pt; }
+.resume-document .document-certificate + .document-certificate { margin-top: 14pt; }
 .resume-document .document-certificate a { text-decoration: underline; }
-.resume-document .document-project h3 { font-size: 12pt; }
+.resume-document .document-project h3 { font-size: 10.5pt; }
 .resume-document p { orphans: 2; widows: 2; }
 `;
