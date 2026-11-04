@@ -25,7 +25,11 @@ try {
       assert.equal(await page.locator('[aria-labelledby="freelance-experience-title"] [data-project-id]').count(), 0);
       assert.equal(await page.locator('[aria-labelledby="complementary-work-title"] [data-project-id]').count(), selectedWork.length);
       assert.equal(await page.locator('.experience-employment a').count(), 0);
-      assert.ok((await page.locator('[data-project-id="sistema-agendamento"]').innerText()).includes(language === 'pt' ? 'planejados' : 'planned'));
+      const scheduling = await page.locator('[data-project-id="sistema-agendamento"]').innerText();
+      assert.ok(scheduling.includes(language === 'pt' ? 'demonstração local e dados sintéticos' : 'local demonstration and synthetic data'));
+      assert.ok(scheduling.includes(language === 'pt' ? 'confirmação de reservas' : 'booking confirmation'));
+      assert.doesNotMatch(scheduling, /módulos planejados|modules planned/);
+      assert.equal(await page.locator('a[href*="github.com/llucalins/VmaisHomePage"], a[href*="github.com/llucalins/Info.DBeta"]').count(), 0);
       await page.getByRole('status').filter({ hasText: language === 'pt' ? 'GitHub' : 'GitHub' }).waitFor();
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true);
       for (const link of await page.locator('.experience-project-links a').all()) assert.match(await link.getAttribute('href'), /^https:\/\//);

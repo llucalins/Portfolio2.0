@@ -6,13 +6,13 @@ export const professionalProfile = {
     projectIds: ['vmais-comunicacao', 'sistema-agendamento'],
     experienceBullets: { 'anderson-rios': 'resumePdf.andersonEditorialBullets' },
     skillGroups: [
-      { titleKey: 'resumePdf.mobileFrontend', keys: ['skills.reactNative', 'skills.react', 'skills.nextjs', 'skills.typescript', 'skills.javascript', 'skills.html', 'skills.css'] },
+      { titleKey: 'resumePdf.mobileFrontend', keys: ['skills.typescript', 'skills.react', 'skills.nextjs', 'skills.javascript', 'skills.html', 'skills.css', 'skills.reactNative'] },
       { titleKey: 'resumePdf.backendApis', keys: ['skills.java', 'skills.springBoot', 'skills.nodejs', 'skills.python', 'skills.restApis', 'skills.openaiApis'] },
       { titleKey: 'resumePdf.dataTools', keys: ['skills.postgresql', 'skills.sql', 'skills.docker', 'skills.git', 'skills.github'] },
       { titleKey: 'resumePdf.practices', keys: ['resumePdf.architecture', 'resumePdf.debugging', 'resumePdf.documentation', 'resumePdf.integration'] }
     ]
   },
-  heroStackKeys: ['reactNative', 'react', 'typescript', 'openaiApis', 'javascript', 'nextjs', 'nodejs', 'python'],
+  heroStackKeys: ['typescript', 'react', 'nextjs', 'nodejs', 'postgresql', 'restApis', 'openaiApis'],
   summaryKeys: ['profile.summaryPrimary', 'profile.summarySecondary'],
   contacts: [
     {
@@ -71,16 +71,6 @@ export const professionalProfile = {
   ],
   skillCategories: [
     {
-      id: 'mobile',
-      titleKey: 'skills.mobile',
-      skillKeys: ['reactNative']
-    },
-    {
-      id: 'ai',
-      titleKey: 'skills.ai',
-      skillKeys: ['openaiApis']
-    },
-    {
       id: 'frontend',
       titleKey: 'skills.frontend',
       skillKeys: ['typescript', 'javascript', 'react', 'nextjs', 'html', 'css']
@@ -94,6 +84,16 @@ export const professionalProfile = {
       id: 'data',
       titleKey: 'skills.data',
       skillKeys: ['postgresql', 'sql']
+    },
+    {
+      id: 'ai',
+      titleKey: 'skills.ai',
+      skillKeys: ['openaiApis']
+    },
+    {
+      id: 'mobile',
+      titleKey: 'skills.mobile',
+      skillKeys: ['reactNative']
     },
     {
       id: 'delivery',

@@ -83,10 +83,12 @@ try {
         }
       }
     }
-    assert.ok(normalizedText.includes(language === 'pt' ? 'Disponibilidade e reservas em planejamento.' : 'Availability and bookings remain planned.'));
+    assert.ok(normalizedText.includes(normalize(t(professionalProfile.roleKey))), 'PDF positioning title missing');
+    assert.doesNotMatch(normalizedText, /Disponibilidade e reservas em planejamento|Availability and bookings remain planned/);
+    assert.doesNotMatch(normalizedText, /Web & Mobile/);
     const headings = language === 'pt' ? ['Resumo profissional', 'Competências técnicas', 'Experiência profissional', 'Projetos selecionados', 'Formação e cursos relevantes'] : ['Professional summary', 'Technical skills', 'Professional experience', 'Selected projects', 'Education and relevant courses'];
     let previous = -1;
-    for (const heading of headings) { const index = text.toLowerCase().indexOf(heading.toLowerCase()); assert.ok(index > previous, heading); previous = index; }
+    for (const heading of headings) { const index = text.toLowerCase().indexOf(`\n${heading.toLowerCase()}\n`); assert.ok(index > previous, heading); previous = index; }
     assert.match(text, /Anderson Rios Consultoria/);
     const pdfInfo = execFileSync('pdfinfo', [expected], { encoding: 'utf8' });
     assert.match(pdfInfo, /Pages:\s+1\b/);
@@ -100,6 +102,7 @@ try {
       if (url) expectedLinks.push(url);
     }
     for (const url of expectedLinks) assert.ok(links.includes(url), `PDF link missing: ${url}`);
+    assert.doesNotMatch(links, /github\.com\/llucalins\/(VmaisHomePage|Info\.DBeta)/, 'Private repository linked in PDF');
     // Check 13/16 mm content margins with 1.5 pt tolerance for font ascent metrics.
     const bounds = execFileSync('pdftotext', ['-bbox', expected, '-'], { encoding: 'utf8' });
     const words = [...bounds.matchAll(/<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)"/g)];

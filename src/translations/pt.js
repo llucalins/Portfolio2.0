@@ -17,29 +17,29 @@ export const pt = {
   // Hero Section
   hero: {
     greeting: 'Olá, eu sou',
-    title: 'Desenvolvedor Full Stack | Web & Mobile',
-    subtitle: 'Aplicações web e mobile',
-    description: 'Desenvolvo aplicações web e mobile com React, React Native e TypeScript, com experiência em integração de APIs REST e APIs da OpenAI.',
-    secondaryDescription: 'Experiência prática com React Native no desenvolvimento de aplicações multiplataforma para Android e iOS, incluindo implementação de interfaces interativas e integração com APIs da OpenAI.',
+    title: 'Desenvolvedor Full Stack | TypeScript e Integração de IA',
+    subtitle: 'TypeScript, aplicações web e integração de IA',
+    description: 'Desenvolvo aplicações web com TypeScript, React e Next.js, conectando interfaces, APIs, persistência de dados e inteligência artificial.',
+    secondaryDescription: 'Experiência profissional com React, Next.js, APIs REST e integração com APIs da OpenAI, além de React Native em aplicações para Android e iOS.',
     aboutMe: 'Ver Experiência',
     projectsCta: 'Ver Projetos',
     contactMe: 'Entrar em Contato'
   },
 
   profile: {
-    title: 'Desenvolvedor Full Stack | Web & Mobile',
-    metaDescription: 'Desenvolvedor Full Stack com experiência em aplicações web e mobile, React Native e integração com APIs REST e da OpenAI.',
-    summaryPrimary: 'Desenvolvedor Full Stack com experiência profissional na construção de aplicações web e mobile, atuando no desenvolvimento de interfaces, implementação de funcionalidades, integração de APIs REST e estruturação de sistemas.',
-    summarySecondary: 'Experiência prática com React Native no desenvolvimento de aplicações multiplataforma para Android e iOS, incluindo implementação de interfaces interativas e integração com APIs da OpenAI.'
+    title: 'Desenvolvedor Full Stack | TypeScript e Integração de IA',
+    metaDescription: 'Desenvolvedor Full Stack com foco em TypeScript, aplicações web, integração de APIs, persistência de dados e integração de inteligência artificial.',
+    summaryPrimary: 'Desenvolvedor Full Stack com foco em TypeScript e aplicações web, atuando no desenvolvimento de interfaces, integração de APIs, persistência de dados e estruturação de sistemas.',
+    summarySecondary: 'Experiência profissional com React, Next.js, APIs REST e integração com APIs da OpenAI, além de React Native em aplicações para Android e iOS.',
   },
 
   homeOverview: {
     label: 'Em poucas palavras',
-    title: 'Desenvolvo aplicações web e mobile claras e funcionais.',
-    description: 'Experiência prática com React Native no desenvolvimento de aplicações multiplataforma para Android e iOS, incluindo implementação de interfaces interativas e integração com APIs da OpenAI.',
+    title: 'Desenvolvo aplicações web e integro APIs, dados e IA.',
+    description: 'Atuação Full Stack com TypeScript, React e Next.js, integração de APIs REST, persistência de dados e integração de inteligência artificial.',
     navigationLabel: 'Explorar portfólio',
     workTitle: 'Projetos',
-    workDescription: 'Uma seleção de produtos, problemas resolvidos e decisões de implementação.',
+    workDescription: 'Uma seleção de aplicações, escopos e decisões de implementação.',
     resumeTitle: 'Currículo',
     resumeDescription: 'Experiência profissional, formação e certificados em uma leitura objetiva.',
     contactPrompt: 'Tem um projeto ou uma oportunidade em mente?',
@@ -58,16 +58,16 @@ export const pt = {
       'Estruturação de aplicações e integração com persistência de dados.'
     ],
     andersonEditorialBullets: [
-      'Desenvolvimento mobile com React Native para Android e iOS: telas, componentes e funcionalidades.',
-      'Recursos de medição de ambientes e projeção virtual de móveis com IA; participação na integração com APIs da OpenAI.',
       'Desenvolvimento web com React, Next.js, TypeScript, JavaScript, Node.js e Python; implementação e consumo de APIs REST.',
+      'Recursos de medição de ambientes e projeção virtual de móveis com IA; participação na integração com APIs da OpenAI.',
+      'Desenvolvimento mobile com React Native para Android e iOS: telas, componentes e funcionalidades.',
       'Participação na definição de arquitetura; Git, Docker, troubleshooting, correção de bugs e documentação.'
     ],
     vmaisContribution: 'Interfaces React integradas à API Java/Spring Boot, funcionalidades administrativas, persistência relacional e ambiente Docker.',
-    schedulingContribution: 'Base web, documentação da arquitetura e modelagem dos módulos e regras de agendamento. Disponibilidade e reservas em planejamento.',
+    schedulingContribution: 'Fluxos de catálogo, disponibilidade, confirmação e acompanhamento de reservas; painel administrativo e persistência PostgreSQL. Em desenvolvimento, com demonstração local e dados sintéticos.',
     projectHeading: 'Projetos selecionados',
     summary: 'Resumo profissional',
-    summaryText: 'Desenvolvedor Full Stack com experiência em aplicações web e mobile, interfaces, funcionalidades e integração de APIs. Atuação com React Native para Android e iOS, React, Next.js, TypeScript e Back-end, incluindo arquitetura de sistemas e integração de soluções com inteligência artificial.',
+    summaryText: 'Desenvolvedor Full Stack com foco em TypeScript, aplicações web, integração de APIs, persistência de dados e inteligência artificial. Experiência profissional com React, Next.js, Node.js, Python e APIs da OpenAI, além de React Native para Android e iOS.',
     skills: 'Competências técnicas',
     projects: 'Projetos selecionados',
     education: 'Formação e cursos relevantes',
@@ -77,7 +77,7 @@ export const pt = {
       'Desenvolvimento Full Stack com React, Next.js, TypeScript, JavaScript, Node.js e Python; implementação e consumo de APIs REST.',
       'Definição de arquitetura, estruturação de sistemas, Git e Docker; troubleshooting, correção de bugs e documentação.'
     ],
-    mobileFrontend: 'Mobile e Front-end',
+    mobileFrontend: 'Front-end e mobile',
     backendApis: 'Back-end e APIs',
     dataTools: 'Banco de dados e ferramentas'
   },
@@ -135,7 +135,7 @@ export const pt = {
   about: {
     title: 'Sobre Mim',
     subtitle: 'Quem sou eu?',
-    description: 'Desenvolvedor Full Stack com experiência profissional na construção de aplicações web e mobile, atuando no desenvolvimento de interfaces, implementação de funcionalidades, integração de APIs REST e estruturação de sistemas. Experiência prática com React Native no desenvolvimento de aplicações multiplataforma para Android e iOS, incluindo implementação de interfaces interativas e integração com APIs da OpenAI.',
+    description: 'Desenvolvedor Full Stack com foco em TypeScript e aplicações web, atuando no desenvolvimento de interfaces, integração de APIs, persistência de dados e estruturação de sistemas. Experiência profissional com React, Next.js, APIs REST e integração com APIs da OpenAI, além de React Native em aplicações para Android e iOS.',
     experience: 'de Experiência',
     projects: 'Concluídos',
     clients: 'Dedicação',
@@ -247,7 +247,7 @@ export const pt = {
   work: {
     kicker: 'Portfólio',
     title: 'Experiência',
-    intro: 'Experiência profissional em desenvolvimento web e mobile, atuação freelancer e trabalhos técnicos complementares.',
+    intro: 'Experiência profissional Full Stack com TypeScript, aplicações web e integração de APIs e IA, atuação freelancer e projetos complementares. Inclui experiência mobile com React Native.',
     scope: 'Escopo e estado',
     stack: 'Stack',
     language: 'Linguagem',
@@ -296,7 +296,7 @@ export const pt = {
   // Contact Section
   contact: {
     title: 'Vamos Conversar!',
-    subtitle: 'Estou disponível para oportunidades em desenvolvimento Full Stack e colaborações em aplicações web e mobile.',
+    subtitle: 'Estou disponível para oportunidades em desenvolvimento Full Stack com TypeScript, aplicações web e integração de IA.',
     name: 'Nome',
     email: 'E-mail',
     message: 'Mensagem',
@@ -318,7 +318,7 @@ export const pt = {
   footer: {
     rights: 'Todos os direitos reservados',
     madeWith: 'Feito com ❤️ por',
-    description: 'Desenvolvedor Full Stack com experiência em aplicações web e mobile, React Native e integração com APIs REST e da OpenAI.',
+    description: 'Desenvolvedor Full Stack com foco em TypeScript, aplicações web, integração de APIs, persistência de dados e integração de inteligência artificial.',
     quickLinks: 'Links Rápidos',
     socialMedia: 'Redes Sociais',
     downloadResume: 'Baixar Currículo',
@@ -327,8 +327,8 @@ export const pt = {
     email: 'Email',
     resume: 'Currículo',
     aboutMe: 'Sobre Mim',
-    aboutDescription1: 'Desenvolvedor Full Stack com experiência profissional na construção de aplicações web e mobile, atuando no desenvolvimento de interfaces, implementação de funcionalidades, integração de APIs REST e estruturação de sistemas.',
-    aboutDescription2: 'Experiência prática com React Native no desenvolvimento de aplicações multiplataforma para Android e iOS, incluindo implementação de interfaces interativas e integração com APIs da OpenAI.',
+    aboutDescription1: 'Desenvolvedor Full Stack com foco em TypeScript e aplicações web, atuando no desenvolvimento de interfaces, integração de APIs, persistência de dados e estruturação de sistemas.',
+    aboutDescription2: 'Experiência profissional com React, Next.js, APIs REST e integração com APIs da OpenAI, além de React Native em aplicações para Android e iOS.',
     downloadResumeTitle: 'Baixar Currículo em PDF',
     scrollToTop: 'Voltar ao topo'
   },
