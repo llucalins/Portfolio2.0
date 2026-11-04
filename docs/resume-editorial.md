@@ -16,7 +16,9 @@ Avaliação de design: **Good**. PDFs PT-BR/EN com uma página A4 cada, uma colu
 
 Anderson Rios (mai–dez/2025), as duas funções na Prefeitura e atuação Full Stack freelancer. Freelance agora descreve interfaces web, APIs, estruturação e persistência. Sem datas fictícias.
 
-Vmais e Agendamento estão em Projetos selecionados: o vínculo freelancer permanece não confirmado. Reservas e disponibilidade continuam planejadas. Nenhum cliente ou contrato foi inventado. Os demais projetos foram omitidos por concisão.
+Vmais e Lava Auto estão em Projetos selecionados: o vínculo freelancer permanece não confirmado. O Lava Auto apresenta catálogo, disponibilidade, confirmação e acompanhamento de reservas e painel administrativo em desenvolvimento, com demonstração local e dados sintéticos. Nenhum cliente ou contrato foi inventado. Os demais projetos foram omitidos por concisão.
+
+O posicionamento vigente é Full Stack com TypeScript e integração de IA. Os links dos repositórios privados foram removidos e os PDFs foram regenerados em PT-BR e EN. Evidências e verificações da atualização: [Alinhamento profissional](professional-alignment.md).
 
 ## Arquivos e validação
 

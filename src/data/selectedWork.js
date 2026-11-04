@@ -4,8 +4,6 @@ export const selectedWork = [
     resume: { contributionKey: 'resumePdf.vmaisContribution', technologies: ['React', 'Vite', 'JavaScript', 'Java 21', 'Spring Boot', 'PostgreSQL', 'Docker'] },
     kind: 'primary',
     engagement: 'unclassified',
-    repository: 'llucalins/VmaisHomePage',
-    repositoryUrl: 'https://github.com/llucalins/VmaisHomePage',
     title: 'Vmais Comunicação',
     category: {
       pt: 'Aplicação Full Stack',
@@ -25,8 +23,6 @@ export const selectedWork = [
     id: 'info-dbeta',
     kind: 'primary',
     engagement: 'unclassified',
-    repository: 'llucalins/Info.DBeta',
-    repositoryUrl: 'https://github.com/llucalins/Info.DBeta',
     demoUrl: 'https://info-d-beta.vercel.app',
     title: 'InfoD.beta',
     category: {
@@ -51,20 +47,20 @@ export const selectedWork = [
     repository: 'llucalins/lava-auto-agendamento',
     repositoryUrl: 'https://github.com/llucalins/lava-auto-agendamento',
     title: {
-      pt: 'Sistema de Agendamento',
-      en: 'Scheduling System'
+      pt: 'Lava Auto — Sistema de Agendamento',
+      en: 'Lava Auto — Scheduling System'
     },
     category: {
       pt: 'Produto em desenvolvimento',
       en: 'Product in development'
     },
     description: {
-      pt: 'Sistema em desenvolvimento para agendamento de serviços automotivos, construído sobre uma base moderna em Next.js e PostgreSQL.',
-      en: 'A system in development for scheduling automotive services, built on a modern Next.js and PostgreSQL foundation.'
+      pt: 'Aplicação Full Stack em TypeScript, Next.js e PostgreSQL para agendamento de serviços automotivos, com catálogo, disponibilidade, confirmação de reservas e acompanhamento por código.',
+      en: 'A Full Stack application with TypeScript, Next.js, and PostgreSQL for automotive service scheduling, including a catalog, availability, booking confirmation, and code-based tracking.'
     },
     scope: {
-      pt: 'Em desenvolvimento. Catálogo, disponibilidade, reservas, administração e segurança permanecem módulos planejados na arquitetura e documentação.',
-      en: 'In development. Catalog, availability, bookings, administration, and security remain modules planned in the architecture and documentation.'
+      pt: 'Em desenvolvimento, com demonstração local e dados sintéticos. Painel com agenda, reservas e status; gestão de estabelecimento, serviços, calendário e promoções; controle de acesso e persistência. Sem homologação em produção ou processamento de pagamentos.',
+      en: 'In development, with a local demonstration and synthetic data. Panel for calendar, bookings, and status; establishment, service, calendar, and promotion management; access control and persistence. No production acceptance or payment processing.'
     },
     stack: ['Next.js 16', 'React 19', 'TypeScript', 'PostgreSQL (pg)', 'Zod', 'Vitest', 'Playwright']
   },
