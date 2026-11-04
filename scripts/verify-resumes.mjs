@@ -24,6 +24,10 @@ try {
     assert.equal(await page.locator('.resume-certificates li').count(), 17);
     assert.equal(await page.locator('.resume-entry').count(), professionalProfile.experiences.length);
     assert.equal(await page.locator('.resume-project').count(), selectedWork.length);
+    const experienceHeadings = await page.locator('.resume-print-document .document-entry').evaluateAll((entries) => entries.map((entry) => entry.closest('section').querySelector('h2').textContent));
+    assert.deepEqual(experienceHeadings, Array(professionalProfile.experiences.length + 1).fill((language === 'pt' ? pt : en).resumePdf.experienceHeading), 'Employment and freelance activity must share one professional experience section');
+    assert.equal(await page.locator('.resume-print-document .document-freelance .document-period').count(), 0, 'Freelance activity must not acquire invented dates');
+    assert.equal(await page.locator('.resume-print-document .document-projects .document-entry').count(), 0, 'Projects must remain separate from employment');
     const downloadEvent = page.waitForEvent('download');
     await page.locator('.resume-download-btn').click();
     const download = await downloadEvent;
@@ -84,19 +88,33 @@ try {
         }
       }
     }
+    for (const project of professionalProfile.resume.additionalProjects) {
+      assert.ok(normalizedText.includes(project.title));
+      assert.ok(!experienceText.includes(project.title), 'Experimental project classified as paid work');
+      assert.ok(normalizedText.includes(normalize(t(project.resume.contributionKey))));
+      for (const tool of project.resume.technologies) assert.ok(normalizedText.includes(tool));
+      assert.equal(project.repositoryUrl, undefined, 'Experimental project has no confirmed public repository');
+    }
+    assert.ok(normalizedText.includes(language === 'pt' ? 'Projeto experimental em desenvolvimento' : 'Experimental project in development'));
+    assert.ok(normalizedText.includes(language === 'pt' ? 'ferramentas de terceiros' : 'third-party tools'));
+    assert.doesNotMatch(normalizedText, /Introdução ao Flutter|Introduction to Flutter/);
+    assert.deepEqual(professionalProfile.resume.certificateFilenames, ['EABD3805.pdf', 'OPCYCM0Y.pdf', 'HCRDIGHK.pdf'], 'Only the Flutter course should be removed');
     assert.ok(normalizedText.includes(normalize(t(professionalProfile.roleKey))), 'PDF positioning title missing');
     assert.doesNotMatch(normalizedText, /Disponibilidade e reservas em planejamento|Availability and bookings remain planned/);
     assert.doesNotMatch(normalizedText, /Web & Mobile/);
     const headings = ['skillsHeading', 'experienceHeading', 'projectHeading', 'educationHeading', 'certificatesHeading'].map((key) => t(`resumePdf.${key}`));
     let previous = -1;
-    for (const heading of headings) { const index = text.toLowerCase().indexOf(`\n${heading.toLowerCase()}\n`); assert.ok(index > previous, heading); previous = index; }
+    for (const heading of headings) { const index = text.replace(/\f/g, '\n').toLowerCase().indexOf(`\n${heading.toLowerCase()}\n`); assert.ok(index > previous, heading); previous = index; }
     assert.match(text, /Anderson Rios Consultoria/);
     const pdfInfo = execFileSync('pdfinfo', [expected], { encoding: 'utf8' });
-    assert.match(pdfInfo, /Pages:\s+[23]\b/, 'Expected natural pagination across two or three pages');
+    assert.match(pdfInfo, /Pages:\s+2\b/, 'Expected two A4 pages');
     assert.match(pdfInfo, /Page size:\s+59[45]\.[\d]+ x 841\.[\d]+ pts \(A4\)/);
     const fonts = execFileSync('pdffonts', [expected], { encoding: 'utf8' });
     assert.match(fonts, /Carlito-Regular/);
     assert.match(fonts, /Carlito-Bold/);
+    const fontLayout = execFileSync('pdftohtml', ['-xml', '-zoom', '1', '-stdout', '-i', expected], { encoding: 'utf8' });
+    const fontSizes = [...fontLayout.matchAll(/<fontspec[^>]* size="([\d.]+)"/g)].map((match) => Number(match[1]));
+    assert.ok(fontSizes.length > 0 && fontSizes.every((size) => size >= 10), 'PDF text must remain at least 10 pt');
     assert.match(pdfInfo, /Tagged:\s+yes/);
     // The metadata title is fine; it must not be printed in the page content.
     assert.doesNotMatch(text, /Lucas Virginio — (Currículo|Resume)|localhost|127\.0\.0\.1|\d{1,2}:\d{2}/);
@@ -143,7 +161,9 @@ try {
     for (const heading of headings) {
       const page = pages.find((page) => page.lines.some((line) => line.text === heading.toUpperCase()));
       assert.ok(page, `Section heading missing: ${heading}`);
-      centered(page.lines.find((line) => line.text === heading.toUpperCase()), page.width);
+      const headingLine = page.lines.find((line) => line.text === heading.toUpperCase());
+      centered(headingLine, page.width);
+      assert.ok(page.lines.some((line) => line.y1 > headingLine.y2), `Isolated section heading: ${heading}`);
     }
     const employmentPages = [];
     for (const experience of professionalProfile.experiences) {

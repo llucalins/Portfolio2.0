@@ -32,9 +32,10 @@ export function resumeMarkup(language = 'pt') {
     ${list(t(professionalProfile.freelance.pdfBulletsKey))}
     ${freelanceProjects.map(projectMarkup).join('')}
   </article>`;
-  const projects = professionalProfile.resume.projectIds
+  const projects = [...professionalProfile.resume.projectIds
     .map((id) => selectedWork.find((project) => project.id === id))
-    .filter((project) => project && project.engagement !== 'freelance');
+    .filter((project) => project && project.engagement !== 'freelance'),
+    ...professionalProfile.resume.additionalProjects];
   const contacts = [...professionalProfile.contacts, professionalProfile.portfolio];
   const employment = professionalProfile.experiences.map((experience) => {
     const bulletsKey = professionalProfile.resume.experienceBullets[experience.id] || experience.resumeBulletsKey;
