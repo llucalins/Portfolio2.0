@@ -1,6 +1,6 @@
 # Currículos PDF — layout de referência
 
-Atualizado em 4 de novembro de 2026. O template de `resumeDocument.js` reproduz a organização visual do currículo fornecido em `references/cv_referencia.pdf`, inspecionado visualmente nas três páginas e medido com Poppler. O conteúdo permanece o de Lucas Virginio.
+Atualizado em 4 de novembro de 2026. O template de `resumeDocument.js` reproduz a organização visual do currículo fornecido em `references/cv_referencia.pdf`, inspecionado visualmente nas três páginas e medido com Poppler. O conteúdo permanece o de Lucas Virginio. No ajuste final, a escala tipográfica e os espaçamentos foram compactados para limitar os dois idiomas a duas páginas, preservando a identidade visual.
 
 ## Medidas e organização
 
@@ -9,21 +9,23 @@ Atualizado em 4 de novembro de 2026. O template de `resumeDocument.js` reproduz 
 | Página | A4, aproximadamente 596 × 842 pt | A4, aproximadamente 595 × 842 pt |
 | Margens | Texto principal a aproximadamente 56,7 pt da borda | 20 mm, aproximadamente 56,7 pt |
 | Fonte | Calibri normal e negrito | Carlito normal e negrito, métricas compatíveis, incorporada |
-| Nome | Centralizado, 16 pt, negrito | Centralizado, 16 pt, negrito |
-| Cargo | Centralizado, aproximadamente 15 pt, negrito | Centralizado, 15 pt, negrito |
-| Contatos | Centralizados, uma linha, 12 pt, separador vertical | Mesmo formato; LinkedIn identificado pelo nome com URL completa no link |
-| Seções | Títulos centralizados, maiúsculas, aproximadamente 14 pt e linha cinza superior | Mesmo formato, linha de 0,5 pt |
-| Corpo | Aproximadamente 12 pt; responsabilidades justificadas, entrelinha próxima de 1,4 | 12 pt e entrelinha 1,4 |
-| Experiência | Empresa, cargo e período em linhas distintas, à esquerda | Mesmo formato; período em 11 pt e cinza escuro |
-| Listas | Marcadores circulares; primeiro bloco de experiência com texto a aproximadamente 92,7 pt | Marcadores circulares, recuo de 36 pt a partir da margem |
+| Nome | Centralizado, 16 pt, negrito | Centralizado, 14 pt, negrito |
+| Cargo | Centralizado, aproximadamente 15 pt, negrito | Centralizado, 12,5 pt, negrito |
+| Contatos | Centralizados, uma linha, 12 pt, separador vertical | Mesmo formato em 10,5 pt; LinkedIn identificado pelo nome com URL completa no link |
+| Seções | Títulos centralizados, maiúsculas, aproximadamente 14 pt e linha cinza superior | Mesmo formato em 12 pt, linha de 0,5 pt |
+| Corpo | Aproximadamente 12 pt; responsabilidades justificadas, entrelinha próxima de 1,4 | 10,5 pt e entrelinha 1,32 |
+| Experiência | Empresa, cargo e período em linhas distintas, à esquerda | Mesmo formato; empresa em 12 pt, cargo em 10,5 pt e período em 10 pt e cinza escuro |
+| Listas | Marcadores circulares; primeiro bloco de experiência com texto a aproximadamente 92,7 pt | Marcadores circulares, recuo proporcional de 27 pt a partir da margem |
 | Educação | Instituição, curso e ano em linhas distintas | Mesmo formato com as duas formações reais |
-| Certificados | Título em negrito; instituição, ano e link sublinhado na linha seguinte | Mesmo formato com quatro certificados existentes |
+| Certificados | Título em negrito; instituição, ano e link sublinhado na linha seguinte | Mesmo formato com três certificados existentes |
 
-A referência contém pequenas variações de recuo entre experiências. O template usa o recuo do primeiro bloco, de forma consistente. As quebras dependem do texto real em cada idioma: não se introduziram quebras manuais nem redução de escala para fixar a quantidade de páginas.
+A referência contém pequenas variações de recuo entre experiências. O template usa um recuo proporcional consistente. As quebras dependem do texto real em cada idioma: não se introduziram quebras manuais nem escala de impressão reduzida. Os tamanhos em pontos e os espaçamentos foram ajustados diretamente; os projetos permanecem agrupados.
 
 A sequência é competências, experiência, projetos selecionados, educação, cursos e certificados. Os projetos têm seção própria e não são classificados como emprego ou contrato. O resumo separado foi omitido do PDF para seguir a abertura da referência diretamente pelas competências; os resumos do site continuam intactos. Idiomas integram a lista de competências, como na referência.
 
-O histórico profissional e as contribuições não foram reescritos. A atividade freelancer permanece sem período inventado. Os certificados são os quatro já selecionados para impressão no componente existente: Git/GitHub, estrutura de software, comunicação cliente-servidor e introdução ao Flutter. Títulos, instituições, anos e arquivos são reutilizados do cadastro existente. A lista de 17 certificados da página web permanece intacta.
+As três experiências existentes permanecem com suas empresas, funções e períodos. No PDF, a descrição de Instrutor de Informática foi substituída pelos três tópicos fornecidos pelo usuário, com tradução profissional em inglês e os dois resultados de mais de 100 alunos. A atividade freelancer permanece identificada como tal na mesma seção de experiência profissional, sem período ou cliente inventado. Os certificados são Git/GitHub, estrutura de software e comunicação cliente-servidor; apenas Introdução ao Flutter foi retirado da seleção do PDF. Títulos, instituições, anos e arquivos restantes são reutilizados do cadastro existente. A lista de 17 certificados da página web permanece intacta.
+
+Mr Roobot AI Office foi acrescentado aos projetos do PDF, identificado como experimental e em desenvolvimento. O escopo se limita à configuração de agentes especializados em arquitetura, backend, frontend e QA com Hermes Agent e à exploração da integração com DeskRPG. Ambas as ferramentas são atribuídas a terceiros. Não há alegação de conclusão, vínculo remunerado, cliente ou repositório público. Os dados adicionais e os tópicos de instrutor ficam na seleção editorial do PDF; os componentes visíveis e o design do site não foram alterados.
 
 ## Fontes e geração
 
@@ -35,11 +37,15 @@ O PDF de referência pertence ao material fornecido pelo usuário; não foi copi
 
 ## Validação
 
-- `npm run resume:pdf`: passou, com três páginas A4 por idioma.
-- Inspeção visual das seis páginas geradas e comparação com as três páginas da referência: cabeçalho, títulos, linhas divisórias, fontes, margens, recuos, blocos de experiência, educação e certificados conferidos; sem cortes ou sobreposições.
-- `node scripts/verify-resumes.mjs`: passou em PT/EN, desktop/mobile. Além dos fluxos de download, visualização e redirecionamento, verifica fatos profissionais, seleção de projetos, certificados, links, fontes Carlito incorporadas, centralização pelo texto do PDF, empresa/cargo/período em linhas consecutivas e margens de 20 mm em todas as páginas. A antiga exigência de uma página foi substituída por duas ou três, conforme a tarefa.
+- `npm run resume:pdf`: passou, com duas páginas A4 por idioma.
+- Inspeção visual das quatro páginas geradas a 96 dpi (escala equivalente a 100% no navegador) e comparação com as três páginas da referência: cabeçalho, títulos, linhas divisórias, fontes, margens, recuos, blocos de experiência, educação e certificados conferidos; sem cortes ou sobreposições.
+- `node scripts/verify-resumes.mjs`: passou em PT/EN, desktop/mobile. Além dos fluxos de download, visualização e redirecionamento, verifica fatos profissionais, seleção de projetos, certificados, links, fontes Carlito incorporadas, centralização pelo texto do PDF, empresa/cargo/período em linhas consecutivas e margens de 20 mm em todas as páginas. A verificação agora limita a paginação a no máximo duas páginas, recusa texto abaixo de 10 pt e detecta títulos de seção isolados.
 - `node scripts/verify-experience.mjs`: passou nos dois idiomas, desktop/mobile e nos cenários de falha/sucesso da API GitHub; experiência e projetos do site preservados.
 - `npm run build`: passou. O arquivo CSS do site manteve o mesmo hash (`index-aXyDzLFY.css`); os seletores do documento permanecem restritos a `.resume-document`, usado na impressão.
+- Na etapa anterior de compactação, o texto integral foi preservado. Na revisão de conteúdo atual, os testes verificam os três tópicos de instrutor em PT/EN, a inclusão do projeto experimental e a exclusão apenas do certificado de Flutter. As outras experiências, datas, projetos e certificados foram preservados.
+- Os três projetos permanecem agrupados na segunda página; espaçamento entre experiências reduzido de 36 para 20 pt, entre registros de 24 para 14 pt e antes das listas de 18 para 9 pt. Nenhum tamanho de texto inferior a 10 pt.
 - `git diff --check`: passou.
 
-Os avisos existentes de módulos sem `type` no `package.json` continuam sendo emitidos pelos scripts Node. Não houve alteração de experiências, dependências, rotas, componentes visíveis ou design do website. Sem push ou merge.
+Na primeira execução do ajuste final, a busca de cabeçalhos não reconheceu o título de projetos no início da segunda página: o texto extraído usa um caractere de quebra de página. O script agora normaliza esse separador antes de verificar a ordem dos títulos; a repetição passou, mantendo a verificação da ordem das seções.
+
+Os avisos existentes de módulos sem `type` no `package.json` continuam sendo emitidos pelos scripts Node. Não houve alteração de dependências, rotas, componentes visíveis ou design do website. As alterações editoriais dos PDFs seguem os dados e tópicos expressamente fornecidos pelo usuário. Alterações do ajuste final mantidas locais, sem novo commit, push ou merge; resultados apresentados ao usuário antes de qualquer novo commit.

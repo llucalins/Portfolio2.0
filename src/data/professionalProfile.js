@@ -4,8 +4,18 @@ export const professionalProfile = {
   portfolio: { value: 'lucasvirginio.is-a.dev', href: 'https://lucasvirginio.is-a.dev/' },
   resume: {
     projectIds: ['vmais-comunicacao', 'sistema-agendamento'],
-    certificateFilenames: ['EABD3805.pdf', 'OPCYCM0Y.pdf', 'HCRDIGHK.pdf', 'YTMYDEXJ.pdf'],
-    experienceBullets: { 'anderson-rios': 'resumePdf.andersonEditorialBullets' },
+    certificateFilenames: ['EABD3805.pdf', 'OPCYCM0Y.pdf', 'HCRDIGHK.pdf'],
+    additionalProjects: [
+      {
+        id: 'mr-roobot-ai-office',
+        title: 'Mr Roobot AI Office',
+        resume: { contributionKey: 'resumePdf.mrRoobotContribution', technologies: ['Hermes Agent', 'DeskRPG'] }
+      }
+    ],
+    experienceBullets: {
+      'anderson-rios': 'resumePdf.andersonEditorialBullets',
+      'esperanca-instructor': 'resumePdf.instructorBullets'
+    },
     skillGroups: [
       { titleKey: 'resumePdf.mobileFrontend', keys: ['skills.typescript', 'skills.react', 'skills.nextjs', 'skills.javascript', 'skills.html', 'skills.css', 'skills.reactNative'] },
       { titleKey: 'resumePdf.backendApis', keys: ['skills.java', 'skills.springBoot', 'skills.nodejs', 'skills.python', 'skills.restApis', 'skills.openaiApis'] },

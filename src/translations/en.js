@@ -49,7 +49,7 @@ export const en = {
 
   resumePdf: {
     skillsHeading: 'Skills',
-    experienceHeading: 'Experience',
+    experienceHeading: 'Professional experience',
     educationHeading: 'Education',
     certificatesHeading: 'Courses and certificates',
     courses: 'Courses',
@@ -60,6 +60,12 @@ export const en = {
     documentation: 'technical documentation',
     integration: 'systems integration',
     freelanceDescription: 'Development of web applications and Full Stack solutions.',
+    instructorBullets: [
+      'Planned and delivered computer skills training, fostering essential digital competencies and participant autonomy.',
+      'Trained more than 100 students in computing tools, digital productivity, and the use of technology in educational and creative contexts.',
+      'Monitored participants’ technical development, helping more than 100 students complete their training and earn certification during the period of employment.'
+    ],
+    mrRoobotContribution: 'Experimental project in development: configuration of specialized architecture, backend, frontend, and QA agents using Hermes Agent, and exploration of integration with DeskRPG. Hermes Agent and DeskRPG are third-party tools.',
     freelanceBullets: [
       'Implementation of web interfaces and integration between Front-end and APIs.',
       'Application structuring and integration with data persistence.'
