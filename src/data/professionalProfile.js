@@ -4,6 +4,7 @@ export const professionalProfile = {
   portfolio: { value: 'lucasvirginio.is-a.dev', href: 'https://lucasvirginio.is-a.dev/' },
   resume: {
     projectIds: ['vmais-comunicacao', 'sistema-agendamento'],
+    certificateFilenames: ['EABD3805.pdf', 'OPCYCM0Y.pdf', 'HCRDIGHK.pdf', 'YTMYDEXJ.pdf'],
     experienceBullets: { 'anderson-rios': 'resumePdf.andersonEditorialBullets' },
     skillGroups: [
       { titleKey: 'resumePdf.mobileFrontend', keys: ['skills.typescript', 'skills.react', 'skills.nextjs', 'skills.javascript', 'skills.html', 'skills.css', 'skills.reactNative'] },

@@ -2,7 +2,7 @@
 // Detecta automaticamente qualquer PDF colocado na pasta certificates
 
 // Lista de arquivos conhecidos com suas informações
-const KNOWN_CERTIFICATES = {
+export const KNOWN_CERTIFICATES = {
   'PRONATEC.pdf': {
     titleKey: 'pronatec',
     description: 'Formação técnica profissional através do Programa Nacional de Acesso ao Ensino Técnico e Emprego.',
