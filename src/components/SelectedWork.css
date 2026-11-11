@@ -5,24 +5,25 @@
 .experience-page .experience-section { padding: 0; margin-top: clamp(3.5rem, 7vw, 6rem); }
 .experience-section > h2 { padding-bottom: 1rem; border-bottom: 1px solid var(--color-border-strong); font-size: .875rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--color-accent); }
 .experience-employment, .experience-project { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--space-grid); padding-block: clamp(2rem, 4vw, 3rem); border-bottom: 1px solid var(--color-border); }
-.experience-period, .experience-project-heading > p { color: var(--color-muted); font-size: var(--type-small); margin-bottom: .75rem; }
-.experience-employment h3, .experience-project h3, .freelance-experience h3 { font-size: clamp(1.3rem, 2.2vw, 1.9rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.25; }
+.experience-period { color: var(--color-muted); font-size: var(--type-small); margin-bottom: .75rem; }
+.experience-employment h3, .experience-project-heading h3, .experience-project-heading h4 { font-size: clamp(1.3rem, 2.2vw, 1.9rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.25; }
 .experience-role { margin-top: .75rem; color: var(--color-accent); font-size: var(--type-body); }
 .experience-employment-body, .experience-project-body { min-width: 0; color: var(--color-secondary); font-size: var(--type-body); line-height: 1.75; }
 .experience-employment h4, .experience-project dt { margin-bottom: .5rem; color: var(--color-text); font-size: var(--type-small); font-weight: 600; }
 .experience-employment h4 { margin-top: 1.5rem; }
-.experience-employment ul { padding-left: 1.15rem; }
+.experience-employment ul { padding-left: 1.25rem; list-style: disc outside; }
+.experience-employment li::marker { color: var(--color-secondary); font-size: 1em; }
 .experience-employment li + li { margin-top: .5rem; }
-.experience-project dl > div + div { margin-top: 1.5rem; }
-.experience-project dd { margin: 0; }
-.experience-project dl > div:last-child dd { font-size: var(--type-small); }
+.experience-project-stack { margin-top: 1.5rem; }
+.experience-project-stack dd { margin: 0; font-size: var(--type-small); }
 .experience-section-intro { max-width: 45rem; margin-top: 1.5rem; color: var(--color-secondary); }
 .experience-project-links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 1.25rem; }
 .experience-project-links a { display: inline-flex; align-items: center; min-height: 2.75rem; gap: .5rem; color: var(--color-text); font-size: var(--type-small); text-decoration: underline; text-underline-offset: .35em; }
 .experience-project-links a:hover { color: var(--color-accent); }
 .experience-repository-fact, .work-api-note { color: var(--color-muted); font-size: var(--type-small); margin-top: 1rem; }
-.experience-page .freelance-experience { padding-top: 2rem; }
-.freelance-experience > p { max-width: 45rem; margin-top: .75rem; color: var(--color-secondary); }
+.independent-intro { max-width: 45rem; margin-top: 1.5rem; color: var(--color-secondary); line-height: 1.7; }
+.experience-independent-group { margin-top: 2.5rem; }
+.experience-independent-group > h3 { padding-bottom: .75rem; color: var(--color-text); font-size: 1.05rem; font-weight: 600; border-bottom: 1px solid var(--color-border); }
 @media (max-width: 700px) {
   .experience-employment, .experience-project { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
 }

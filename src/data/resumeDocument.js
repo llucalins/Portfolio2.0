@@ -1,5 +1,6 @@
 import { professionalProfile } from './professionalProfile.js';
 import { selectedWork } from './selectedWork.js';
+import { groupWork } from './workExperience.js';
 import { KNOWN_CERTIFICATES } from '../utils/autoDetector.js';
 import { pt } from '../translations/pt.js';
 import { en } from '../translations/en.js';
@@ -18,28 +19,22 @@ export function resumeMarkup(language = 'pt') {
   const list = (items) => `<ul>${items.map((item) => `<li>${escape(item)}</li>`).join('')}</ul>`;
   const projectMarkup = (project) => {
     const title = escape(localize(project.title));
-    const heading = project.repositoryUrl ? `<a href="${escape(project.repositoryUrl)}">${title}</a>` : title;
-    const contribution = project.resume ? t(project.resume.contributionKey) : project.scope[language];
+    const url = project.repositoryUrl || project.demoUrl;
+    const heading = url ? `<a href="${escape(url)}">${title}</a>` : title;
+    const contribution = project.resume ? t(project.resume.contributionKey) : project.description[language];
     const stack = project.resume?.technologies || project.stack;
-    return `<article class="document-project"><h3>${heading}</h3>${p(contribution)}${p(stack.join(' · '), 'document-stack')}</article>`;
+    return `<article class="document-project" data-project-id="${escape(project.id)}"><h3>${heading}</h3>${p(contribution)}${p(stack.join(' · '), 'document-stack')}</article>`;
   };
-  // Undated freelancer activity is deliberately separate from the dated chronology.
-  // Projects may enter that activity only with an explicitly confirmed engagement.
-  const freelanceProjects = selectedWork.filter((project) => project.engagement === 'freelance');
-  const freelance = `<article class="document-entry document-freelance">
-    <h3>${escape(t(professionalProfile.freelance.titleKey))}</h3>
-    ${p(t(professionalProfile.freelance.pdfDescriptionKey))}
-    ${list(t(professionalProfile.freelance.pdfBulletsKey))}
-    ${freelanceProjects.map(projectMarkup).join('')}
-  </article>`;
-  const projects = [...professionalProfile.resume.projectIds
+  const freelanceProjects = groupWork().freelance;
+  const independent = p(t(professionalProfile.independent.pdfDescriptionKey), 'document-independent-intro')
+    + freelanceProjects.map(projectMarkup).join('');
+  const projects = professionalProfile.resume.projectIds
     .map((id) => selectedWork.find((project) => project.id === id))
-    .filter((project) => project && project.engagement !== 'freelance'),
-    ...professionalProfile.resume.additionalProjects];
+    .filter(Boolean);
   const contacts = [...professionalProfile.contacts, professionalProfile.portfolio];
   const employment = professionalProfile.experiences.map((experience) => {
     const bulletsKey = professionalProfile.resume.experienceBullets[experience.id] || experience.resumeBulletsKey;
-    return `<article class="document-entry">
+    return `<article class="document-entry" data-experience-id="${escape(experience.id)}">
       <h3>${escape(t(experience.companyKey))}</h3>
       ${p(t(experience.titleKey), 'document-position')}
       ${p(t(experience.periodKey), 'document-period')}
@@ -47,8 +42,8 @@ export function resumeMarkup(language = 'pt') {
     </article>`;
   }).join('');
 
-  const skills = professionalProfile.resume.skillGroups.map((group) => `<li><strong>${escape(t(group.titleKey))}:</strong> ${escape(group.keys.map(t).join(', '))}</li>`).join('');
-  const languages = `<li><strong>${escape(t('resumePage.languages'))}:</strong> ${escape(professionalProfile.languages.map((item) => t(item.labelKey)).join(' · '))}</li>`;
+  const skills = professionalProfile.skillCategories.map((group) => `<li><strong>${escape(t(group.titleKey))}:</strong><span>${escape(group.skillKeys.map((key) => t(`skills.${key}`)).join(' · '))}</span></li>`).join('');
+  const languages = `<li><strong>${escape(t('resumePage.languages'))}:</strong><span>${escape(professionalProfile.languages.map((item) => t(item.labelKey)).join(' · '))}</span></li>`;
   const education = professionalProfile.education.map((item) => `<article class="document-education">
     <h3>${escape(t(`${item.baseKey}.institution`))}</h3>
     ${p(t(`${item.baseKey}.degree`), 'document-position')}
@@ -66,7 +61,8 @@ export function resumeMarkup(language = 'pt') {
       <p class="document-contacts">${contacts.map((contact) => `<a href="${escape(contact.href)}">${escape(contact.id === 'linkedin' ? t(contact.labelKey) : contact.value)}</a>`).join(' <strong> | </strong> ')}</p>
     </header>
     ${section(t('resumePdf.skillsHeading'), `<ul class="document-skills">${skills}${languages}</ul>`)}
-    ${section(t('resumePdf.experienceHeading'), employment + freelance)}
+    ${section(t('resumePdf.experienceHeading'), employment)}
+    ${section(t('experience.independentActivity'), independent, 'document-independent')}
     ${projects.length ? section(t('resumePdf.projectHeading'), projects.map(projectMarkup).join(''), 'document-projects') : ''}
     ${section(t('resumePdf.educationHeading'), education)}
     ${section(t('resumePdf.certificatesHeading'), p(t('resumePdf.courses'), 'document-courses-label') + certificates)}
@@ -102,15 +98,18 @@ export const resumeStyles = `
 .resume-document .document-period { color: #424242; font-size: 10pt; line-height: 1.2; margin-top: 2pt; break-after: avoid; }
 .resume-document .document-entry + .document-entry { margin-top: 20pt; }
 .resume-document ul { padding-left: 27pt; margin-top: 9pt; list-style-type: disc; }
-.resume-document li { text-align: justify; padding-left: 0; orphans: 2; widows: 2; }
+.resume-document li { text-align: left; padding-left: 0; orphans: 2; widows: 2; }
 .resume-document li::marker { content: '●   '; font-family: Arial, sans-serif; font-size: 10.5pt; }
-.resume-document .document-skills { padding-left: 18pt; margin-top: 0; line-height: 1.2; }
+.resume-document .document-skills { padding-left: 0; margin-top: 0; line-height: 1.25; list-style: none; }
+.resume-document .document-skills li { display: grid; grid-template-columns: 135pt minmax(0, 1fr); gap: 6pt; text-align: left; }
+.resume-document .document-skills li + li { margin-top: 4pt; }
+.resume-document .document-skills li::marker { content: none; }
 .resume-document .document-entry > h3, .resume-document .document-project > h3 { break-after: avoid; }
-.resume-document .document-freelance > p { margin-top: 2pt; }
+.resume-document .document-independent-intro { margin-bottom: 8pt; }
 .resume-document .document-project + .document-project, .resume-document .document-education + .document-education { margin-top: 14pt; }
-.resume-document .document-project > p { margin-top: 4pt; text-align: justify; }
+.resume-document .document-project > p { margin-top: 4pt; text-align: left; }
 .resume-document .document-stack { color: #424242; font-size: 10pt; }
-.resume-document .document-education, .resume-document .document-certificate { break-inside: avoid; }
+.resume-document .document-entry, .resume-document .document-project, .resume-document .document-education, .resume-document .document-certificate { break-inside: avoid; }
 .resume-document .document-projects { break-inside: avoid; }
 .resume-document .document-education h3, .resume-document .document-certificate h3 { font-size: 10.5pt; }
 .resume-document .document-courses-label { font-size: 11pt; text-transform: uppercase; text-decoration: underline; margin-bottom: 10pt; break-after: avoid; }

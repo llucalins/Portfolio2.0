@@ -26,22 +26,21 @@ const SelectedWork = () => {
     return () => { active = false; };
   }, []);
 
-  const renderProject = (project) => (
+  const renderProject = (project, Heading = 'h3') => (
     <article key={project.id} className="experience-project" data-project-id={project.id}>
       <div className="experience-project-heading">
-        <p>{localize(project.category)}</p>
-        <h3>{localize(project.title)}</h3>
+        <Heading>{localize(project.title)}</Heading>
       </div>
       <div className="experience-project-body">
-        <dl>
-          <div><dt>{t('experience.context')}</dt><dd>{project.description[language]}</dd></div>
-          <div><dt>{t('work.scope')}</dt><dd>{project.scope[language]}</dd></div>
-          <div><dt>{t('experience.technologies')}</dt><dd>{project.stack.join(' · ')}</dd></div>
+        <p className="experience-project-description">{project.description[language]}</p>
+        <dl className="experience-project-stack">
+          <dt>{t('experience.technologies')}</dt>
+          <dd>{project.stack.join(' · ')}</dd>
         </dl>
-        <div className="experience-project-links">
+        {(project.demoUrl || project.repositoryUrl) && <div className="experience-project-links">
           {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">{t('work.demo')} <span aria-hidden="true">↗</span></a>}
           {project.repositoryUrl && <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t('work.repositoryLabel')} ${localize(project.title)}`}>{t('work.repository')} <span aria-hidden="true">↗</span></a>}
-        </div>
+        </div>}
         {metadata[project.id]?.language && <p className="experience-repository-fact">{t('experience.repositoryLanguage')}: {metadata[project.id].language}</p>}
       </div>
     </article>
@@ -57,25 +56,34 @@ const SelectedWork = () => {
 
         <section className="experience-section" aria-labelledby="company-experience-title">
           <h2 id="company-experience-title">{t('experience.companies')}</h2>
-          {professionalProfile.experiences.map((experience) => (
-            <article className="experience-employment" key={experience.id} data-experience-id={experience.id}>
-              <header><p className="experience-period">{t(experience.periodKey)}</p><h3>{t(experience.companyKey)}</h3><p className="experience-role">{t(experience.titleKey)}</p></header>
-              <div className="experience-employment-body">
-                <p>{t(experience.descriptionKey)}</p>
-                {experience.bulletsKey && <><h4>{t('experience.responsibilities')}</h4><ul>{t(experience.resumeBulletsKey || experience.bulletsKey).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></>}
-              </div>
-            </article>
-          ))}
+          {professionalProfile.experiences.map((experience) => {
+            const bulletsKey = professionalProfile.resume.experienceBullets[experience.id] || experience.resumeBulletsKey;
+            const bullets = bulletsKey ? t(bulletsKey) : [t(experience.descriptionKey)];
+            return (
+              <article className="experience-employment" key={experience.id} data-experience-id={experience.id}>
+                <header><p className="experience-period">{t(experience.periodKey)}</p><h3>{t(experience.companyKey)}</h3><p className="experience-role">{t(experience.titleKey)}</p></header>
+                <div className="experience-employment-body">
+                  <ul>{bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+                </div>
+              </article>
+            );
+          })}
         </section>
 
-        <section className="experience-section" aria-labelledby="freelance-experience-title">
-          <h2 id="freelance-experience-title">{t('experience.freelance')}</h2>
+        <section className="experience-section" aria-labelledby="independent-activity-title">
+          <h2 id="independent-activity-title">{t('experience.independentActivity')}</h2>
           <FreelanceExperience />
-          {groups.freelance.map(renderProject)}
+          <div className="experience-independent-group" role="region" aria-labelledby="organization-work-title">
+            <h3 id="organization-work-title">{t('experience.organizations')}</h3>
+            {groups.freelance.map((project) => renderProject(project, 'h4'))}
+          </div>
+          <div className="experience-independent-group" role="region" aria-labelledby="authored-work-title">
+            <h3 id="authored-work-title">{t('experience.independent')}</h3>
+            {groups.independent.map((project) => renderProject(project, 'h4'))}
+          </div>
         </section>
 
-        {groups.independent.length > 0 && <section className="experience-section" aria-labelledby="independent-work-title"><h2 id="independent-work-title">{t('experience.independent')}</h2>{groups.independent.map(renderProject)}</section>}
-        {groups.unclassified.length > 0 && <section className="experience-section" aria-labelledby="complementary-work-title"><h2 id="complementary-work-title">{t('experience.complementary')}</h2><p className="experience-section-intro">{t('experience.complementaryIntro')}</p>{groups.unclassified.map(renderProject)}</section>}
+        {groups.unclassified.length > 0 && <section className="experience-section" aria-labelledby="complementary-work-title"><h2 id="complementary-work-title">{t('experience.complementary')}</h2><p className="experience-section-intro">{t('experience.complementaryIntro')}</p>{groups.unclassified.map((project) => renderProject(project))}</section>}
         {apiUnavailable && <p className="work-api-note" role="status">{t('work.apiUnavailable')}</p>}
       </div>
     </section>

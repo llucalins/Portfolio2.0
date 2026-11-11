@@ -49,3 +49,27 @@ O PDF de referência pertence ao material fornecido pelo usuário; não foi copi
 Na primeira execução do ajuste final, a busca de cabeçalhos não reconheceu o título de projetos no início da segunda página: o texto extraído usa um caractere de quebra de página. O script agora normaliza esse separador antes de verificar a ordem dos títulos; a repetição passou, mantendo a verificação da ordem das seções.
 
 Os avisos existentes de módulos sem `type` no `package.json` continuam sendo emitidos pelos scripts Node. Não houve alteração de dependências, rotas, componentes visíveis ou design do website. As alterações editoriais dos PDFs seguem os dados e tópicos expressamente fornecidos pelo usuário. Alterações do ajuste final mantidas locais, sem novo commit, push ou merge; resultados apresentados ao usuário antes de qualquer novo commit.
+
+## Memorial Monte Sinai — 2026
+
+A atuação freelancer antes descrita genericamente passa a identificar o Memorial Monte Sinai e o ano confirmado de 2026, sem acrescentar meses ou aprovação comercial definitiva. As três experiências anteriores e o título profissional foram preservados.
+
+O projeto tem classificação freelancer explícita e demonstração em https://d24we0nttwbgey.cloudfront.net, sem link de repositório. No website, aparece junto à experiência freelancer, seguindo o agrupamento existente. No PDF, as responsabilidades ficam em Experiência profissional e o resultado técnico em Projetos selecionados, sem repetir o projeto nas duas seções. Os textos PT/EN descrevem frontend, exportação estática, Amazon S3 privado, CloudFront, IAM e publicação com AWS CLI, conforme as informações fornecidas para esta atualização.
+
+Validação local:
+
+- `npm run resume:pdf`: PDFs PT/EN regenerados, duas páginas A4 por idioma.
+- `npm run build`: passou.
+- `node scripts/verify-experience.mjs`: passou em desktop e mobile, PT/EN; verificados agrupamento freelancer, tecnologias, link da demonstração, ausência de link de repositório e ausência de transbordamento horizontal.
+- `node scripts/verify-resumes.mjs`: passou em desktop e mobile, PT/EN; verificadas seleção de projetos, ano, links, downloads, margens de 20 mm, fontes a partir de 10 pt e duas páginas A4.
+- Inspeção visual das quatro páginas dos PDFs e capturas das seções freelancer em `/work` e `/resume`, desktop e mobile. Evidências locais em `/tmp/monte-sinai-review/`.
+- Teste de regressão: a substituição temporária de `repositoryUrl || demoUrl` por `repositoryUrl && demoUrl` fez a verificação falhar pela ausência do link da demonstração no documento de impressão. Código restaurado após o teste.
+
+Não há scripts npm de lint ou tipagem neste repositório; as menções a essas verificações no conteúdo descrevem o trabalho informado no projeto Memorial Monte Sinai. A validação móvel deste portfólio utiliza emulação Chromium, sem novo teste em aparelho físico. As verificações de navegador exigiram execução fora do sandbox devido à restrição de inicialização do Chromium. Permanece o aviso preexistente `MODULE_TYPELESS_PACKAGE_JSON` nos scripts Node.
+
+Sem novas dependências, mudanças de CSS, infraestrutura, commit, push, merge ou deploy. A pasta local `references/` permanece não rastreada e preservada.
+
+
+## Organização profissional consolidada
+
+A revisão consolidada substitui a organização descrita na etapa anterior: vínculos profissionais, atuação independente para organizações (Vmais/Memorial) e projetos autorais selecionados (Lava Auto/InfoD.beta/Mr Roobot). O Memorial permanece em apresentação ao cliente, com demonstração publicada. As competências agora usam quatro categorias compartilhadas. Ver `professional-organization-spec.md` e `professional-organization-review.md` para critérios, textos finais PT/EN, arquivos, evidências e limitações. PDFs regenerados com duas páginas A4 por idioma, fontes a partir de 10 pt e margens de 20 mm; sem commit, push, merge ou deploy.
