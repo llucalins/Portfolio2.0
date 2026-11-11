@@ -47,7 +47,7 @@ export const pt = {
   },
 
   resumePdf: {
-    skillsHeading: 'Competências',
+    skillsHeading: 'Competências técnicas',
     experienceHeading: 'Experiência profissional',
     educationHeading: 'Educação',
     certificatesHeading: 'Cursos e certificados',
@@ -58,25 +58,22 @@ export const pt = {
     debugging: 'debugging',
     documentation: 'documentação técnica',
     integration: 'integração de sistemas',
-    freelanceDescription: 'Desenvolvimento de aplicações web e soluções Full Stack.',
     instructorBullets: [
-      'Planejamento e condução de atividades de formação em informática, promovendo o desenvolvimento de competências digitais essenciais e a autonomia dos participantes.',
-      'Capacitação de mais de 100 alunos em ferramentas computacionais, produtividade digital e utilização de recursos tecnológicos aplicados a contextos educacionais e criativos.',
-      'Acompanhamento do desenvolvimento técnico dos participantes, contribuindo para a conclusão e certificação de mais de 100 alunos ao longo do período de atuação.'
+      'Planejamento e condução de atividades de formação em informática, com foco em competências digitais e autonomia dos participantes.',
+      'Capacitação e acompanhamento de mais de 100 alunos em ferramentas computacionais e produtividade digital, contribuindo para a conclusão e certificação da formação.'
     ],
-    mrRoobotContribution: 'Projeto experimental em desenvolvimento: configuração de agentes especializados em arquitetura, backend, frontend e QA com Hermes Agent e exploração da integração com DeskRPG. Hermes Agent e DeskRPG são ferramentas de terceiros.',
-    freelanceBullets: [
-      'Implementação de interfaces web e integração entre Front-end e APIs.',
-      'Estruturação de aplicações e integração com persistência de dados.'
-    ],
+    mrRoobotContribution: 'Configuração de agentes especializados em desenvolvimento de software com Hermes Agent e exploração da integração com DeskRPG. Ambas são ferramentas de terceiros.',
     andersonEditorialBullets: [
       'Desenvolvimento web com React, Next.js, TypeScript, JavaScript, Node.js e Python; implementação e consumo de APIs REST.',
-      'Recursos de medição de ambientes e projeção virtual de móveis com IA; participação na integração com APIs da OpenAI.',
+      'Participação em funcionalidades de medição de ambientes e projeção virtual de móveis com IA e na integração com APIs da OpenAI.',
       'Desenvolvimento mobile com React Native para Android e iOS: telas, componentes e funcionalidades.',
       'Participação na definição de arquitetura; Git, Docker, troubleshooting, correção de bugs e documentação.'
     ],
-    vmaisContribution: 'Interfaces React integradas à API Java/Spring Boot, funcionalidades administrativas, persistência relacional e ambiente Docker.',
-    schedulingContribution: 'Fluxos de catálogo, disponibilidade, confirmação e acompanhamento de reservas; painel administrativo e persistência PostgreSQL. Em desenvolvimento, com demonstração local e dados sintéticos.',
+    monteSinaiContribution: 'Frontend responsivo com componentes e animações, integração com WhatsApp e Google Maps, exportação estática e hospedagem S3/CloudFront. Automação de deploy com AWS CLI.',
+    vmaisContribution: 'Integração de frontend React e API REST Java/Spring Boot, com autenticação, agenda, funcionalidades administrativas, persistência PostgreSQL e ambiente Docker.',
+    schedulingContribution: 'Agendamento com catálogo, disponibilidade, confirmação e acompanhamento de reservas por código. Regras de negócio, APIs, validação de entrada, funcionalidades administrativas e persistência PostgreSQL.',
+    independentDescription: 'Desenvolvimento de software para organizações e de produtos autorais. Trabalhos para organizações:',
+    infoDBetaContribution: 'Atividades interativas de digitação e coordenação com mouse, com componentes React e gerenciamento de estados e eventos para desenvolver habilidades digitais.',
     projectHeading: 'Projetos selecionados',
     summary: 'Resumo profissional',
     summaryText: 'Desenvolvedor Full Stack com foco em TypeScript, aplicações web, integração de APIs, persistência de dados e inteligência artificial. Experiência profissional com React, Next.js, Node.js, Python e APIs da OpenAI, além de React Native para Android e iOS.',
@@ -104,7 +101,6 @@ export const pt = {
     experience: 'Experiência profissional',
     education: 'Formação',
     projects: 'Projetos relevantes',
-    scope: 'Escopo',
     repository: 'Ver repositório',
     languages: 'Idiomas',
     certificates: 'Certificados',
@@ -158,7 +154,7 @@ export const pt = {
         period: 'mai/2025 — dez/2025',
         title: 'Desenvolvedor Full Stack',
         company: 'Anderson Rios Consultoria · Remoto',
-        description: 'Desenvolvimento web e mobile com React Native para Android e iOS, incluindo interfaces interativas, funcionalidades de medição de ambientes e projeção virtual de móveis com IA e participação na integração com APIs da OpenAI.',
+        description: 'Desenvolvimento web com React, Next.js e TypeScript e mobile com React Native; APIs REST e participação em funcionalidades com IA e integrações com APIs da OpenAI.',
         bullets: [
           'Desenvolvimento de telas, interfaces e funcionalidades mobile com React Native para Android e iOS.',
           'Implementação de funcionalidades associadas à medição de ambientes e projeção virtual de móveis com IA.',
@@ -174,7 +170,7 @@ export const pt = {
         period: 'mar/2023 — ago/2025',
         title: 'Instrutor de Informática',
         company: 'Prefeitura de Esperança',
-        description: 'Suporte tecnológico e criação de atividades digitais educativas para o ensino de informática.'
+        description: 'Planejamento e condução de atividades de informática; capacitação e acompanhamento de mais de 100 alunos em ferramentas computacionais, produtividade e autonomia digital.'
       },
       administrative: {
         period: 'jan/2021 — mar/2023',
@@ -201,18 +197,27 @@ export const pt = {
 
   // Skills Section
   skills: {
-    title: 'Minhas Habilidades',
+    title: 'Competências técnicas',
     subtitle: 'Tecnologias e ferramentas que utilizo',
     // Category names
-    frontend: 'Frontend',
+    frontend: 'Front-end e Mobile',
     mobile: 'Mobile',
     ai: 'Integrações de IA',
     reactNative: 'React Native',
     openaiApis: 'APIs da OpenAI',
-    backend: 'Backend',
-    data: 'Dados',
+    backend: 'Back-end e Integrações',
+    data: 'Banco de Dados e Cloud',
     delivery: 'Ferramentas e entrega',
     knowledge: 'Conhecimentos',
+    engineering: 'Engenharia e Ferramentas',
+    automatedTests: 'Testes automatizados',
+    debugging: 'Debugging',
+    deployAutomation: 'Automação de deploy',
+    documentation: 'Documentação técnica',
+    amazonS3: 'Amazon S3',
+    cloudfront: 'Amazon CloudFront',
+    awsIam: 'AWS IAM',
+    awsCli: 'AWS CLI',
     typescript: 'TypeScript',
     javascript: 'JavaScript',
     react: 'React',
@@ -229,7 +234,7 @@ export const pt = {
     git: 'Git',
     github: 'GitHub',
     docker: 'Docker',
-    architecture: 'Arquitetura',
+    architecture: 'Arquitetura de aplicações web',
     devops: 'DevOps',
     cicd: 'CI/CD — conceitos',
     scrum: 'Scrum — familiaridade'
@@ -242,16 +247,15 @@ export const pt = {
 
   experience: {
     kicker: 'Trajetória profissional',
-    companies: 'Experiência em empresas',
+    companies: 'Experiência profissional',
     responsibilities: 'Responsabilidades técnicas',
-    technologies: 'Tecnologias e ferramentas',
-    context: 'Solução e contexto',
-    freelance: 'Desenvolvimento Freelancer',
-    freelanceRole: 'Desenvolvedor Full Stack — Freelancer',
-    freelanceDescription: 'Atuação em desenvolvimento Full Stack como freelancer.',
-    independent: 'Projetos independentes',
-    complementary: 'Trabalhos complementares',
-    complementaryIntro: 'Uma seleção de sistemas apresentados pelo contexto e pelo escopo técnico, sem associação a clientes ou contratos.',
+    technologies: 'Tecnologias',
+    independentActivity: 'Atuação independente',
+    organizations: 'Trabalhos para organizações',
+    independentIntro: 'Desenvolvimento de aplicações web para organizações e de produtos por iniciativa própria, com implementação de interfaces, APIs, regras de negócio, persistência e publicação conforme o escopo de cada projeto.',
+    independent: 'Projetos autorais',
+    complementary: 'Outros projetos',
+    complementaryIntro: 'Projetos complementares e experimentais apresentados pelas implementações e tecnologias utilizadas.',
     repositoryLanguage: 'Linguagem no repositório',
   },
 
@@ -259,8 +263,7 @@ export const pt = {
   work: {
     kicker: 'Portfólio',
     title: 'Experiência',
-    intro: 'Experiência profissional Full Stack com TypeScript, aplicações web e integração de APIs e IA, atuação freelancer e projetos complementares. Inclui experiência mobile com React Native.',
-    scope: 'Escopo e estado',
+    intro: 'Experiência profissional em empresas e instituições, desenvolvimento freelancer para organizações e produtos autorais. Aplicações, funcionalidades e tecnologias utilizadas no desenvolvimento.',
     stack: 'Stack',
     language: 'Linguagem',
     stars: 'estrelas',

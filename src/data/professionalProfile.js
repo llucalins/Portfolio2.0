@@ -3,25 +3,12 @@ export const professionalProfile = {
   roleKey: 'profile.title',
   portfolio: { value: 'lucasvirginio.is-a.dev', href: 'https://lucasvirginio.is-a.dev/' },
   resume: {
-    projectIds: ['vmais-comunicacao', 'sistema-agendamento'],
+    projectIds: ['sistema-agendamento', 'info-dbeta', 'mr-roobot-ai-office'],
     certificateFilenames: ['EABD3805.pdf', 'OPCYCM0Y.pdf', 'HCRDIGHK.pdf'],
-    additionalProjects: [
-      {
-        id: 'mr-roobot-ai-office',
-        title: 'Mr Roobot AI Office',
-        resume: { contributionKey: 'resumePdf.mrRoobotContribution', technologies: ['Hermes Agent', 'DeskRPG'] }
-      }
-    ],
     experienceBullets: {
       'anderson-rios': 'resumePdf.andersonEditorialBullets',
       'esperanca-instructor': 'resumePdf.instructorBullets'
-    },
-    skillGroups: [
-      { titleKey: 'resumePdf.mobileFrontend', keys: ['skills.typescript', 'skills.react', 'skills.nextjs', 'skills.javascript', 'skills.html', 'skills.css', 'skills.reactNative'] },
-      { titleKey: 'resumePdf.backendApis', keys: ['skills.java', 'skills.springBoot', 'skills.nodejs', 'skills.python', 'skills.restApis', 'skills.openaiApis'] },
-      { titleKey: 'resumePdf.dataTools', keys: ['skills.postgresql', 'skills.sql', 'skills.docker', 'skills.git', 'skills.github'] },
-      { titleKey: 'resumePdf.practices', keys: ['resumePdf.architecture', 'resumePdf.debugging', 'resumePdf.documentation', 'resumePdf.integration'] }
-    ]
+    }
   },
   heroStackKeys: ['typescript', 'react', 'nextjs', 'nodejs', 'postgresql', 'restApis', 'openaiApis'],
   summaryKeys: ['profile.summaryPrimary', 'profile.summarySecondary'],
@@ -45,11 +32,9 @@ export const professionalProfile = {
       href: 'https://linkedin.com/in/lucas-virginio-55311627b'
     }
   ],
-  freelance: {
-    titleKey: 'experience.freelanceRole',
-    descriptionKey: 'experience.freelanceDescription',
-    pdfDescriptionKey: 'resumePdf.freelanceDescription',
-    pdfBulletsKey: 'resumePdf.freelanceBullets'
+  independent: {
+    descriptionKey: 'experience.independentIntro',
+    pdfDescriptionKey: 'resumePdf.independentDescription'
   },
   experiences: [
     {
@@ -84,37 +69,22 @@ export const professionalProfile = {
     {
       id: 'frontend',
       titleKey: 'skills.frontend',
-      skillKeys: ['typescript', 'javascript', 'react', 'nextjs', 'html', 'css']
+      skillKeys: ['typescript', 'react', 'nextjs', 'javascript', 'reactNative', 'html', 'css']
     },
     {
       id: 'backend',
       titleKey: 'skills.backend',
-      skillKeys: ['nodejs', 'java', 'springBoot', 'python', 'restApis']
+      skillKeys: ['nodejs', 'java', 'springBoot', 'python', 'restApis', 'openaiApis']
     },
     {
       id: 'data',
       titleKey: 'skills.data',
-      skillKeys: ['postgresql', 'sql']
+      skillKeys: ['postgresql', 'sql', 'amazonS3', 'cloudfront', 'awsIam']
     },
     {
-      id: 'ai',
-      titleKey: 'skills.ai',
-      skillKeys: ['openaiApis']
-    },
-    {
-      id: 'mobile',
-      titleKey: 'skills.mobile',
-      skillKeys: ['reactNative']
-    },
-    {
-      id: 'delivery',
-      titleKey: 'skills.delivery',
-      skillKeys: ['git', 'github', 'docker']
-    },
-    {
-      id: 'specialties',
-      titleKey: 'skills.knowledge',
-      skillKeys: ['architecture', 'devops', 'cicd', 'scrum']
+      id: 'engineering',
+      titleKey: 'skills.engineering',
+      skillKeys: ['git', 'github', 'docker', 'awsCli', 'architecture', 'automatedTests', 'debugging', 'deployAutomation', 'documentation']
     }
   ],
   languages: [

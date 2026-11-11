@@ -5,10 +5,7 @@ import { useTranslation } from '../hooks/useTranslation';
 const FreelanceExperience = () => {
   const { t } = useTranslation();
   return (
-    <article className="freelance-experience">
-      <h3>{t(professionalProfile.freelance.titleKey)}</h3>
-      <p>{t(professionalProfile.freelance.descriptionKey)}</p>
-    </article>
+    <p className="independent-intro">{t(professionalProfile.independent.descriptionKey)}</p>
   );
 };
 

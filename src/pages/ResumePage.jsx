@@ -16,16 +16,14 @@ const ResumePage = () => {
   const [searchParams] = useSearchParams();
   const language = isPortuguese ? 'pt' : 'en';
   const skills = professionalProfile.skillCategories.map((category) => localizeSkillCategory(category, t));
-  const technologies = skills.filter((category) => category.id !== 'specialties');
-  const specialties = skills.find((category) => category.id === 'specialties');
   const workGroups = groupWork(selectedWork);
   const localize = (value) => typeof value === 'string' ? value : value[language];
-  const renderProject = (project) => (
+  const renderProject = (project, Heading = 'h3') => (
     <article key={project.id} className="resume-project" data-project-id={project.id}>
-      <h3>{localize(project.title)}</h3>
-      <p>{project.description[language]}</p>
-      <p><strong>{t('work.scope')}:</strong> {project.scope[language]}</p>
-      <p><strong>{t('experience.technologies')}:</strong> {project.stack.join(' · ')}</p>
+      <Heading>{localize(project.title)}</Heading>
+      <p className="resume-project-description">{project.description[language]}</p>
+      <p className="resume-project-stack"><strong>{t('experience.technologies')}:</strong> {project.stack.join(' · ')}</p>
+      {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">{t('work.demo')} <span aria-hidden="true">↗</span></a>}
       {project.repositoryUrl && <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t('work.repositoryLabel')} ${localize(project.title)}`}>{t('resumePage.repository')} <span aria-hidden="true">↗</span></a>}
     </article>
   );
@@ -60,10 +58,10 @@ const ResumePage = () => {
               <h2 id="resume-experience-title">{t('resumePage.experience')}</h2>
               <div className="resume-timeline">
                 {professionalProfile.experiences.map((experience) => {
-                  const bulletsKey = experience.resumeBulletsKey || experience.bulletsKey;
-                  const bullets = bulletsKey ? t(bulletsKey) : [];
+                  const bulletsKey = professionalProfile.resume.experienceBullets[experience.id] || experience.resumeBulletsKey || experience.bulletsKey;
+                  const bullets = bulletsKey ? t(bulletsKey) : [t(experience.descriptionKey)];
                   return (
-                    <article key={experience.id} className="resume-entry">
+                    <article key={experience.id} className="resume-entry" data-experience-id={experience.id}>
                       <div className="resume-entry-heading">
                         <div>
                           <h3>{t(experience.companyKey)}</h3>
@@ -71,31 +69,30 @@ const ResumePage = () => {
                         </div>
                         <time>{t(experience.periodKey)}</time>
                       </div>
-                      <p className="resume-entry-description">{t(experience.descriptionKey)}</p>
-                      {bullets.length > 0 && (
-                        <ul>{bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-                      )}
+                      <ul>{bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
                     </article>
                   );
                 })}
               </div>
             </section>
 
-            <section className="resume-section" aria-labelledby="resume-freelance-title">
-              <h2 id="resume-freelance-title">{t('experience.freelance')}</h2>
+            <section className="resume-section" aria-labelledby="resume-independent-title">
+              <h2 id="resume-independent-title">{t('experience.independentActivity')}</h2>
               <FreelanceExperience />
-              {workGroups.freelance.map(renderProject)}
+              <div className="resume-independent-group" role="region" aria-labelledby="resume-organizations-title">
+                <h3 id="resume-organizations-title">{t('experience.organizations')}</h3>
+                {workGroups.freelance.map((project) => renderProject(project, 'h4'))}
+              </div>
+              <div className="resume-independent-group" role="region" aria-labelledby="resume-authored-title">
+                <h3 id="resume-authored-title">{t('experience.independent')}</h3>
+                {workGroups.independent.map((project) => renderProject(project, 'h4'))}
+              </div>
             </section>
-
-            {workGroups.independent.length > 0 && <section className="resume-section" aria-labelledby="resume-independent-title">
-              <h2 id="resume-independent-title">{t('experience.independent')}</h2>
-              {workGroups.independent.map(renderProject)}
-            </section>}
 
             {workGroups.unclassified.length > 0 && <section className="resume-section" aria-labelledby="resume-projects-title">
               <h2 id="resume-projects-title">{t('experience.complementary')}</h2>
               <p className="resume-work-note">{t('experience.complementaryIntro')}</p>
-              {workGroups.unclassified.map(renderProject)}
+              {workGroups.unclassified.map((project) => renderProject(project))}
             </section>}
 
             <section className="resume-section" aria-labelledby="resume-education-title">
@@ -136,19 +133,12 @@ const ResumePage = () => {
 
             <section aria-labelledby="resume-technologies-title">
               <h2 id="resume-technologies-title">{t('resumePage.technologies')}</h2>
-              {technologies.map((category) => (
+              {skills.map((category) => (
                 <div key={category.id} className="resume-skill-group">
                   <h3>{category.title}</h3>
                   <p>{category.skills.join(' · ')}</p>
                 </div>
               ))}
-            </section>
-
-            <section aria-labelledby="resume-specialties-title">
-              <h2 id="resume-specialties-title">{t('resumePage.specialties')}</h2>
-              <ul className="resume-specialties">
-                {specialties.skills.map((skill) => <li key={skill}>{skill}</li>)}
-              </ul>
             </section>
 
             <section aria-labelledby="resume-languages-title">

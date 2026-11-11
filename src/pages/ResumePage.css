@@ -17,12 +17,13 @@
 .resume-timeline, .resume-education-list { display: grid; }
 .resume-entry, .resume-education-item, .resume-project { padding: 1.75rem 0; border-bottom: 1px solid var(--color-border); break-inside: avoid; }
 .resume-entry-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; }
-.resume-entry h3, .resume-education-item h3, .resume-project h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
+.resume-entry h3, .resume-education-item h3, .resume-project h3, .resume-project h4 { font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
 .resume-entry-heading div > p, .resume-education-item div > p { margin-top: .2rem; color: var(--color-accent-cool); font-size: var(--type-small); }
 .resume-entry time, .resume-education-item time { color: var(--color-muted); font-size: var(--type-label); white-space: normal; }
-.resume-entry-description, .resume-education-item > p, .resume-project > p { margin-top: .85rem; color: var(--color-secondary); font-size: .88rem; line-height: 1.65; }
-.resume-entry ul { margin-top: 1rem; padding-left: 1rem; color: var(--color-secondary); font-size: var(--type-small); line-height: 1.6; }
-.resume-entry li + li { margin-top: .45rem; }
+.resume-education-item > p, .resume-project > p { margin-top: .85rem; color: var(--color-secondary); font-size: .88rem; line-height: 1.65; }
+.resume-entry ul { margin-top: 1rem; padding-left: 1.25rem; list-style: disc outside; color: var(--color-secondary); font-size: var(--type-body); line-height: 1.75; }
+.resume-entry li::marker { color: var(--color-secondary); font-size: 1em; }
+.resume-entry li + li { margin-top: .5rem; }
 .resume-education-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .25rem 1rem; }
 .resume-education-item > p { grid-column: 1 / -1; }
 .resume-project a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .6rem; margin-top: 1rem; border-bottom: 1px solid var(--color-border-strong); font-size: var(--type-small); text-decoration: none; }
@@ -58,7 +59,6 @@
   .resume-print-document { display: block; }
 }
 
-/* Web-only work history; static PDF assets are preserved. */
-.resume-primary .freelance-experience { padding-block: 1.75rem; border-bottom: 1px solid var(--color-border); }
-.resume-primary .freelance-experience h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.35; }
-.resume-primary .freelance-experience p, .resume-work-note { color: var(--color-secondary); font-size: var(--type-body); line-height: 1.65; margin-top: .85rem; }
+/* Subgroups preserve the existing resume hierarchy and spacing scale. */
+.resume-independent-group { margin-top: 2rem; }
+.resume-independent-group > h3 { font-size: 1rem; font-weight: 600; color: var(--color-accent-cool); }

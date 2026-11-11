@@ -24,10 +24,42 @@ try {
     assert.equal(await page.locator('.resume-certificates li').count(), 17);
     assert.equal(await page.locator('.resume-entry').count(), professionalProfile.experiences.length);
     assert.equal(await page.locator('.resume-project').count(), selectedWork.length);
-    const experienceHeadings = await page.locator('.resume-print-document .document-entry').evaluateAll((entries) => entries.map((entry) => entry.closest('section').querySelector('h2').textContent));
-    assert.deepEqual(experienceHeadings, Array(professionalProfile.experiences.length + 1).fill((language === 'pt' ? pt : en).resumePdf.experienceHeading), 'Employment and freelance activity must share one professional experience section');
-    assert.equal(await page.locator('.resume-print-document .document-freelance .document-period').count(), 0, 'Freelance activity must not acquire invented dates');
-    assert.equal(await page.locator('.resume-print-document .document-projects .document-entry').count(), 0, 'Projects must remain separate from employment');
+    const copy = language === 'pt' ? pt : en;
+    const t = (key) => key.split('.').reduce((value, part) => value[part], copy);
+    const document = page.locator('.resume-print-document');
+    const experienceHeadings = await document.locator('.document-entry').evaluateAll((entries) => entries.map((entry) => entry.closest('section').querySelector('h2').textContent));
+    assert.deepEqual(experienceHeadings, Array(3).fill(copy.resumePdf.experienceHeading), 'Only institutional employment belongs to professional experience');
+    assert.deepEqual(await document.locator('.document-independent [data-project-id]').evaluateAll((nodes) => nodes.map((node) => node.dataset.projectId)), ['vmais-comunicacao', 'memorial-monte-sinai']);
+    assert.deepEqual(await document.locator('.document-projects [data-project-id]').evaluateAll((nodes) => nodes.map((node) => node.dataset.projectId)), ['sistema-agendamento', 'info-dbeta', 'mr-roobot-ai-office']);
+    assert.equal(await document.locator('.document-independent .document-period').count(), 0, 'Do not invent an activity period');
+    assert.equal(await document.locator('[data-project-id="memorial-monte-sinai"] h3 a').getAttribute('href'), 'https://d24we0nttwbgey.cloudfront.net');
+    assert.ok((await document.locator('[data-project-id="memorial-monte-sinai"]').innerText()).includes('AWS CLI'));
+    assert.equal(await document.locator('.document-projects .document-entry').count(), 0, 'Projects must remain separate from employment');
+    assert.equal(await document.locator('[data-project-id]').count(), 5);
+    for (const id of ['vmais-comunicacao', 'memorial-monte-sinai', 'sistema-agendamento', 'info-dbeta', 'mr-roobot-ai-office']) assert.equal(await document.locator(`[data-project-id="${id}"]`).count(), 1, `Duplicated PDF project: ${id}`);
+    assert.deepEqual(await document.locator('.document-skills li strong').allTextContents(), [...professionalProfile.skillCategories.map((category) => `${t(category.titleKey)}:`), `${t('resumePage.languages')}:`]);
+    const responsibilityLists = await document.locator('.document-entry').evaluateAll((entries) => entries.map((entry) => {
+      const list = entry.querySelector(':scope > ul');
+      const css = getComputedStyle(list);
+      const item = getComputedStyle(list.firstElementChild);
+      const marker = getComputedStyle(list.firstElementChild, '::marker');
+      return {
+        count: list.children.length,
+        redundantParagraphs: entry.querySelectorAll(':scope > p:not(.document-position):not(.document-period)').length,
+        style: [css.paddingLeft, css.marginTop, css.listStyleType, css.listStylePosition, item.fontSize, item.lineHeight, marker.content, marker.fontSize, marker.fontFamily]
+      };
+    }));
+    assert.deepEqual(responsibilityLists.map((list) => list.count), [4, 2, 1], 'All PDF experiences must use semantic responsibility lists');
+    for (const list of responsibilityLists) {
+      assert.equal(list.redundantParagraphs, 0);
+      assert.deepEqual(list.style, responsibilityLists[0].style, 'PDF responsibility markers, indentation and typography must be uniform');
+    }
+    const projectStructures = await document.locator('.document-project').evaluateAll((projects) => projects.map((project) => [...project.children].map((child) => child.tagName)));
+    for (const structure of projectStructures) assert.deepEqual(structure, ['H3', 'P', 'P'], 'PDF projects share title, description and technology structure');
+    const projectDescriptions = await document.locator('.document-project > p:not(.document-stack)').allTextContents();
+    for (const description of projectDescriptions) {
+      assert.doesNotMatch(description, /em desenvolvimento(?! de software)|in development|dados sintéticos|synthetic data|demonstração local|local demonstration|homologa|apresentação ao cliente|being presented to the client|aprovação|approval/i);
+    }
     const downloadEvent = page.waitForEvent('download');
     await page.locator('.resume-download-btn').click();
     const download = await downloadEvent;
@@ -57,8 +89,6 @@ try {
     const text = execFileSync('pdftotext', [expected, '-'], { encoding: 'utf8' });
     const normalize = (value) => value.replace(/\s+/g, ' ').trim();
     const normalizedText = normalize(text);
-    const copy = language === 'pt' ? pt : en;
-    const t = (key) => key.split('.').reduce((value, part) => value[part], copy);
     await page.goto('http://127.0.0.1:3001/work');
     for (const experience of professionalProfile.experiences) {
       const webText = normalize(await page.locator(`[data-experience-id="${experience.id}"]`).innerText());
@@ -70,17 +100,22 @@ try {
       const pdfFacts = pdfBulletsKey ? t(pdfBulletsKey) : [t(experience.descriptionKey)];
       for (const fact of pdfFacts) assert.ok(normalizedText.includes(normalize(fact)), `PDF responsibility missing: ${fact}`);
     }
-    for (const fact of [t(professionalProfile.freelance.titleKey), t(professionalProfile.freelance.pdfDescriptionKey), ...t(professionalProfile.freelance.pdfBulletsKey)]) {
-      assert.ok(normalizedText.includes(normalize(fact)), `Freelance responsibility missing: ${fact}`);
+    assert.ok(normalizedText.includes(normalize(t(professionalProfile.independent.pdfDescriptionKey))));
+    const professionalText = normalizedText.split(t('experience.independentActivity').toUpperCase())[0];
+    const independentText = normalizedText.split(t('experience.independentActivity').toUpperCase())[1].split(t('resumePdf.projectHeading').toUpperCase())[0];
+    const projectText = normalizedText.split(t('resumePdf.projectHeading').toUpperCase())[1].split(t('resumePdf.educationHeading').toUpperCase())[0];
+    for (const category of professionalProfile.skillCategories) {
+      assert.ok(normalizedText.includes(normalize(t(category.titleKey))), `Missing skill category: ${category.id}`);
+      for (const key of category.skillKeys) assert.ok(normalizedText.includes(normalize(t(`skills.${key}`))), `Missing PDF skill: ${key}`);
     }
-    const projectHeading = t('resumePdf.projectHeading').toUpperCase();
-    const experienceText = normalizedText.split(projectHeading)[0];
     for (const project of selectedWork) {
       const title = typeof project.title === 'string' ? project.title : project.title[language];
       const included = project.engagement === 'freelance' || professionalProfile.resume.projectIds.includes(project.id);
       assert.equal(normalizedText.includes(title), included, `Wrong PDF project selection: ${title}`);
-      if (project.engagement !== 'freelance') assert.ok(!experienceText.includes(title), `Project classified as freelance without confirmation: ${title}`);
+      assert.ok(!professionalText.includes(title), `Project incorrectly presented as employment: ${title}`);
       if (included) {
+        assert.equal(normalizedText.split(title).length - 1, 1, `Duplicated PDF title: ${title}`);
+        assert.ok((project.engagement === 'freelance' ? independentText : projectText).includes(title), `Wrong PDF section: ${title}`);
         assert.ok(normalizedText.includes(normalize(t(project.resume.contributionKey))));
         for (const technology of project.resume.technologies) {
           assert.ok(project.stack.includes(technology), `Technology missing in factual project stack: ${technology}`);
@@ -88,21 +123,18 @@ try {
         }
       }
     }
-    for (const project of professionalProfile.resume.additionalProjects) {
-      assert.ok(normalizedText.includes(project.title));
-      assert.ok(!experienceText.includes(project.title), 'Experimental project classified as paid work');
-      assert.ok(normalizedText.includes(normalize(t(project.resume.contributionKey))));
-      for (const tool of project.resume.technologies) assert.ok(normalizedText.includes(tool));
-      assert.equal(project.repositoryUrl, undefined, 'Experimental project has no confirmed public repository');
+    assert.equal(selectedWork.find((project) => project.id === 'mr-roobot-ai-office').repositoryUrl, undefined);
+    for (const project of selectedWork.filter((item) => item.resume)) {
+      const summary = t(project.resume.contributionKey);
+      assert.ok(summary.split(/\s+/).length < project.description[language].split(/\s+/).length, `PDF summary must be shorter than web copy: ${project.id}`);
     }
-    assert.ok(normalizedText.includes(language === 'pt' ? 'Projeto experimental em desenvolvimento' : 'Experimental project in development'));
     assert.ok(normalizedText.includes(language === 'pt' ? 'ferramentas de terceiros' : 'third-party tools'));
     assert.doesNotMatch(normalizedText, /Introdução ao Flutter|Introduction to Flutter/);
     assert.deepEqual(professionalProfile.resume.certificateFilenames, ['EABD3805.pdf', 'OPCYCM0Y.pdf', 'HCRDIGHK.pdf'], 'Only the Flutter course should be removed');
     assert.ok(normalizedText.includes(normalize(t(professionalProfile.roleKey))), 'PDF positioning title missing');
     assert.doesNotMatch(normalizedText, /Disponibilidade e reservas em planejamento|Availability and bookings remain planned/);
     assert.doesNotMatch(normalizedText, /Web & Mobile/);
-    const headings = ['skillsHeading', 'experienceHeading', 'projectHeading', 'educationHeading', 'certificatesHeading'].map((key) => t(`resumePdf.${key}`));
+    const headings = [t('resumePdf.skillsHeading'), t('resumePdf.experienceHeading'), t('experience.independentActivity'), t('resumePdf.projectHeading'), t('resumePdf.educationHeading'), t('resumePdf.certificatesHeading')];
     let previous = -1;
     for (const heading of headings) { const index = text.replace(/\f/g, '\n').toLowerCase().indexOf(`\n${heading.toLowerCase()}\n`); assert.ok(index > previous, heading); previous = index; }
     assert.match(text, /Anderson Rios Consultoria/);
@@ -121,7 +153,7 @@ try {
     const links = execFileSync('pdfinfo', ['-url', expected], { encoding: 'utf8' });
     const expectedLinks = [...professionalProfile.contacts, professionalProfile.portfolio].map((contact) => contact.href);
     for (const project of selectedWork.filter((project) => project.engagement === 'freelance' || professionalProfile.resume.projectIds.includes(project.id))) {
-      const url = project.repositoryUrl;
+      const url = project.repositoryUrl || project.demoUrl;
       if (url) expectedLinks.push(url);
     }
     for (const filename of professionalProfile.resume.certificateFilenames) {
@@ -182,7 +214,7 @@ try {
       employmentPages.push(found);
     }
     assert.ok(employmentPages.length === professionalProfile.experiences.length);
-    console.log(`${mode}/${language}: static download bytes match; PDF view and legacy redirect OK; no window.print; complete resume and 17 certificates; PDF facts and project classification verified; freelancer present; text, links, centered headings, employment blocks, fonts and 20 mm margins OK`);
+    console.log(`${mode}/${language}: static download bytes match; PDF view and legacy redirect OK; no window.print; complete resume and 17 certificates; PDF facts and project classification verified; independent work and selected projects separated without duplication; text, links, centered headings, employment blocks, fonts and 20 mm margins OK`);
     await context.close();
   }
   }
