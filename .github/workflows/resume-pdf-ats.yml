@@ -1,0 +1,29 @@
+name: Verify resume PDF text extraction
+on:
+  push:
+    branches: [fix/ats-pdf-font-extraction-2026]
+  pull_request:
+    paths:
+      - 'scripts/generate-resumes.mjs'
+      - 'src/data/resumeDocument.js'
+      - 'scripts/test-resume-extraction.mjs'
+      - '.github/workflows/resume-pdf-ats.yml'
+  workflow_dispatch:
+jobs:
+  test-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - run: npm run resume:pdf
+      - run: node scripts/test-resume-extraction.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ats-tested-resumes
+          path: public/resumes/*.pdf
