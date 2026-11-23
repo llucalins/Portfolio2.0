@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "resume:pdf": "node scripts/generate-resumes.mjs"
+    "resume:pdf": "node scripts/generate-resumes.mjs",
+    "resume:validate": "python3 scripts/validate-resume-ats.py",
+    "resume:check": "npm run resume:pdf && npm run resume:validate"
   },
   "dependencies": {
     "ogl": "^1.0.11",

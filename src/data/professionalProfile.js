@@ -3,11 +3,12 @@ export const professionalProfile = {
   roleKey: 'profile.title',
   portfolio: { value: 'lucasvirginio.is-a.dev', href: 'https://lucasvirginio.is-a.dev/' },
   resume: {
-    projectIds: ['sistema-agendamento', 'info-dbeta', 'mr-roobot-ai-office'],
+    projectIds: ['sistema-agendamento', 'grow-ai', 'info-dbeta'],
     certificateFilenames: ['EABD3805.pdf', 'OPCYCM0Y.pdf', 'HCRDIGHK.pdf'],
     experienceBullets: {
       'anderson-rios': 'resumePdf.andersonEditorialBullets',
-      'esperanca-instructor': 'resumePdf.instructorBullets'
+      'esperanca-instructor': 'resumePdf.instructorBullets',
+      'esperanca-administrative': 'resumePdf.administrativeBullets'
     }
   },
   heroStackKeys: ['typescript', 'react', 'nextjs', 'nodejs', 'postgresql', 'restApis', 'openaiApis'],

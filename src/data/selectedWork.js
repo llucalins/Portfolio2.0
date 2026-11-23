@@ -56,6 +56,7 @@ export const selectedWork = [
   },
   {
     id: 'grow-ai',
+    resume: { contributionKey: 'resumePdf.growContribution', technologies: ['Java 21', 'Spring Boot', 'PostgreSQL', 'REST APIs', 'Local AI'] },
     kind: 'primary',
     engagement: 'unclassified',
     title: 'Grow AI',
