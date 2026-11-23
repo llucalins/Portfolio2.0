@@ -71,14 +71,12 @@ export function resumeMarkup(language = 'pt') {
 
 // All selectors are scoped to the hidden print document; the website keeps its design.
 export const resumeStyles = `
-@font-face { font-family: "Resume Carlito"; src: url("/fonts/carlito/Carlito-Regular.ttf") format("truetype"); font-style: normal; font-weight: 400; }
-@font-face { font-family: "Resume Carlito"; src: url("/fonts/carlito/Carlito-Bold.ttf") format("truetype"); font-style: normal; font-weight: 700; }
 @page { size: A4; margin: 20mm;
   @top-left { content: none; } @top-center { content: none; } @top-right { content: none; }
   @bottom-left { content: none; } @bottom-center { content: none; } @bottom-right { content: none; }
 }
 .resume-document {
-  font-family: "Resume Carlito", Calibri, sans-serif; font-size: 10.5pt; font-weight: 400;
+  font-family: Arial, Helvetica, sans-serif; font-size: 10.5pt; font-weight: 400;
   line-height: 1.32; color: #000; background: #fff; text-align: left;
   -webkit-print-color-adjust: exact; print-color-adjust: exact;
 }
