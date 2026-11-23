@@ -1,0 +1,2 @@
+PyMuPDF==1.26.7
+pdfminer.six==20250506

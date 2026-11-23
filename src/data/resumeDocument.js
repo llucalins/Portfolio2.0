@@ -79,6 +79,7 @@ export const resumeStyles = `
 }
 .resume-document {
   font-family: "Resume Carlito", Calibri, sans-serif; font-size: 10.5pt; font-weight: 400;
+  font-feature-settings: "liga" 0, "clig" 0, "dlig" 0, "calt" 0;
   line-height: 1.32; color: #000; background: #fff; text-align: left;
   -webkit-print-color-adjust: exact; print-color-adjust: exact;
 }

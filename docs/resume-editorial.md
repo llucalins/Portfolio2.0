@@ -2,6 +2,12 @@
 
 Atualizado em 4 de novembro de 2026. O template de `resumeDocument.js` reproduz a organização visual do currículo fornecido em `references/cv_referencia.pdf`, inspecionado visualmente nas três páginas e medido com Poppler. O conteúdo permanece o de Lucas Virginio. No ajuste final, a escala tipográfica e os espaçamentos foram compactados para limitar os dois idiomas a duas páginas, preservando a identidade visual.
 
+## Validação de extração ATS
+
+O PDF é gerado pelo Chromium com Carlito local incorporada. As substituições tipográficas de ligaduras e alternativas contextuais estão desativadas no documento de impressão para preservar os caracteres originais na extração. A validação compara, em PT e EN, o texto e a pontuação extraídos com o HTML produzido pelo mesmo template, na ordem de leitura, tolerando apenas espaços, quebras de linha, marcadores visuais e maiúsculas de títulos. Ela também verifica termos técnicos, URLs, fontes incorporadas, mapas ToUnicode e caracteres privados, ligaduras Unicode ou substituições inesperadas. O pdfminer.six usa ordenação geométrica (`boxes_flow=None`) porque sua heurística padrão coloca o título centralizado "Education" antes da linha de tecnologias visualmente anterior no PDF inglês.
+
+Instale somente as ferramentas de teste em um ambiente Python isolado: `python3 -m pip install -r scripts/resume-ats-requirements.txt`. Depois execute `npm run resume:check` para gerar e validar ambos os PDFs, ou `npm run resume:validate` para conferir os arquivos já gerados.
+
 ## Medidas e organização
 
 | Elemento | Referência | Template de Lucas |
