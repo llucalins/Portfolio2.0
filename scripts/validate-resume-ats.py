@@ -3,6 +3,7 @@
 from html.parser import HTMLParser
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import sys
 import unicodedata
@@ -13,7 +14,16 @@ from pdfminer.layout import LAParams
 
 
 ROOT = Path(__file__).resolve().parents[1]
-KEYWORDS = ("TypeScript", "React", "Next.js", "PostgreSQL", "Spring Boot", "GitHub")
+KEYWORDS = ("React", "TypeScript", "JavaScript", "Python", "Git", "PostgreSQL", "Next.js", "Node.js", "Spring Boot", "GitHub", "Ollama", "Open-Meteo")
+CONTACTS = ("Lvirginio.dev@gmail.com", "github.com/llucalins", "linkedin.com/in/lucas-virginio-55311627b", "lucasvirginio.is-a.dev")
+HEADINGS = {
+    "pt": ("Resumo profissional", "Competências técnicas", "Experiência profissional", "Projetos", "Formação acadêmica"),
+    "en": ("Professional summary", "Technical skills", "Professional experience", "Projects", "Education"),
+}
+DATES = {
+    "pt": ("mai/2025 — dez/2025", "mar/2023 — ago/2025", "jan/2021 — mar/2023"),
+    "en": ("May 2025 — Dec 2025", "Mar 2023 — Aug 2025", "Jan 2021 — Mar 2023"),
+}
 FORBIDDEN = re.compile(r"[\ue000-\uf8ff\ufb00-\ufb06\ufffd\ufffe\uffff]")
 
 
@@ -61,7 +71,7 @@ def validate_text(label, extracted, authored):
         raise AssertionError(f"{label}: caracteres inválidos: {invalid[:5]}")
 
     for keyword in KEYWORDS:
-        if keyword not in extracted:
+        if not re.search(r"(?<!\w)" + re.escape(keyword) + r"(?!\w)", extracted):
             raise AssertionError(f"{label}: palavra-chave ausente ou corrompida: {keyword}")
 
     expected, actual = words(authored), words(extracted)
@@ -88,6 +98,9 @@ def validate_pdf(language):
     suffix = "en" if language == "en" else "pt-br"
     pdf = ROOT / "public" / "resumes" / f"lucas-virginio-{suffix}.pdf"
     authored, expected_links = authored_resume(language)
+    summary = authored.split(HEADINGS[language][0], 1)[-1].split(HEADINGS[language][1], 1)[0]
+    if not 50 <= len(words(summary)) <= 70:
+        raise AssertionError(f"{pdf.name}: resumo fora do intervalo de 50–70 palavras")
     with fitz.open(pdf) as document:
         for page in document:
             for xref, *_ in page.get_fonts():
@@ -104,13 +117,31 @@ def validate_pdf(language):
     missing_links = sorted(set(map(canonical, expected_links)) - set(map(canonical, filter(None, links))))
     if missing_links:
         raise AssertionError(f"{pdf.name}: URLs ausentes: {missing_links}")
-    results = {
-        "PyMuPDF": validate_text(f"{pdf.name}/PyMuPDF", pymupdf_text, authored),
-        "pdfminer.six": validate_text(
-            f"{pdf.name}/pdfminer.six",
-            extract_text(str(pdf), laparams=LAParams(boxes_flow=None)), authored
-        ),
+    extracted_by_engine = {
+        "PyMuPDF": pymupdf_text,
+        "pdfminer.six": extract_text(str(pdf), laparams=LAParams(boxes_flow=None)),
     }
+    if shutil.which("pdftotext"):
+        extracted_by_engine["pdftotext"] = subprocess.check_output(
+            ["pdftotext", "-layout", str(pdf), "-"], text=True
+        )
+    results = {engine: validate_text(f"{pdf.name}/{engine}", extracted, authored)
+               for engine, extracted in extracted_by_engine.items()}
+    for engine, extracted in extracted_by_engine.items():
+        bullet_lines = [line for line in extracted.splitlines() if line.lstrip().startswith("●")]
+        if len(bullet_lines) != 8 or extracted.count("●") != 8:
+            raise AssertionError(f"{pdf.name}/{engine}: responsabilidades sem oito bullets individuais")
+        positions = []
+        for heading in HEADINGS[language]:
+            match = re.search(r"(?mi)^\s*" + re.escape(heading) + r"\s*$", extracted)
+            if not match:
+                raise AssertionError(f"{pdf.name}/{engine}: seção convencional ausente: {heading}")
+            positions.append(match.start())
+        if positions != sorted(positions):
+            raise AssertionError(f"{pdf.name}/{engine}: seções fora da ordem esperada")
+        for fact in (*DATES[language], *CONTACTS):
+            if fact not in extracted:
+                raise AssertionError(f"{pdf.name}/{engine}: data ou contato ausente: {fact}")
     print(f"{pdf.name}: texto integral e em ordem, {len(expected_links)} URLs; "
           + ", ".join(f"{engine} {count} palavras" for engine, count in results.items()))
 

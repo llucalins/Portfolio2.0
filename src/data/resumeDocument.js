@@ -58,8 +58,9 @@ export function resumeMarkup(language = 'pt') {
 
   return `<article class="resume-document" lang="${language === 'pt' ? 'pt-BR' : 'en'}">
     <header><h1>${escape(professionalProfile.name)}</h1>${p(t(professionalProfile.roleKey), 'document-role')}
-      <p class="document-contacts">${contacts.map((contact) => `<a href="${escape(contact.href)}">${escape(contact.id === 'linkedin' ? t(contact.labelKey) : contact.value)}</a>`).join(' <strong> | </strong> ')}</p>
+      <p class="document-contacts">${contacts.map((contact) => `<a href="${escape(contact.href)}">${escape(contact.value)}</a>`).join(' <strong> | </strong> ')}</p>
     </header>
+    ${section(t('resumePdf.summary'), p(t('resumePdf.summaryText')), 'document-summary')}
     ${section(t('resumePdf.skillsHeading'), `<ul class="document-skills">${skills}${languages}</ul>`)}
     ${section(t('resumePdf.experienceHeading'), employment)}
     ${section(t('experience.independentActivity'), independent, 'document-independent')}
@@ -87,7 +88,7 @@ export const resumeStyles = `
 .resume-document header { text-align: center; }
 .resume-document h1 { font-size: 14pt; line-height: 1.2; font-weight: 700; }
 .resume-document .document-role { font-size: 12.5pt; line-height: 1.2; font-weight: 700; margin-top: 4pt; }
-.resume-document .document-contacts { font-size: 10.5pt; line-height: 1.2; margin-top: 4pt; white-space: nowrap; }
+.resume-document .document-contacts { font-size: 10.5pt; line-height: 1.2; margin-top: 4pt; white-space: normal; }
 .resume-document a { color: inherit; text-decoration: none; }
 .resume-document section { margin-top: 12pt; padding: 0; }
 .resume-document header + section { margin-top: 8pt; }
@@ -107,7 +108,7 @@ export const resumeStyles = `
 .resume-document .document-skills li::marker { content: none; }
 .resume-document .document-entry > h3, .resume-document .document-project > h3 { break-after: avoid; }
 .resume-document .document-independent-intro { margin-bottom: 8pt; }
-.resume-document .document-project + .document-project, .resume-document .document-education + .document-education { margin-top: 14pt; }
+.resume-document .document-project + .document-project, .resume-document .document-education + .document-education { margin-top: 9pt; }
 .resume-document .document-project > p { margin-top: 4pt; text-align: left; }
 .resume-document .document-stack { color: #424242; font-size: 10pt; }
 .resume-document .document-entry, .resume-document .document-project, .resume-document .document-education, .resume-document .document-certificate { break-inside: avoid; }
@@ -115,7 +116,7 @@ export const resumeStyles = `
 .resume-document .document-education h3, .resume-document .document-certificate h3 { font-size: 10.5pt; }
 .resume-document .document-courses-label { font-size: 11pt; text-transform: uppercase; text-decoration: underline; margin-bottom: 10pt; break-after: avoid; }
 .resume-document .document-certificate { line-height: 1.2; }
-.resume-document .document-certificate + .document-certificate { margin-top: 14pt; }
+.resume-document .document-certificate + .document-certificate { margin-top: 9pt; }
 .resume-document .document-certificate a { text-decoration: underline; }
 .resume-document .document-project h3 { font-size: 10.5pt; }
 .resume-document p { orphans: 2; widows: 2; }

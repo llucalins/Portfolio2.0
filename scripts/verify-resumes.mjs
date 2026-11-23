@@ -30,13 +30,13 @@ try {
     const experienceHeadings = await document.locator('.document-entry').evaluateAll((entries) => entries.map((entry) => entry.closest('section').querySelector('h2').textContent));
     assert.deepEqual(experienceHeadings, Array(3).fill(copy.resumePdf.experienceHeading), 'Only institutional employment belongs to professional experience');
     assert.deepEqual(await document.locator('.document-independent [data-project-id]').evaluateAll((nodes) => nodes.map((node) => node.dataset.projectId)), ['vmais-comunicacao', 'memorial-monte-sinai']);
-    assert.deepEqual(await document.locator('.document-projects [data-project-id]').evaluateAll((nodes) => nodes.map((node) => node.dataset.projectId)), ['sistema-agendamento', 'info-dbeta', 'mr-roobot-ai-office']);
+    assert.deepEqual(await document.locator('.document-projects [data-project-id]').evaluateAll((nodes) => nodes.map((node) => node.dataset.projectId)), ['sistema-agendamento', 'grow-ai', 'info-dbeta']);
     assert.equal(await document.locator('.document-independent .document-period').count(), 0, 'Do not invent an activity period');
     assert.equal(await document.locator('[data-project-id="memorial-monte-sinai"] h3 a').getAttribute('href'), 'https://d24we0nttwbgey.cloudfront.net');
     assert.ok((await document.locator('[data-project-id="memorial-monte-sinai"]').innerText()).includes('AWS CLI'));
     assert.equal(await document.locator('.document-projects .document-entry').count(), 0, 'Projects must remain separate from employment');
     assert.equal(await document.locator('[data-project-id]').count(), 5);
-    for (const id of ['vmais-comunicacao', 'memorial-monte-sinai', 'sistema-agendamento', 'info-dbeta', 'mr-roobot-ai-office']) assert.equal(await document.locator(`[data-project-id="${id}"]`).count(), 1, `Duplicated PDF project: ${id}`);
+    for (const id of ['vmais-comunicacao', 'memorial-monte-sinai', 'sistema-agendamento', 'grow-ai', 'info-dbeta']) assert.equal(await document.locator(`[data-project-id="${id}"]`).count(), 1, `Duplicated PDF project: ${id}`);
     assert.deepEqual(await document.locator('.document-skills li strong').allTextContents(), [...professionalProfile.skillCategories.map((category) => `${t(category.titleKey)}:`), `${t('resumePage.languages')}:`]);
     const responsibilityLists = await document.locator('.document-entry').evaluateAll((entries) => entries.map((entry) => {
       const list = entry.querySelector(':scope > ul');
@@ -49,7 +49,7 @@ try {
         style: [css.paddingLeft, css.marginTop, css.listStyleType, css.listStylePosition, item.fontSize, item.lineHeight, marker.content, marker.fontSize, marker.fontFamily]
       };
     }));
-    assert.deepEqual(responsibilityLists.map((list) => list.count), [4, 2, 1], 'All PDF experiences must use semantic responsibility lists');
+    assert.deepEqual(responsibilityLists.map((list) => list.count), [4, 3, 1], 'All PDF experiences must use semantic responsibility lists');
     for (const list of responsibilityLists) {
       assert.equal(list.redundantParagraphs, 0);
       assert.deepEqual(list.style, responsibilityLists[0].style, 'PDF responsibility markers, indentation and typography must be uniform');
@@ -101,7 +101,7 @@ try {
       for (const fact of pdfFacts) assert.ok(normalizedText.includes(normalize(fact)), `PDF responsibility missing: ${fact}`);
     }
     assert.ok(normalizedText.includes(normalize(t(professionalProfile.independent.pdfDescriptionKey))));
-    const professionalText = normalizedText.split(t('experience.independentActivity').toUpperCase())[0];
+    const professionalText = normalizedText.split(t('resumePdf.experienceHeading').toUpperCase())[1].split(t('experience.independentActivity').toUpperCase())[0];
     const independentText = normalizedText.split(t('experience.independentActivity').toUpperCase())[1].split(t('resumePdf.projectHeading').toUpperCase())[0];
     const projectText = normalizedText.split(t('resumePdf.projectHeading').toUpperCase())[1].split(t('resumePdf.educationHeading').toUpperCase())[0];
     for (const category of professionalProfile.skillCategories) {
@@ -114,8 +114,8 @@ try {
       assert.equal(normalizedText.includes(title), included, `Wrong PDF project selection: ${title}`);
       assert.ok(!professionalText.includes(title), `Project incorrectly presented as employment: ${title}`);
       if (included) {
-        assert.equal(normalizedText.split(title).length - 1, 1, `Duplicated PDF title: ${title}`);
-        assert.ok((project.engagement === 'freelance' ? independentText : projectText).includes(title), `Wrong PDF section: ${title}`);
+        const selectedSection = project.engagement === 'freelance' ? independentText : projectText;
+        assert.equal(selectedSection.split(title).length - 1, 1, `Duplicated PDF project in its section: ${title}`);
         assert.ok(normalizedText.includes(normalize(t(project.resume.contributionKey))));
         for (const technology of project.resume.technologies) {
           assert.ok(project.stack.includes(technology), `Technology missing in factual project stack: ${technology}`);
@@ -128,13 +128,15 @@ try {
       const summary = t(project.resume.contributionKey);
       assert.ok(summary.split(/\s+/).length < project.description[language].split(/\s+/).length, `PDF summary must be shorter than web copy: ${project.id}`);
     }
-    assert.ok(normalizedText.includes(language === 'pt' ? 'ferramentas de terceiros' : 'third-party tools'));
+    assert.ok(normalizedText.includes('Ollama') && normalizedText.includes('Open-Meteo'), 'Verified AI and weather integrations must be visible');
     assert.doesNotMatch(normalizedText, /Introdução ao Flutter|Introduction to Flutter/);
     assert.deepEqual(professionalProfile.resume.certificateFilenames, ['EABD3805.pdf', 'OPCYCM0Y.pdf', 'HCRDIGHK.pdf'], 'Only the Flutter course should be removed');
     assert.ok(normalizedText.includes(normalize(t(professionalProfile.roleKey))), 'PDF positioning title missing');
+    assert.ok(normalizedText.includes(normalize(t('resumePdf.summaryText'))), 'Professional summary missing');
+    assert.ok(normalizedText.includes(professionalProfile.contacts.find((contact) => contact.id === 'linkedin').value), 'Full LinkedIn URL must be visible');
     assert.doesNotMatch(normalizedText, /Disponibilidade e reservas em planejamento|Availability and bookings remain planned/);
     assert.doesNotMatch(normalizedText, /Web & Mobile/);
-    const headings = [t('resumePdf.skillsHeading'), t('resumePdf.experienceHeading'), t('experience.independentActivity'), t('resumePdf.projectHeading'), t('resumePdf.educationHeading'), t('resumePdf.certificatesHeading')];
+    const headings = [t('resumePdf.summary'), t('resumePdf.skillsHeading'), t('resumePdf.experienceHeading'), t('experience.independentActivity'), t('resumePdf.projectHeading'), t('resumePdf.educationHeading'), t('resumePdf.certificatesHeading')];
     let previous = -1;
     for (const heading of headings) { const index = text.replace(/\f/g, '\n').toLowerCase().indexOf(`\n${heading.toLowerCase()}\n`); assert.ok(index > previous, heading); previous = index; }
     assert.match(text, /Anderson Rios Consultoria/);
@@ -181,15 +183,29 @@ try {
         text: normalize([...line[5].matchAll(/<word[^>]*>([\s\S]*?)<\/word>/g)].map((word) => decode(word[1])).join(' '))
       }))
     }));
+    for (const pdfPage of pages) {
+      for (const [index, first] of pdfPage.lines.entries()) {
+        for (const second of pdfPage.lines.slice(index + 1)) {
+          const overlapX = Math.min(first.x2, second.x2) - Math.max(first.x1, second.x1);
+          const overlapY = Math.min(first.y2, second.y2) - Math.max(first.y1, second.y1);
+          assert.ok(overlapX <= 0.75 || overlapY <= 0.75, `Overlapping PDF text: ${first.text} / ${second.text}`);
+        }
+      }
+    }
     const centered = (line, width) => assert.ok(Math.abs((line.x1 + line.x2) / 2 - width / 2) < 2, `Not centered: ${line.text}`);
     for (const heading of [professionalProfile.name, t(professionalProfile.roleKey)]) {
       const line = pages[0].lines.find((line) => line.text === heading);
       assert.ok(line, `Header must occupy one line: ${heading}`);
       centered(line, pages[0].width);
     }
-    const contactLine = pages[0].lines.find((line) => line.text.includes('Lvirginio.dev@gmail.com'));
-    assert.ok(contactLine && contactLine.text.includes('lucasvirginio.is-a.dev'), 'Contacts must occupy one line');
-    centered(contactLine, pages[0].width);
+    const roleLine = pages[0].lines.find((line) => line.text === t(professionalProfile.roleKey));
+    const firstHeading = pages[0].lines.find((line) => line.text === t('resumePdf.summary').toUpperCase());
+    const contactLines = pages[0].lines.filter((line) => line.y1 > roleLine.y2 && line.y2 < firstHeading.y1);
+    const contactText = normalize(contactLines.map((line) => line.text).join(' '));
+    for (const contact of [...professionalProfile.contacts, professionalProfile.portfolio]) {
+      assert.ok(contactText.includes(contact.value), `Visible contact missing: ${contact.value}`);
+    }
+    for (const line of contactLines) centered(line, pages[0].width);
     for (const heading of headings) {
       const page = pages.find((page) => page.lines.some((line) => line.text === heading.toUpperCase()));
       assert.ok(page, `Section heading missing: ${heading}`);

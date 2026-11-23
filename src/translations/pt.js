@@ -49,7 +49,7 @@ export const pt = {
   resumePdf: {
     skillsHeading: 'Competências técnicas',
     experienceHeading: 'Experiência profissional',
-    educationHeading: 'Educação',
+    educationHeading: 'Formação acadêmica',
     certificatesHeading: 'Cursos e certificados',
     courses: 'Cursos',
     certificate: 'Certificado',
@@ -59,24 +59,29 @@ export const pt = {
     documentation: 'documentação técnica',
     integration: 'integração de sistemas',
     instructorBullets: [
-      'Planejamento e condução de atividades de formação em informática, com foco em competências digitais e autonomia dos participantes.',
-      'Capacitação e acompanhamento de mais de 100 alunos em ferramentas computacionais e produtividade digital, contribuindo para a conclusão e certificação da formação.'
+      'Planejei e conduzi atividades de formação em informática, com foco em competências digitais e autonomia dos participantes.',
+      'Capacitei e acompanhei mais de 100 alunos no uso de ferramentas computacionais e de produtividade digital.',
+      'Apoiei os participantes na conclusão e certificação da formação.'
+    ],
+    administrativeBullets: [
+      'Apoiei processos administrativos por meio de documentação, planilhas e registros.'
     ],
     mrRoobotContribution: 'Configuração de agentes especializados em desenvolvimento de software com Hermes Agent e exploração da integração com DeskRPG. Ambas são ferramentas de terceiros.',
     andersonEditorialBullets: [
-      'Desenvolvimento web com React, Next.js, TypeScript, JavaScript, Node.js e Python; implementação e consumo de APIs REST.',
-      'Participação em funcionalidades de medição de ambientes e projeção virtual de móveis com IA e na integração com APIs da OpenAI.',
-      'Desenvolvimento mobile com React Native para Android e iOS: telas, componentes e funcionalidades.',
-      'Participação na definição de arquitetura; Git, Docker, troubleshooting, correção de bugs e documentação.'
+      'Desenvolvi funcionalidades web com React, Next.js, TypeScript, JavaScript, Node.js e Python; implementei e consumi APIs REST.',
+      'Colaborei em funcionalidades de medição de ambientes e projeção virtual de móveis com IA e participei da integração com APIs da OpenAI.',
+      'Desenvolvi telas, componentes e funcionalidades mobile com React Native para Android e iOS.',
+      'Colaborei na definição da arquitetura e estruturação de sistemas; usei Git e Docker, investiguei falhas, corrigi bugs e produzi documentação técnica.'
     ],
     monteSinaiContribution: 'Frontend responsivo com componentes e animações, integração com WhatsApp e Google Maps, exportação estática e hospedagem S3/CloudFront. Automação de deploy com AWS CLI.',
-    vmaisContribution: 'Integração de frontend React e API REST Java/Spring Boot, com autenticação, agenda, funcionalidades administrativas, persistência PostgreSQL e ambiente Docker.',
-    schedulingContribution: 'Agendamento com catálogo, disponibilidade, confirmação e acompanhamento de reservas por código. Regras de negócio, APIs, validação de entrada, funcionalidades administrativas e persistência PostgreSQL.',
+    vmaisContribution: 'Desenvolvi componentes React/Vite para o site e implementei reforços de segurança e verificações de CI em um projeto colaborativo com backend Java/Spring Boot.',
+    schedulingContribution: 'Em um sistema com 23 operações HTTP, implementei catálogo, disponibilidade, confirmação de reservas transacional e idempotente, acompanhamento por código e persistência PostgreSQL.',
+    growContribution: 'Integrei Ollama para chat contextual com histórico da planta e dados climáticos da Open-Meteo em uma API Java/Spring Boot com PostgreSQL.',
     independentDescription: 'Desenvolvimento de software para organizações e de produtos autorais. Trabalhos para organizações:',
     infoDBetaContribution: 'Atividades interativas de digitação e coordenação com mouse, com componentes React e gerenciamento de estados e eventos para desenvolver habilidades digitais.',
-    projectHeading: 'Projetos selecionados',
+    projectHeading: 'Projetos',
     summary: 'Resumo profissional',
-    summaryText: 'Desenvolvedor Full Stack com foco em TypeScript, aplicações web, integração de APIs, persistência de dados e inteligência artificial. Experiência profissional com React, Next.js, Node.js, Python e APIs da OpenAI, além de React Native para Android e iOS.',
+    summaryText: 'Desenvolvedor Full Stack com experiência profissional remota em React, Next.js, TypeScript, JavaScript, Node.js e Python. Desenvolvi interfaces e APIs REST com persistência PostgreSQL. Em projetos autorais, implementei confirmação de reservas transacional e idempotente e integrei uma API Java/Spring Boot ao Ollama. Também colaborei em integrações com APIs da OpenAI e desenvolvi interfaces React Native para Android e iOS.',
     skills: 'Competências técnicas',
     projects: 'Projetos selecionados',
     education: 'Formação e cursos relevantes',

@@ -61,23 +61,28 @@ export const en = {
     integration: 'systems integration',
     instructorBullets: [
       'Planned and delivered computer skills training focused on digital competencies and participant autonomy.',
-      'Trained and supported more than 100 students in computing tools and digital productivity, helping them complete their training and earn certification.'
+      'Trained and supported more than 100 students in the use of computing and digital productivity tools.',
+      'Supported participants through completion and certification of their training.'
+    ],
+    administrativeBullets: [
+      'Supported administrative processes through documentation, spreadsheets, and records.'
     ],
     mrRoobotContribution: 'Configuration of specialized software development agents with Hermes Agent and exploration of integration with DeskRPG. Both are third-party tools.',
     andersonEditorialBullets: [
-      'Web development with React, Next.js, TypeScript, JavaScript, Node.js, and Python; implementation and consumption of REST APIs.',
-      'Participation in room measurement and AI-powered virtual furniture projection features and OpenAI API integration.',
-      'Mobile development with React Native for Android and iOS: screens, components, and features.',
-      'Participation in architecture definition; Git, Docker, troubleshooting, bug fixes, and documentation.'
+      'Developed web features with React, Next.js, TypeScript, JavaScript, Node.js, and Python; implemented and consumed REST APIs.',
+      'Collaborated on room measurement and AI-powered virtual furniture projection features and contributed to OpenAI API integration.',
+      'Built mobile screens, components, and features with React Native for Android and iOS.',
+      'Collaborated on architecture definition and system structuring; used Git and Docker, investigated failures, fixed bugs, and produced technical documentation.'
     ],
     monteSinaiContribution: 'Responsive frontend with components and animations, WhatsApp and Google Maps integration, static export, and S3/CloudFront hosting. Deployment automation with AWS CLI.',
-    vmaisContribution: 'Integration of a React frontend and Java/Spring Boot REST API, with authentication, scheduling, administrative features, PostgreSQL persistence, and Docker.',
-    schedulingContribution: 'Scheduling with a catalog, availability, booking confirmation, and code-based tracking. Business rules, APIs, input validation, administrative features, and PostgreSQL persistence.',
+    vmaisContribution: 'Built React/Vite site components and implemented security hardening and CI checks in a collaborative project with a Java/Spring Boot backend.',
+    schedulingContribution: 'In a system with 23 HTTP operations, I implemented a service catalog, availability, transactional and idempotent booking confirmation, code-based tracking, and PostgreSQL persistence.',
+    growContribution: 'Integrated Ollama for contextual chat using plant history and Open-Meteo weather data in a Java/Spring Boot API backed by PostgreSQL.',
     independentDescription: 'Software development for organizations and independently initiated products. Work for organizations:',
     infoDBetaContribution: 'Interactive typing and mouse coordination activities, using React components and state and event management to develop digital skills.',
-    projectHeading: 'Selected projects',
+    projectHeading: 'Projects',
     summary: 'Professional summary',
-    summaryText: 'Full Stack Developer focused on TypeScript, web applications, API integration, data persistence, and artificial intelligence. Professional experience with React, Next.js, Node.js, Python, and OpenAI APIs, alongside React Native for Android and iOS.',
+    summaryText: 'Full Stack Developer with remote professional experience in React, Next.js, TypeScript, JavaScript, Node.js, and Python. I built interfaces and REST APIs backed by PostgreSQL. In independent projects, I implemented transactional, idempotent booking confirmation and connected a Java/Spring Boot API to Ollama. I also contributed to OpenAI API integrations and built React Native interfaces for Android and iOS.',
     skills: 'Technical skills',
     projects: 'Selected projects',
     education: 'Education and relevant courses',
