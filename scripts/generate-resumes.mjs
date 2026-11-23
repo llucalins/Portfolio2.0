@@ -1,14 +1,9 @@
 import { chromium } from 'playwright';
-import { mkdir, readFile } from 'node:fs/promises';
+import { mkdir } from 'node:fs/promises';
 import { resumeMarkup, resumeStyles, resumePdfPath } from '../src/data/resumeDocument.js';
 
-// Embed the same local fonts used by the print template, so generation is offline
-// and independent of fonts installed on the host or an HTTP development server.
-let documentStyles = resumeStyles;
-for (const filename of ['Carlito-Regular.ttf', 'Carlito-Bold.ttf']) {
-  const font = await readFile(new URL(`../public/fonts/carlito/${filename}`, import.meta.url));
-  documentStyles = documentStyles.replace(`/fonts/carlito/${filename}`, `data:font/ttf;base64,${font.toString('base64')}`);
-}
+// Use browser-standard fonts to avoid broken glyph-to-Unicode maps in exported PDFs.
+const documentStyles = resumeStyles;
 
 const browser = await chromium.launch({ headless: true });
 try {
